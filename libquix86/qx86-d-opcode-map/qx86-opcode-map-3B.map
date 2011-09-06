@@ -1,0 +1,87 @@
+## +------------------------------------------------------------------------+
+## | quix86                                                                 |
+## +------------------------------------------------------------------------+
+## | This file is part of quix86, an x86-64 instruction decoder.            |
+## |                                                                        |
+## | Copyright (C) 2011 Institute for System Programming of Russian Academy |
+## | of Sciences.                                                           |
+## |                                                                        |
+## | Contact e-mail: <unicluster@ispras.ru>.                                |
+## |                                                                        |
+## | quix86 is free software: you can redistribute it and/or modify it      |
+## | under the terms of the GNU General Public License as published by the  |
+## | Free Software Foundation, either version 3 of the License, or (at your |
+## | option) any later version.                                             |
+## |                                                                        |
+## | quix86 is distributed in the hope that it will be useful, but WITHOUT  |
+## | ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or  |
+## | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License  |
+## | for more details.                                                      |
+## |                                                                        |
+## | You should have received a copy of the GNU General Public License      |
+## | along with quix86.  If not, see <http://www.gnu.org/licenses/>.        |
+## +------------------------------------------------------------------------+
+
+## Reference: Intel Architecture Software Developer’s Manual 2B: Table A-5.
+Map 3B nb
+{
+    # TODO: AVX 04, 05, 06
+    08: ROUNDPS     Vdq+    Wdq-    Ib- [ sp = 66 ]         # TODO: AVX
+    09: ROUNDPD     Vdq+    Wdq-    Ib- [ sp = 66 ]         # TODO: AVX
+    0A: ROUNDSS     Vss+    Wss-    Ib- [ sp = 66 ]         # TODO: AVX
+    0B: ROUNDSD     Vss+    Wss-    Ib- [ sp = 66 ]         # TODO: AVX
+    0C: BLENDPS     Vdq*    Wdq-    Ib- [ sp = 66 ]         # TODO: AVX
+    0D: BLENDPD     Vdq*    Wdq-    Ib- [ sp = 66 ]         # TODO: AVX
+    0E: PBLENDW     Vdq*    Wdq-    Ib- [ sp = 66 ]         # TODO: AVX
+    0F: PALIGNR     Pq*     Qq-     Ib- [ sp = 00 ]
+    0F: PALIGNR     Vdq*    Wdq-    Ib- [ sp = 66 ]         # TODO: AVX
+    
+    14: [ sp ]
+        66: PEXTRB  Mb+     Vdq-    Ib- [ mod = 0 ]         # TODO: AVX
+        66: PEXTRB  Mb+     Vdq-    Ib- [ mod = 1 ]         # TODO: AVX
+        66: PEXTRB  Mb+     Vdq-    Ib- [ mod = 2 ]         # TODO: AVX
+        66: PEXTRB  Rd+     Vdq-    Ib- [ mod = 3 ]         # TODO: AVX
+    15: [ sp ]
+        66: PEXTRW  Mw+     Vdq-    Ib- [ mod = 0 ]         # TODO: AVX
+        66: PEXTRW  Mw+     Vdq-    Ib- [ mod = 1 ]         # TODO: AVX
+        66: PEXTRW  Mw+     Vdq-    Ib- [ mod = 2 ]         # TODO: AVX
+        66: PEXTRW  Rd+     Vdq-    Ib- [ mod = 3 ]         # TODO: AVX
+    16: [ sp ]
+        66: PEXTRD  Ed+     Vdq-    Ib- [ os = 00 ]         # TODO: AVX
+        66: PEXTRD  Ed+     Vdq-    Ib- [ os = 01 ]         # TODO: AVX
+        66: PEXTRQ  Eq+     Vdq-    Ib- [ os = 02 ]         # TODO: AVX
+    17: EXTRACTPS   Ed+     Vdq-    Ib- [ sp = 66 ]         # TODO: AVX
+    # TODO: AVX 18, 19
+    
+    20: [ sp ]
+        66: [ mod ]
+            00: PINSRB  Vdq*    Mb- Ib-                     # TODO: AVX
+            01: PINSRB  Vdq*    Mb- Ib-                     # TODO: AVX
+            02: PINSRB  Vdq*    Mb- Ib-                     # TODO: AVX
+            03: PINSRB  Vdq*    Rd- Ib- [ os = 00 ]         # TODO: AVX; DOUBLE CHECK
+            03: PINSRB  Vdq*    Rd- Ib- [ os = 01 ]         # TODO: AVX
+            03: PINSRB  Vdq*    Rq- Ib- [ os = 02 ]         # TODO: AVX
+    21: [ sp ]
+        66: INSERTPS    Vdq*  Md-   Ib- [ mod = 0 ]         # TODO: AVX
+        66: INSERTPS    Vdq*  Md-   Ib- [ mod = 1 ]         # TODO: AVX
+        66: INSERTPS    Vdq*  Md-   Ib- [ mod = 2 ]         # TODO: AVX
+        66: INSERTPS    Vdq*  Udq-  Ib- [ mod = 3 ]         # TODO: AVX
+    22: [ sp ]
+        66: PINSRD      Vdq*    Ed- Ib- [ os = 00 ]         # TODO: AVX
+        66: PINSRD      Vdq*    Ed- Ib- [ os = 01 ]         # TODO: AVX
+        66: PINSRQ      Vdq*    Eq- Ib- [ os = 02 ]         # TODO: AVX
+    
+    40: DPPS        Vdq*    Wdq-    Ib- [ sp = 66 ]         # TODO: AVX
+    41: DPPD        Vdq*    Wdq-    Ib- [ sp = 66 ]         # TODO: AVX
+    42: MPSADBW     Vdq*    Wdq-    Ib- [ sp = 66 ]         # TODO: AVX
+    44: PCLMULQDQ   Vdq*    Wdq-    Ib- [ sp = 66 ]         # TODO: AVX
+    # TODO: AVX 4A, 4B, 4C
+   
+    60: PCMPESTRM   Vdq-    Wdq-    Ib- [ sp = 66 ]         # TODO: AVX; dq ->Vdq - bug in Intel Opcode Map?
+    61: PCMPESTRI   Vdq-    Wdq-    Ib- [ sp = 66 ]         # TODO: AVX
+    62: PCMPISTRM   Vdq-    Wdq-    Ib- [ sp = 66 ]         # TODO: AVX
+    63: PCMPISTRI   Vdq-    Wdq-    Ib- [ sp = 66 ]         # TODO: AVX
+    
+    DF: AESKEYGENASSIST Vdq+ Wdq- Ib-   [ sp = 66 ]         # TODO: AVX
+    
+}

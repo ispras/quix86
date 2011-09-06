@@ -1,0 +1,425 @@
+## +------------------------------------------------------------------------+
+## | quix86                                                                 |
+## +------------------------------------------------------------------------+
+## | This file is part of quix86, an x86-64 instruction decoder.            |
+## |                                                                        |
+## | Copyright (C) 2011 Institute for System Programming of Russian Academy |
+## | of Sciences.                                                           |
+## |                                                                        |
+## | Contact e-mail: <unicluster@ispras.ru>.                                |
+## |                                                                        |
+## | quix86 is free software: you can redistribute it and/or modify it      |
+## | under the terms of the GNU General Public License as published by the  |
+## | Free Software Foundation, either version 3 of the License, or (at your |
+## | option) any later version.                                             |
+## |                                                                        |
+## | quix86 is distributed in the hope that it will be useful, but WITHOUT  |
+## | ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or  |
+## | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License  |
+## | for more details.                                                      |
+## |                                                                        |
+## | You should have received a copy of the GNU General Public License      |
+## | along with quix86.  If not, see <http://www.gnu.org/licenses/>.        |
+## +------------------------------------------------------------------------+
+
+## Reference: AMD Architecture Programmer's Manual 3: Table A-1, A-2.
+Map 1 nb
+{
+    00: ADD         Eb*     Gb-
+    01: ADD         Ev*     Gv-
+    02: ADD         Gb*     Eb-
+    03: ADD         Gv*     Ev-
+    04: ADD         AL*     Ib-
+    05: ADD         rAX*    Iz-
+    06: PUSH        ES-                 [ cs = 0 ]
+    06: PUSH        ES-                 [ cs = 1 ]
+    07: POP         ES+                 [ cs = 0 ]
+    07: POP         ES+                 [ cs = 1 ]
+
+    08: OR          Eb*     Gb-
+    09: OR          Ev*     Gv-
+    0A: OR          Gb*     Eb-
+    0B: OR          Gv*     Ev-
+    0C: OR          AL*     Ib-
+    0D: OR          rAX*    Iz-
+    0E: PUSH        CS-                 [ cs = 0 ]
+    0E: PUSH        CS-                 [ cs = 1 ]
+    0F: -> 2
+
+    10: ADC         Eb*     Gb-
+    11: ADC         Ev*     Gv-
+    12: ADC         Gb*     Eb-
+    13: ADC         Gv*     Ev-
+    14: ADC         AL*     Ib-
+    15: ADC         rAX*    Iz-
+    16: PUSH        SS-                 [ cs = 0 ]
+    16: PUSH        SS-                 [ cs = 1 ]
+    17: POP         SS+                 [ cs = 0 ]
+    17: POP         SS+                 [ cs = 1 ]
+
+    18: SBB         Eb*     Gb-
+    19: SBB         Ev*     Gv-
+    1A: SBB         Gb*     Eb-
+    1B: SBB         Gv*     Ev-
+    1C: SBB         AL*     Ib-
+    1D: SBB         rAX*    Iz-
+    1E: PUSH        DS-                 [ cs = 0 ]
+    1E: PUSH        DS-                 [ cs = 1 ]
+    1F: POP         DS+                 [ cs = 0 ]
+    1F: POP         DS+                 [ cs = 1 ]
+
+    20: AND         Eb*     Gb-
+    21: AND         Ev*     Gv-
+    22: AND         Gb*     Eb-
+    23: AND         Gv*     Ev-
+    24: AND         AL*     Ib-
+    25: AND         rAX*    Iz-
+    26: $26
+    27: DAA         .                   [ cs = 0 ]
+    27: DAA         .                   [ cs = 1 ]
+
+    28: SUB         Eb*     Gb-
+    29: SUB         Ev*     Gv-
+    2A: SUB         Gb*     Eb-
+    2B: SUB         Gv*     Ev-
+    2C: SUB         AL*     Ib-
+    2D: SUB         rAX*    Iz-
+    2E: $2E
+    2F: DAS         .                   [ cs = 0 ]
+    2F: DAS         .                   [ cs = 1 ]
+
+    30: XOR         Eb*     Gb-
+    31: XOR         Ev*     Gv-
+    32: XOR         Gb*     Eb-
+    33: XOR         Gv*     Ev-
+    34: XOR         AL*     Ib-
+    35: XOR         rAX*    Iz-
+    36: $36
+    37: AAA         .                   [ cs = 0 ]
+    37: AAA         .                   [ cs = 1 ]
+
+    38: CMP         Eb-     Gb-
+    39: CMP         Ev-     Gv-
+    3A: CMP         Gb-     Eb-
+    3B: CMP         Gv-     Ev-
+    3C: CMP         AL-     Ib-
+    3D: CMP         rAX-    Iz-
+    3E: $3E
+    3F: AAS         .                   [ cs = 0 ]
+    3F: AAS         .                   [ cs = 1 ]
+
+    40: INC         eAX*                [ cs = 0 ]
+    40: INC         eAX*                [ cs = 1 ]
+    40: $40                             [ cs = 2 ]
+    41: INC         eCX*                [ cs = 0 ]
+    41: INC         eCX*                [ cs = 1 ]
+    41: $41                             [ cs = 2 ]
+    42: INC         eDX*                [ cs = 0 ]
+    42: INC         eDX*                [ cs = 1 ]
+    42: $42                             [ cs = 2 ]
+    43: INC         eBX*                [ cs = 0 ]
+    43: INC         eBX*                [ cs = 1 ]
+    43: $43                             [ cs = 2 ]
+    44: INC         eSP*                [ cs = 0 ]
+    44: INC         eSP*                [ cs = 1 ]
+    44: $44                             [ cs = 2 ]
+    45: INC         eBP*                [ cs = 0 ]
+    45: INC         eBP*                [ cs = 1 ]
+    45: $45                             [ cs = 2 ]
+    46: INC         eSI*                [ cs = 0 ]
+    46: INC         eSI*                [ cs = 1 ]
+    46: $46                             [ cs = 2 ]
+    47: INC         eDI*                [ cs = 0 ]
+    47: INC         eDI*                [ cs = 1 ]
+    47: $47                             [ cs = 2 ]
+
+    48: DEC         eAX*                [ cs = 0 ]
+    48: DEC         eAX*                [ cs = 1 ]
+    48: $48                             [ cs = 2 ]
+    49: DEC         eCX*                [ cs = 0 ]
+    49: DEC         eCX*                [ cs = 1 ]
+    49: $49                             [ cs = 2 ]
+    4A: DEC         eDX*                [ cs = 0 ]
+    4A: DEC         eDX*                [ cs = 1 ]
+    4A: $4A                             [ cs = 2 ]
+    4B: DEC         eBX*                [ cs = 0 ]
+    4B: DEC         eBX*                [ cs = 1 ]
+    4B: $4B                             [ cs = 2 ]
+    4C: DEC         eSP*                [ cs = 0 ]
+    4C: DEC         eSP*                [ cs = 1 ]
+    4C: $4C                             [ cs = 2 ]
+    4D: DEC         eBP*                [ cs = 0 ]
+    4D: DEC         eBP*                [ cs = 1 ]
+    4D: $4D                             [ cs = 2 ]
+    4E: DEC         eSI*                [ cs = 0 ]
+    4E: DEC         eSI*                [ cs = 1 ]
+    4E: $4E                             [ cs = 2 ]
+    4F: DEC         eDI*                [ cs = 0 ]
+    4F: DEC         eDI*                [ cs = 1 ]
+    4F: $4F                             [ cs = 2 ]
+
+    50: PUSH        r0-
+    51: PUSH        r1-
+    52: PUSH        r2-
+    53: PUSH        r3-
+    54: PUSH        r4-
+    55: PUSH        r5-
+    56: PUSH        r6-
+    57: PUSH        r7-
+
+    58: POP         r0+
+    59: POP         r1+
+    5A: POP         r2+
+    5B: POP         r3+
+    5C: POP         r4+
+    5D: POP         r5+
+    5E: POP         r6+
+    5F: POP         r7+
+
+    60: [ cs ]
+        00: PUSHA   .                   [ os = 0 ]
+        00: PUSHAD  .                   [ os = 1 ]
+        01: PUSHA   .                   [ os = 0 ]
+        01: PUSHAD  .                   [ os = 1 ]
+    61: [ cs ]
+        00: POPA    .                   [ os = 0 ]
+        00: POPAD   .                   [ os = 1 ]
+        01: POPA    .                   [ os = 0 ]
+        01: POPAD   .                   [ os = 1 ]
+    62: BOUND       Gv-     Ma-         [ cs = 0 ]
+    62: BOUND       Gv-     Ma-         [ cs = 1 ]
+    63: ARPL        Ew*?    Gw-         [ cs = 0 ]
+    63: ARPL        Ew*?    Gw-         [ cs = 1 ]
+    63: MOVSXD      Gv+     Ed-         [ cs = 2 ]
+    64: $64
+    65: $65
+    66: $66
+    67: $67
+
+    68: PUSH        Iz-
+    69: IMUL        Gv+ Ev- Iz-
+    6A: PUSH        Ib-
+    6B: IMUL        Gv+ Ev- Ib-
+    6C: INSB        Yb+ DX-
+    6D: INSW        Yz+ DX-             [ os = 0 ]
+    6D: INSD        Yz+ DX-             [ os = 1 ]
+    6D: INSD        Yz+ DX-             [ os = 2 ]
+    6E: OUTSB       DX- Xb-
+    6F: OUTSW       DX- Xz-             [ os = 0 ]
+    6F: OUTSD       DX- Xz-             [ os = 1 ]
+    6F: OUTSD       DX- Xz-             [ os = 2 ]
+
+    70: JO          Jb-
+    71: JNO         Jb-
+    72: JB          Jb-
+    73: JAE         Jb-
+    74: JZ          Jb-
+    75: JNZ         Jb-
+    76: JBE         Jb-
+    77: JA          Jb-
+
+    78: JS          Jb-
+    79: JNS         Jb-
+    7A: JP          Jb-
+    7B: JNP         Jb-
+    7C: JL          Jb-
+    7D: JGE         Jb-
+    7E: JLE         Jb-
+    7F: JG          Jb-
+
+    80: -> M1_Eb_Ib
+    81: -> M1_Ev_Iz
+    82: -> M1_Eb_Ib                     [ cs = 0 ]
+    82: -> M1_Eb_Ib                     [ cs = 1 ]
+    83: -> M1_Ev_Ib
+    84: TEST        Eb- Gb-
+    85: TEST        Ev- Gv-
+    86: XCHG        Eb* Gb*
+    87: XCHG        Ev* Gv*
+
+    88: MOV         Eb+ Gb-
+    89: MOV         Ev+ Gv-
+    8A: MOV         Gb+ Eb-
+    8B: MOV         Gv+ Ev-
+    8C: MOV         Mw+ Sw-             [ mod = 0 ]     # WTF? AMD: Intel: Ev
+    8C: MOV         Mw+ Sw-             [ mod = 1 ]
+    8C: MOV         Mw+ Sw-             [ mod = 2 ]
+    8C: MOV         Rv+ Sw-             [ mod = 3 ]
+    8D: LEA         Gv+ Mi-
+    8E: MOV         Sw+ Ew-
+    8F: -> M1A      Ev+
+
+    90: XCHG        r0* rAX*                            # TODO: PAUSE, NOP, XCHG
+    91: XCHG        r1* rAX*
+    92: XCHG        r2* rAX*
+    93: XCHG        r3* rAX*
+    94: XCHG        r4* rAX*
+    95: XCHG        r5* rAX*
+    96: XCHG        r6* rAX*
+    97: XCHG        r7* rAX*
+
+    98: CBW         .                   [ os = 0 ]
+    98: CWDE        .                   [ os = 1 ]
+    98: CDQE        .                   [ os = 2 ]
+    99: CWD         .                   [ os = 0 ]
+    99: CDQ         .                   [ os = 1 ]
+    99: CQO         .                   [ os = 2 ]
+    9A: CALLF       Ap-                 [ cs = 0 ]
+    9A: CALLF       Ap-                 [ cs = 1 ]
+    9B: FWAIT       .
+    9C: PUSHF       .                   [ os = 0 ]
+    9C: PUSHFD      .                   [ os = 1 ]
+    9C: PUSHFQ      .                   [ os = 2 ]
+    9D: POPF        .                   [ os = 0 ]
+    9D: POPFD       .                   [ os = 1 ]
+    9D: POPFQ       .                   [ os = 2 ]
+    9E: SAHF        .
+    9F: LAHF        .
+
+    A0: MOV         AL+     Ob-
+    A1: MOV         rAX+    Ov-
+    A2: MOV         Ob+     AL-
+    A3: MOV         Ov+     rAX-
+    A4: MOVSB       Yb+ Xb-
+    A5: MOVSW       Yv+ Xv-             [ os = 0 ]
+    A5: MOVSD       Yv+ Xv-             [ os = 1 ]
+    A5: MOVSQ       Yv+ Xv-             [ os = 2 ]
+    A6: CMPSB       Xb- Yb-
+    A7: CMPSW       Xv- Yv-             [ os = 0 ]
+    A7: CMPSD       Xv- Yv-             [ os = 1 ]
+    A7: CMPSQ       Xv- Yv-             [ os = 2 ]
+
+    A8: TEST        AL-     Ib-
+    A9: TEST        rAX-    Iz-
+    AA: STOSB       Yb+     AL-
+    AB: STOSW       Yv+     rAX-        [ os = 0 ]
+    AB: STOSD       Yv+     rAX-        [ os = 1 ]
+    AB: STOSQ       Yv+     rAX-        [ os = 2 ]
+    AC: LODSB       AL+     Xb-
+    AD: LODSW       rAX+    Xv-         [ os = 0 ]
+    AD: LODSD       rAX+    Xv-         [ os = 1 ]
+    AD: LODSQ       rAX+    Xv-         [ os = 2 ]
+    AE: SCASB       AL-     Yb-
+    AF: SCASW       rAX-    Yv-         [ os = 0 ]
+    AF: SCASD       rAX-    Yv-         [ os = 1 ]
+    AF: SCASQ       rAX-    Yv-         [ os = 2 ]
+
+    B0: MOV         R0B+    Ib-
+    B1: MOV         R1B+    Ib-
+    B2: MOV         R2B+    Ib-
+    B3: MOV         R3B+    Ib-
+    B4: MOV         R4B+    Ib-
+    B5: MOV         R5B+    Ib-
+    B6: MOV         R6B+    Ib-
+    B7: MOV         R7B+    Ib-
+
+    B8: MOV         r0+     Iv-
+    B9: MOV         r1+     Iv-
+    BA: MOV         r2+     Iv-
+    BB: MOV         r3+     Iv-
+    BC: MOV         r4+     Iv-
+    BD: MOV         r5+     Iv-
+    BE: MOV         r6+     Iv-
+    BF: MOV         r7+     Iv-
+
+    C0: -> M2       Eb* Ib-
+    C1: -> M2       Ev* Ib-
+    C2: RET         Iw-
+    C3: RET         .
+    C4: [mod]
+        00: LES     Gz+ Mp-             [ cs = 0 ]
+        00: LES     Gz+ Mp-             [ cs = 1 ]
+        00: $C4                         [ cs = 2 ]
+        01: LES     Gz+ Mp-             [ cs = 0 ]
+        01: LES     Gz+ Mp-             [ cs = 1 ]
+        01: $C4                         [ cs = 2 ]
+        02: LES     Gz+ Mp-             [ cs = 0 ]
+        02: LES     Gz+ Mp-             [ cs = 1 ]
+        02: $C4                         [ cs = 2 ]
+        03: $C4
+    C5: [mod]
+        00: LDS     Gz+ Mp-             [ cs = 0 ]
+        00: LDS     Gz+ Mp-             [ cs = 1 ]
+        00: $C5                         [ cs = 2 ]
+        01: LDS     Gz+ Mp-             [ cs = 0 ]
+        01: LDS     Gz+ Mp-             [ cs = 1 ]
+        01: $C5                         [ cs = 2 ]
+        02: LDS     Gz+ Mp-             [ cs = 0 ]
+        02: LDS     Gz+ Mp-             [ cs = 1 ]
+        02: $C5                         [ cs = 2 ]
+        03: $C5
+    C6: -> M11      Eb+ Ib-
+    C7: -> M11      Ev+ Iz-
+
+    C8: ENTER       Iw- Ib-
+    C9: LEAVE       .
+    CA: RETF        Iw-
+    CB: RETF        .
+    CC: INT3        .
+    CD: INT         Ib-
+    CE: INTO        .                   [ cs = 0 ]
+    CE: INTO        .                   [ cs = 1 ]
+    CF: IRET        .                   [ cs = 0 ]
+    CF: IRETD       .                   [ cs = 1 ]
+    CF: IRETQ       .                   [ cs = 2 ]
+
+    D0: -> M2       Eb* 1-
+    D1: -> M2       Ev* 1-
+    D2: -> M2       Eb* CL-
+    D3: -> M2       Ev* CL-
+    D4: AAM         Ib-                 [ cs = 0 ]
+    D4: AAM         Ib-                 [ cs = 1 ]
+    D5: AAD         Ib-                 [ cs = 0 ]
+    D5: AAD         Ib-                 [ cs = 1 ]
+    D6: SALC        .                   [ cs = 0 ]
+    D6: SALC        .                   [ cs = 1 ]
+    D7: XLAT        .
+
+    D8: -> D8
+    D9: -> D9
+    DA: -> DA
+    DB: -> DB
+    DC: -> DC
+    DD: -> DD
+    DE: -> DE
+    DF: -> DF
+
+    E0: LOOPNZ      Jb-
+    E1: LOOPZ       Jb-
+    E2: LOOP        Jb-
+    E3: JCXZ        Jb-                 [ as = 0 ]
+    E3: JECXZ       Jb-                 [ as = 1 ]
+    E3: JRCXZ       Jb-                 [ as = 2 ]
+    E4: IN          AL+     Ib-
+    E5: IN          eAX+    Ib-
+    E6: OUT         Ib-     AL-
+    E7: OUT         Ib-     eAX-
+
+    E8: CALL        Jz-
+    E9: JMP         Jz-
+    EA: JMPF        Ap-                 [ cs = 0 ]
+    EA: JMPF        Ap-                 [ cs = 1 ]
+    EB: JMP         Jb-
+    EC: IN          AL+     DX-
+    ED: IN          eAX+    DX-
+    EE: OUT         DX-     AL-
+    EF: OUT         DX-     eAX-
+
+    F0: $F0
+    F1: INT1        .
+    F2: $F2
+    F3: $F3
+    F4: HLT         .
+    F5: CMC         .
+    F6: -> M3
+    F7: -> M3
+
+    F8: CLC         .
+    F9: STC         .
+    FA: CLI         .
+    FB: STI         .
+    FC: CLD         .
+    FD: STD         .
+    FE: -> M4       Eb*
+    FF: -> M5
+}

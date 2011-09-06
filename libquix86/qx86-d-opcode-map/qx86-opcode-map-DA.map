@@ -1,0 +1,105 @@
+## +------------------------------------------------------------------------+
+## | quix86                                                                 |
+## +------------------------------------------------------------------------+
+## | This file is part of quix86, an x86-64 instruction decoder.            |
+## |                                                                        |
+## | Copyright (C) 2011 Institute for System Programming of Russian Academy |
+## | of Sciences.                                                           |
+## |                                                                        |
+## | Contact e-mail: <unicluster@ispras.ru>.                                |
+## |                                                                        |
+## | quix86 is free software: you can redistribute it and/or modify it      |
+## | under the terms of the GNU General Public License as published by the  |
+## | Free Software Foundation, either version 3 of the License, or (at your |
+## | option) any later version.                                             |
+## |                                                                        |
+## | quix86 is distributed in the hope that it will be useful, but WITHOUT  |
+## | ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or  |
+## | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License  |
+## | for more details.                                                      |
+## |                                                                        |
+## | You should have received a copy of the GNU General Public License      |
+## | along with quix86.  If not, see <http://www.gnu.org/licenses/>.        |
+## +------------------------------------------------------------------------+
+
+## Reference: AMD Architecture Programmer's Manual 3: Table A-10.
+
+## mem32real -> Mss (scalar single)
+## mem80real -> Mse (scalar double extended)
+## mem80dec -> Msb (scalar bcd)
+## mem14/28env -> todo
+## mem16 -> Mw
+## mem16int -> Mw
+## mem32int -> Md
+## mem64int -> Mq
+## mem64real -> Msd (scalar double)
+## mem98/108env -> todo
+
+Map DA reg
+{
+    00: [ mod ]
+        00: FIADD       Md-
+        01: FIADD       Md-
+        02: FIADD       Md-
+        03: FCMOVB      ST0+? ST0-?         [ rm = 00 ]
+        03: FCMOVB      ST0+? ST1-?         [ rm = 01 ]
+        03: FCMOVB      ST0+? ST2-?         [ rm = 02 ]
+        03: FCMOVB      ST0+? ST3-?         [ rm = 03 ]
+        03: FCMOVB      ST0+? ST4-?         [ rm = 04 ]
+        03: FCMOVB      ST0+? ST5-?         [ rm = 05 ]
+        03: FCMOVB      ST0+? ST6-?         [ rm = 06 ]
+        03: FCMOVB      ST0+? ST7-?         [ rm = 07 ]
+    01: [ mod ]
+        00: FIMUL       Md-
+        01: FIMUL       Md-
+        02: FIMUL       Md-
+        03: FCMOVE      ST0+? ST0-?         [ rm = 00 ]
+        03: FCMOVE      ST0+? ST1-?         [ rm = 01 ]
+        03: FCMOVE      ST0+? ST2-?         [ rm = 02 ]
+        03: FCMOVE      ST0+? ST3-?         [ rm = 03 ]
+        03: FCMOVE      ST0+? ST4-?         [ rm = 04 ]
+        03: FCMOVE      ST0+? ST5-?         [ rm = 05 ]
+        03: FCMOVE      ST0+? ST6-?         [ rm = 06 ]
+        03: FCMOVE      ST0+? ST7-?         [ rm = 07 ]
+    02: [ mod ]
+        00: FICOM       Md-
+        01: FICOM       Md-
+        02: FICOM       Md-
+        03: FCMOVBE     ST0+? ST0-?         [ rm = 00 ]
+        03: FCMOVBE     ST0+? ST1-?         [ rm = 01 ]
+        03: FCMOVBE     ST0+? ST2-?         [ rm = 02 ]
+        03: FCMOVBE     ST0+? ST3-?         [ rm = 03 ]
+        03: FCMOVBE     ST0+? ST4-?         [ rm = 04 ]
+        03: FCMOVBE     ST0+? ST5-?         [ rm = 05 ]
+        03: FCMOVBE     ST0+? ST6-?         [ rm = 06 ]
+        03: FCMOVBE     ST0+? ST7-?         [ rm = 07 ]
+    03: [ mod ]
+        00: FICOMP      Md-
+        01: FICOMP      Md-
+        02: FICOMP      Md-
+        03: FCMOVU      ST0+? ST0-?         [ rm = 00 ]
+        03: FCMOVU      ST0+? ST1-?         [ rm = 01 ]
+        03: FCMOVU      ST0+? ST2-?         [ rm = 02 ]
+        03: FCMOVU      ST0+? ST3-?         [ rm = 03 ]
+        03: FCMOVU      ST0+? ST4-?         [ rm = 04 ]
+        03: FCMOVU      ST0+? ST5-?         [ rm = 05 ]
+        03: FCMOVU      ST0+? ST6-?         [ rm = 06 ]
+        03: FCMOVU      ST0+? ST7-?         [ rm = 07 ]
+    04: [ mod ]
+        00: FISUB       Md-
+        01: FISUB       Md-
+        02: FISUB       Md-
+    05: [ mod ]
+        00: FISUBR      Md-
+        01: FISUBR      Md-
+        02: FISUBR      Md-
+        03: FUCOMPP     .                   [ rm = 01 ]
+    06: [ mod ]
+        00: FIDIV       Md-
+        01: FIDIV       Md-
+        02: FIDIV       Md-
+    07: [ mod ]
+        00: FIDIVR      Md-
+        01: FIDIVR      Md-
+        02: FIDIVR      Md-
+}

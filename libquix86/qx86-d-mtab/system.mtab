@@ -1,0 +1,79 @@
+## +------------------------------------------------------------------------+
+## | quix86                                                                 |
+## +------------------------------------------------------------------------+
+## | This file is part of quix86, an x86-64 instruction decoder.            |
+## |                                                                        |
+## | Copyright (C) 2011 Institute for System Programming of Russian Academy |
+## | of Sciences.                                                           |
+## |                                                                        |
+## | Contact e-mail: <unicluster@ispras.ru>.                                |
+## |                                                                        |
+## | quix86 is free software: you can redistribute it and/or modify it      |
+## | under the terms of the GNU General Public License as published by the  |
+## | Free Software Foundation, either version 3 of the License, or (at your |
+## | option) any later version.                                             |
+## |                                                                        |
+## | quix86 is distributed in the hope that it will be useful, but WITHOUT  |
+## | ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or  |
+## | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License  |
+## | for more details.                                                      |
+## |                                                                        |
+## | You should have received a copy of the GNU General Public License      |
+## | along with quix86.  If not, see <http://www.gnu.org/licenses/>.        |
+## +------------------------------------------------------------------------+
+
+## Default properties for system subset.
+*                   .
+
+## System subset instructions.
+ARPL                .
+CLI                 .
+CLTS                .
+HLT                 .
+INT1                $TRANSFER, $TRANSFER_LINKED, $TRANSFER_SERVICE
+INT3                $TRANSFER, $TRANSFER_LINKED, $TRANSFER_SERVICE
+INVD                .
+INVLPG              .
+IRET                +
+    IRET            <IRETD, $TRANSFER, $TRANSFER_LINKED_BACK, $TRANSFER_SERVICE
+    IRETD           <IRETQ, >IRET, $TRANSFER, $TRANSFER_LINKED_BACK, $TRANSFER_SERVICE
+    IRETQ           >IRETD, $TRANSFER, $TRANSFER_LINKED_BACK, $TRANSFER_SERVICE
+FNSAVE              .
+FRSTOR              .
+FXRSTOR             .
+FXSAVE              .
+LAR                 .
+LGDT                .
+LIDT                .
+LLDT                .
+LMSW                .
+LSL                 .
+LTR                 .
+MONITOR             .
+MWAIT               .
+RDMSR               .
+RDPMC               .
+RDTSC               .
+RDTSCP              .
+RSM                 $TRANSFER, $TRANSFER_LINKED_BACK, $TRANSFER_SERVICE
+SALC                .
+SGDT                .
+SIDT                .
+SLDT                .
+SMSW                .
+STI                 .
+STR                 .
+SWAPGS              .
+SYSCALL             $TRANSFER, $TRANSFER_LINKED, $TRANSFER_SERVICE
+SYSENTER            $TRANSFER, $TRANSFER_LINKED, $TRANSFER_SERVICE
+SYSEXIT             $TRANSFER, $TRANSFER_LINKED_BACK, $TRANSFER_SERVICE
+SYSRET              $TRANSFER, $TRANSFER_LINKED_BACK, $TRANSFER_SERVICE
+UD2                 .
+VERR                .
+VERW                .
+WBINVD              .
+WRMSR               .
+XGETBV              .
+XRSTOR              .
+XSAVE               .
+XSETBV              .

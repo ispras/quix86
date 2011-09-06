@@ -1,0 +1,501 @@
+## +------------------------------------------------------------------------+
+## | quix86                                                                 |
+## +------------------------------------------------------------------------+
+## | This file is part of quix86, an x86-64 instruction decoder.            |
+## |                                                                        |
+## | Copyright (C) 2011 Institute for System Programming of Russian Academy |
+## | of Sciences.                                                           |
+## |                                                                        |
+## | Contact e-mail: <unicluster@ispras.ru>.                                |
+## |                                                                        |
+## | quix86 is free software: you can redistribute it and/or modify it      |
+## | under the terms of the GNU General Public License as published by the  |
+## | Free Software Foundation, either version 3 of the License, or (at your |
+## | option) any later version.                                             |
+## |                                                                        |
+## | quix86 is distributed in the hope that it will be useful, but WITHOUT  |
+## | ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or  |
+## | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License  |
+## | for more details.                                                      |
+## |                                                                        |
+## | You should have received a copy of the GNU General Public License      |
+## | along with quix86.  If not, see <http://www.gnu.org/licenses/>.        |
+## +------------------------------------------------------------------------+
+
+## Reference: AMD Architecture Programmer's Manual 3: Table A-3.
+## Reference: Intel Architecture Software Developer’s Manual 2B: Table A-3.
+Map 2 nb
+{
+    00: -> M6
+    01: -> M7
+    02: LAR         Gv+?    Ew-         [ cs = 1 ]
+    02: LAR         Gv+?    Ew-         [ cs = 2 ]
+    03: LSL         Gv+?    Ew-         [ cs = 1 ]
+    03: LSL         Gv+?    Ew-         [ cs = 2 ]
+    05: SYSCALL     .                   [ cs = 1 ]      # TODO: Intel says it is only available in 64-bit mode.
+    05: SYSCALL     .                   [ cs = 2 ]      # TODO: Intel says it is only available in 64-bit mode.
+    06: CLTS        .                                   # TODO: cs = 1 ?
+    07: SYSRET      .                   [ cs = 1 ]      # TODO: Intel says it is only available in 64-bit mode.
+    07: SYSRET      .                   [ cs = 2 ]      # TODO: Intel says it is only available in 64-bit mode.
+    
+    08: INVD        .
+    09: WBINVD      .
+    0B: UD2         .
+    0D: -> MP
+    0E: FEMMS       .                                   # AMD 3DNow!
+    #0F: -> 3DNow                                        # AMD 3DNow! opcodes.
+    
+    10: MOVUPS      Vps+    Wps-        [ sp = 00 ]
+    10: MOVSS       Vss+    Wss-        [ sp = F3 ]
+    10: MOVUPD      Vpd+    Wpd-        [ sp = 66 ]
+    10: MOVSD_SSE   Vsd+    Wsd-        [ sp = F2 ]
+    11: MOVUPS      Wps+    Vps-        [ sp = 00 ]
+    11: MOVSS       Wss+    Vss-        [ sp = F3 ]
+    11: MOVUPD      Wpd+    Vpd-        [ sp = 66 ]
+    11: MOVSD_SSE   Wsd+    Vsd-        [ sp = F2 ]
+    12: [ sp ]
+        00: MOVLPS  Vps+    Mq-         [ mod = 0 ]
+        00: MOVLPS  Vps+    Mq-         [ mod = 1 ]
+        00: MOVLPS  Vps+    Mq-         [ mod = 2 ]
+        00: MOVHLPS Vps+    Uq-         [ mod = 3 ]
+        F3: MOVSLDUP    Vps+    Wps-
+        66: MOVLPD  Vsd+    Mq-
+        F2: MOVDDUP Vpd+    Wsd-
+    13: MOVLPS      Mq+     Vps-        [ sp = 00 ]
+    13: MOVLPD      Mq+     Vsd-        [ sp = 66 ]
+    14: UNPCKLPS    Vps*    Wq-         [ sp = 00 ]
+    14: UNPCKLPD    Vpd*    Wq-         [ sp = 66 ]
+    15: UNPCKHPS    Vps*    Wq-         [ sp = 00 ]
+    15: UNPCKHPD    Vpd*    Wq-         [ sp = 66 ]
+    16: [ sp ]
+        00: MOVHPS  Vps+    Mq-         [ mod = 0 ]
+        00: MOVHPS  Vps+    Mq-         [ mod = 1 ]
+        00: MOVHPS  Vps+    Mq-         [ mod = 2 ]
+        00: MOVLHPS Vps+    Uq-         [ mod = 3 ]
+        F3: MOVSHDUP    Vps+    Wps-
+        66: MOVHPD  Vsd+    Mq-
+    17: MOVHPS      Mq+     Vps-        [ sp = 00 ]
+    17: MOVHPD      Mq+     Vsd-        [ sp = 66 ]
+    
+    18: -> M16
+    19: NOP         Ev-                                 # TODO: Intel says it is undefined. Does it actually read data?
+    1A: NOP         Ev-                                 # TODO: Intel says it is undefined.
+    1B: NOP         Ev-                                 # TODO: Intel says it is undefined.
+    1C: NOP         Ev-                                 # TODO: Intel says it is undefined.
+    1D: NOP         Ev-                                 # TODO: Intel says it is undefined.
+    1E: NOP         Ev-                                 # TODO: Intel says it is undefined.
+    1F: NOP         Ev-
+    
+    20: MOV         Rd+     Cd-         [ cs = 0 ]
+    20: MOV         Rd+     Cd-         [ cs = 1 ]
+    20: MOV         Rq+     Cq-         [ cs = 2 ]
+    21: MOV         Rd+     Dd-         [ cs = 0 ]
+    21: MOV         Rd+     Dd-         [ cs = 1 ]
+    21: MOV         Rq+     Dq-         [ cs = 2 ]
+    22: MOV         Cd+     Rd-         [ cs = 0 ]
+    22: MOV         Cd+     Rd-         [ cs = 1 ]
+    22: MOV         Cq+     Rq-         [ cs = 2 ]
+    23: MOV         Dd+     Rd-         [ cs = 0 ]
+    23: MOV         Dd+     Rd-         [ cs = 1 ]
+    23: MOV         Dq+     Rq-         [ cs = 2 ]
+    
+    28: MOVAPS      Vps+    Wps-        [ sp = 00 ]
+    28: MOVAPD      Vpd+    Wpd-        [ sp = 66 ]
+    29: MOVAPS      Wps+    Vps-        [ sp = 00 ]
+    29: MOVAPD      Wpd+    Vpd-        [ sp = 66 ]
+    2A: [ sp ] 
+        00: CVTPI2PS    Vps+    Qq-
+        F3: CVTSI2SS    Vss+    Ed-     [ os = 00 ]
+        F3: CVTSI2SS    Vss+    Ed-     [ os = 01 ]
+        F3: CVTSI2SS    Vss+    Eq-     [ os = 02 ]
+        66: CVTPI2PD    Vpd+    Qq-
+        F2: CVTSI2SD    Vsd+    Ed-     [ os = 00 ]
+        F2: CVTSI2SD    Vsd+    Ed-     [ os = 01 ]
+        F2: CVTSI2SD    Vsd+    Eq-     [ os = 02 ]
+    2B: MOVNTPS     Mdq+    Vps-        [ sp = 00 ]
+    2B: MOVNTSS     Md+     Vss-        [ sp = F3 ]
+    2B: MOVNTPD     Mdq+    Vpd-        [ sp = 66 ]
+    2B: MOVNTSD     Mq+     Vsd-        [ sp = F2 ]
+    2C: [ sp ]
+        00: CVTTPS2PI   Pq+     Wps-
+        F3: CVTTSS2SI   Gd+     Wss-    [ os = 00 ]
+        F3: CVTTSS2SI   Gd+     Wss-    [ os = 01 ]
+        F3: CVTTSS2SI   Gq+     Wss-    [ os = 02 ]
+        66: CVTTPD2PI   Pq+     Wpd-
+        F2: CVTTSD2SI   Gd+     Wsd-    [ os = 00 ]
+        F2: CVTTSD2SI   Gd+     Wsd-    [ os = 01 ]
+        F2: CVTTSD2SI   Gq+     Wsd-    [ os = 02 ]
+    2D: [ sp ]
+        00: CVTPS2PI    Pq+     Wps-
+        F3: CVTSS2SI    Gd+     Wss-    [ os = 00 ]
+        F3: CVTSS2SI    Gd+     Wss-    [ os = 01 ]
+        F3: CVTSS2SI    Gq+     Wss-    [ os = 02 ]
+        66: CVTPD2PI    Pq+     Wpd-
+        F2: CVTSD2SI    Gd+     Wsd-    [ os = 00 ]
+        F2: CVTSD2SI    Gd+     Wsd-    [ os = 01 ]
+        F2: CVTSD2SI    Gq+     Wsd-    [ os = 02 ]
+    2E: UCOMISS     Vss-    Wss-        [ sp = 00 ]
+    2E: UCOMISD     Vsd-    Wsd-        [ sp = 66 ]
+    2F: COMISS      Vps-    Wps-        [ sp = 00 ]
+    2F: COMISS      Vpd-    Wsd-        [ sp = 66 ]
+
+    30: WRMSR       .
+    31: RDTSC       .
+    32: RDMSR       .
+    33: RDPMC       .
+    34: SYSENTER    .
+    35: SYSEXIT     .
+    
+    37: GETSEC      .                                       # Intel SMX
+    
+    38: -> 3A
+    3A: -> 3B
+    
+    40: CMOVO       Gv+?    Ev- # See Intel manual: src is always read. Need test to check it.
+    41: CMOVNO      Gv+?    Ev-
+    42: CMOVB       Gv+?    Ev-
+    43: CMOVAE      Gv+?    Ev-
+    44: CMOVZ       Gv+?    Ev-
+    45: CMOVNZ      Gv+?    Ev-
+    46: CMOVBE      Gv+?    Ev-
+    47: CMOVA       Gv+?    Ev-
+    
+    48: CMOVS       Gv+?    Ev-
+    49: CMOVNS      Gv+?    Ev-
+    4A: CMOVP       Gv+?    Ev-
+    4B: CMOVNP      Gv+?    Ev-
+    4C: CMOVL       Gv+?    Ev-
+    4D: CMOVGE      Gv+?    Ev-
+    4E: CMOVLE      Gv+?    Ev-
+    4F: CMOVG       Gv+?    Ev-
+    
+    50: MOVMSKPS    Gd+     Ups-        [ sp = 00 ]         # TODO: Add support for Intel AVX non-destructive forms!
+    50: MOVMSKPD    Gd+     Upd-        [ sp = 66 ]
+    51: SQRTPS      Vps+    Wps-        [ sp = 00 ]
+    51: SQRTSS      Vss+    Wss-        [ sp = F3 ]
+    51: SQRTPD      Vpd+    Wpd-        [ sp = 66 ]
+    51: SQRTSD      Vsd+    Wsd-        [ sp = F2 ]
+    52: RSQRTPS     Vps+    Wps-        [ sp = 00 ]
+    52: RSQRTSS     Vss+    Wss-        [ sp = F3 ]
+    53: RCPPS       Vps+    Wps-        [ sp = 00 ]
+    53: RCPSS       Vss+    Wss-        [ sp = F3 ]
+    54: ANDPS       Vps*    Wps-        [ sp = 00 ]
+    54: ANDPD       Vpd*    Wpd-        [ sp = 66 ]
+    55: ANDNPS      Vps*    Wps-        [ sp = 00 ]
+    55: ANDNPD      Vpd*    Wpd-        [ sp = 66 ]
+    56: ORPS        Vps*    Wps-        [ sp = 00 ]
+    56: ORPD        Vpd*    Wpd-        [ sp = 66 ]
+    57: XORPS       Vps*    Wps-        [ sp = 00 ]
+    57: XORPD       Vpd*    Wpd-        [ sp = 66 ]
+    
+    58: ADDPS       Vps*    Wps-        [ sp = 00 ]
+    58: ADDSS       Vss*    Wss-        [ sp = F3 ]
+    58: ADDPD       Vpd*    Wpd-        [ sp = 66 ]
+    58: ADDSD       Vsd*    Wsd-        [ sp = F2 ]
+    59: MULPS       Vps*    Wps-        [ sp = 00 ]
+    59: MULSS       Vss*    Wss-        [ sp = F3 ]
+    59: MULPD       Vpd*    Wpd-        [ sp = 66 ]
+    59: MULSD       Vsd*    Wsd-        [ sp = F2 ]
+    5A: CVTPS2PD    Vpd+    Wps-        [ sp = 00 ]
+    5A: CVTSS2SD    Vsd+    Wss-        [ sp = F3 ]
+    5A: CVTPD2PS    Vps+    Wpd-        [ sp = 66 ]
+    5A: CVTSD2SS    Vss+    Wsd-        [ sp = F2 ]
+    5B: CVTDQ2PS    Vps+    Wdq-        [ sp = 00 ]
+    5B: CVTTPS2DQ   Vdq+    Wps-        [ sp = F3 ]
+    5B: CVTPS2DQ    Vdq+    Wps-        [ sp = 66 ]
+    5C: SUBPS       Vps*    Wps-        [ sp = 00 ]
+    5C: SUBSS       Vss*    Wss-        [ sp = F3 ]
+    5C: SUBPD       Vpd*    Wpd-        [ sp = 66 ]
+    5C: SUBSD       Vsd*    Wsd-        [ sp = F2 ]
+    5D: MINPS       Vps*    Wps-        [ sp = 00 ]
+    5D: MINSS       Vss*    Wss-        [ sp = F3 ]
+    5D: MINPD       Vpd*    Wpd-        [ sp = 66 ]
+    5D: MINSD       Vsd*    Wsd-        [ sp = F2 ]
+    5E: DIVPS       Vps*    Wps-        [ sp = 00 ]
+    5E: DIVSS       Vss*    Wss-        [ sp = F3 ]
+    5E: DIVPD       Vpd*    Wpd-        [ sp = 66 ]
+    5E: DIVSD       Vsd*    Wsd-        [ sp = F2 ]
+    5F: MAXPS       Vps*    Wps-        [ sp = 00 ]
+    5F: MAXSS       Vss*    Wss-        [ sp = F3 ]
+    5F: MAXPD       Vpd*    Wpd-        [ sp = 66 ]
+    5F: MAXSD       Vsd*    Wsd-        [ sp = F2 ]
+    
+    60: PUNPCKLBW   Pq*     Qd-         [ sp = 00 ]
+    60: PUNPCKLBW   Vdq*    Wq-         [ sp = 66 ]
+    61: PUNPCKLWD   Pq*     Qd-         [ sp = 00 ]
+    61: PUNPCKLWD   Vdq*    Wq-         [ sp = 66 ]
+    62: PUNPCKLDQ   Pq*     Qd-         [ sp = 00 ]
+    62: PUNPCKLDQ   Vdq*    Wq-         [ sp = 66 ]
+    63: PACKSSWB    Pq*     Qq-         [ sp = 00 ]
+    63: PACKSSWB    Vdq*    Wdq-        [ sp = 66 ]
+    64: PCMPGTB     Pq*     Qq-         [ sp = 00 ]
+    64: PCMPGTB     Vdq*    Wdq-        [ sp = 66 ]
+    65: PCMPGTW     Pq*     Qq-         [ sp = 00 ]
+    65: PCMPGTW     Vdq*    Wdq-        [ sp = 66 ]
+    66: PCMPGTD     Pq*     Qq-         [ sp = 00 ]
+    66: PCMPGTD     Vdq*    Wdq-        [ sp = 66 ]
+    67: PACKUSWB    Pq*     Qq-         [ sp = 00 ]
+    67: PACKUSWB    Vdq*    Wdq-        [ sp = 66 ]
+    68: PUNPCKHBW   Pq*     Qd-         [ sp = 00 ]
+    68: PUNPCKHBW   Vdq*    Wq-         [ sp = 66 ]
+    69: PUNPCKHWD   Pq*     Qd-         [ sp = 00 ]
+    69: PUNPCKHWD   Vdq*    Wq-         [ sp = 66 ]
+    6A: PUNPCKHDQ   Pq*     Qd-         [ sp = 00 ]
+    6A: PUNPCKHDQ   Vdq*    Wq-         [ sp = 66 ]
+    6B: PACKSSDW    Pq*     Qq-         [ sp = 00 ]
+    6B: PACKSSDW    Vdq*    Wdq-        [ sp = 66 ]
+    6C: PUNPCKLQDQ  Vdq*    Wq-         [ sp = 66 ]
+    6D: PUNPCKHQDQ  Vdq*    Wq-         [ sp = 66 ]
+    6E: [ sp ]
+        00: MOVD    Pq+     Ed-         [ os = 00 ]
+        00: MOVD    Pq+     Ed-         [ os = 01 ]
+        00: MOVD    Pq+     Eq-         [ os = 02 ]
+        66: MOVD    Vdq+    Ed-         [ os = 00 ]
+        66: MOVD    Vdq+    Ed-         [ os = 01 ]
+        66: MOVD    Vdq+    Eq-         [ os = 02 ]
+    6F: MOVQ        Pq+     Qq-         [ sp = 00 ]
+    6F: MOVDQU      Vdq+    Wdq-        [ sp = F3 ]
+    6F: MOVDQA      Vdq+    Wdq-        [ sp = 66 ]
+    
+    70: PSHUFW      Pq+     Qq-  Ib-    [ sp = 00 ]
+    70: PSHUFHW     Vq+     Wq-  Ib-    [ sp = F3 ]
+    70: PSHUFD      Vdq+    Wdq- Ib-    [ sp = 66 ]
+    70: PSHUFLW     Vq+     Wq-  Ib-    [ sp = F2 ]
+    71: -> M12                          [ sp = 00 ]
+    71: -> M12                          [ sp = 66 ]
+    72: -> M13                          [ sp = 00 ]
+    72: -> M13                          [ sp = 66 ]
+    73: -> M14                          [ sp = 00 ]
+    73: -> M14                          [ sp = 66 ]
+    74: PCMPEQB     Pq*     Qq-         [ sp = 00 ]
+    74: PCMPEQB     Vdq*    Wdq-        [ sp = 66 ]
+    75: PCMPEQW     Pq*     Qq-         [ sp = 00 ]
+    75: PCMPEQW     Vdq*    Wdq-        [ sp = 66 ]
+    76: PCMPEQD     Pq*     Qq-         [ sp = 00 ]
+    76: PCMPEQD     Vdq*    Wdq-        [ sp = 66 ]
+    77: EMMS        .                   [ sp = 00 ]         # 3DNow! TODO: Intel VEX?
+    78: [ sp ]
+        00: VMREAD  Ed+     Gd-         [ cs = 01 ]
+        00: VMREAD  Eq+     Gq-         [ cs = 02 ]
+        66: -> M17                                          # Only AMD
+        F2: INSERTQ Vdq+    Uq- Ib- Ib-                     # SSE4A
+    79: [ sp ]
+        00: VMWRITE Gd-     Ed-         [ cs = 01 ]
+        00: VMWRITE Gq-     Eq-         [ cs = 02 ]
+        66: EXTRQ   Vdq*    Uq-                             # SSE4A
+        F2: INSERTQ Vdq+    Udq-                            # SSE4A
+    7C: HADDPD      Vpd*    Wpd-        [ sp = 66 ]
+    7C: HADDPS      Vps*    Wps-        [ sp = F2 ]
+    7D: HSUBPD      Vpd*    Wpd-        [ sp = 66 ]
+    7D: HSUBPS      Vps*    Wps-        [ sp = F2 ]
+    7E: [ sp ]
+        00: MOVD    Ed+     Pd-         [ os = 00 ]
+        00: MOVD    Ed+     Pd-         [ os = 01 ]
+        00: MOVD    Eq+     Pq-         [ os = 02 ]
+        F3: MOVQ    Vq+     Wq-
+        66: MOVD    Ed+     Vd-         [ os = 00 ]
+        66: MOVD    Ed+     Vd-         [ os = 01 ]
+        66: MOVD    Eq+     Vq-         [ os = 02 ]
+    7F: MOVQ        Qq+     Pq-         [ sp = 00 ]
+    7F: MOVDQU      Wdq+    Vdq-        [ sp = F3 ]
+    7F: MOVDQA      Wdq+    Vdq-        [ sp = 66 ]
+    
+    80: JO          Jz-
+    81: JNO         Jz-
+    82: JB          Jz-
+    83: JAE         Jz-
+    84: JZ          Jz-
+    85: JNZ         Jz-
+    86: JBE         Jz-
+    87: JA          Jz-
+    88: JS          Jz-
+    89: JNS         Jz-
+    8A: JP          Jz-
+    8B: JNP         Jz-
+    8C: JL          Jz-
+    8D: JGE         Jz-
+    8E: JLE         Jz-
+    8F: JG          Jz-
+    
+    90: SETO        Eb+
+    91: SETNO       Eb+
+    92: SETB        Eb+
+    93: SETAE       Eb+
+    94: SETZ        Eb+
+    95: SETNZ       Eb+
+    96: SETBE       Eb+
+    97: SETA        Eb+
+    98: SETS        Eb+
+    99: SETNS       Eb+
+    9A: SETP        Eb+
+    9B: SETNP       Eb+
+    9C: SETL        Eb+
+    9D: SETGE       Eb+
+    9E: SETLE       Eb+
+    9F: SETG        Eb+
+    
+    A0: PUSH        FS-
+    A1: POP         FS-
+    A2: CPUID       .
+    A3: BT          Ev-     Gv-
+    A4: SHLD        Ev*     Gv- Ib-
+    A5: SHLD        Ev*     Gv- CL-
+    A8: PUSH        GS-
+    A9: POP         GS-
+    AA: RSM         .
+    AB: BTS         Ev*     Gv-
+    AC: SHRD        Ev*     Gv- Ib-
+    AD: SHRD        Ev*     Gv- CL-
+    AE: -> M15
+    AF: IMUL        Gv*     Ev-
+    
+    B0: CMPXCHG     Eb*?    Gb-?
+    B1: CMPXCHG     Ev*?    Gv-?
+    B2: LSS         Gz+     Mp-
+    B3: BTR         Ev*     Gv-
+    B4: LFS         Gz+     Mp-
+    B5: LGS         Gz+     Mp-
+    B6: MOVZX       Gv+     Eb-
+    B7: MOVZX       Gv+     Ew-
+    B8: POPCNT      Gv+     Ev-         [ sp = F3 ]
+    B9: -> M10                          [ sp = 00 ]
+    B9: -> M10                          [ sp = 66 ]
+    BA: -> M8                           [ sp = 00 ]
+    BA: -> M8                           [ sp = 66 ]
+    BB: BTC         Ev*     Gv-         [ sp = 00 ]
+    BB: BTC         Ev*     Gv-         [ sp = 66 ]
+    BC: BSF         Gv+?    Ev-         [ sp = 00 ]
+    BC: BSF         Gv+?    Ev-         [ sp = 66 ]
+    BD: BSR         Gv+?    Ev-         [ sp = 00 ]
+    BD: BSR         Gv+?    Ev-         [ sp = 66 ]
+    BD: LZCNT       Gv+     Ev-         [ sp = F3 ]
+    BE: MOVSX       Gv+     Eb-         [ sp = 00 ]
+    BE: MOVSX       Gv+     Eb-         [ sp = 66 ]
+    BF: MOVSX       Gv+     Ew-         [ sp = 00 ]
+    BF: MOVSX       Gv+     Ew-         [ sp = 66 ]
+    
+    C0: XADD        Eb*     Gb*
+    C1: XADD        Ev*     Gv*
+    C2: CMPPS       Vps*    Wps-    Ib- [ sp = 00 ]
+    C2: CMPSS       Vss*    Wss-    Ib- [ sp = F3 ]
+    C2: CMPPD       Vpd*    Wpd-    Ib- [ sp = 66 ]
+    C2: CMPSD_SSE   Vsd*    Wsd-    Ib- [ sp = F2 ]
+    C3: [ sp ]
+        00: MOVNTI  Md+     Gd-         [ os = 00 ]
+        00: MOVNTI  Md+     Gd-         [ os = 01 ]
+        00: MOVNTI  Mq+     Gq-         [ os = 02 ]
+    C4: PINSRW      Pq*     Ew-     Ib- [ sp = 00 ]
+    C4: PINSRW      Vdq*    Ew-     Ib- [ sp = 66 ]
+    C5: PEXTRW      Gd+     Nq-     Ib- [ sp = 00 ]
+    C5: PEXTRW      Gd+     Udq-    Ib- [ sp = 66 ]
+    C6: SHUFPS      Vps*    Wps-    Ib- [ sp = 00 ]
+    C6: SHUFPD      Vpd*    Wpd-    Ib- [ sp = 66 ]
+    C7: -> M9                                               # Do not put Mq here, see map M9.
+    C8: BSWAP       r0*
+    C9: BSWAP       r1*
+    CA: BSWAP       r2*
+    CB: BSWAP       r3*
+    CC: BSWAP       r4*
+    CD: BSWAP       r5*
+    CE: BSWAP       r6*
+    CF: BSWAP       r7*
+    
+    D0: ADDSUBPD    Vpd*    Wpd-        [ sp = 66 ]
+    D0: ADDSUBPS    Vps*    Wps-        [ sp = F2 ]
+    D1: PSRLW       Pq*     Qq-         [ sp = 00 ]
+    D1: PSRLW       Vdq*    Wdq-        [ sp = 66 ]
+    D2: PSRLD       Pq*     Qq-         [ sp = 00 ]
+    D2: PSRLD       Vdq*    Wdq-        [ sp = 66 ]
+    D3: PSRLQ       Pq*     Qq-         [ sp = 00 ]
+    D3: PSRLQ       Vdq*    Wdq-        [ sp = 66 ]
+    D4: PADDQ       Pq*     Qq-         [ sp = 00 ]
+    D4: PADDQ       Vdq*    Wdq-        [ sp = 66 ]
+    D5: PMULLW      Pq*     Qq-         [ sp = 00 ]
+    D5: PMULLW      Vdq*    Wdq-        [ sp = 66 ]
+    D6: MOVQ2DQ     Vdq+    Nq-         [ sp = F3 ]
+    D6: MOVQ        Wq+     Vq-         [ sp = 66 ]
+    D6: MOVDQ2Q     Pq+     Uq-         [ sp = F2 ]
+    D7: PMOVMSKB    Gd+     Nq-         [ sp = 00 ]
+    D7: PMOVMSKB    Gd+     Udq-        [ sp = 66 ]
+    D8: PSUBUSB     Pq*     Qq-         [ sp = 00 ]
+    D8: PSUBUSB     Vdq*    Wdq-        [ sp = 66 ]
+    D9: PSUBUSW     Pq*     Qq-         [ sp = 00 ]
+    D9: PSUBUSW     Vdq*    Wdq-        [ sp = 66 ]
+    DA: PMINUB      Pq*     Qq-         [ sp = 00 ]
+    DA: PMINUB      Vdq*    Wdq-        [ sp = 66 ]
+    DB: PAND        Pq*     Qq-         [ sp = 00 ]
+    DB: PAND        Vdq*    Wdq-        [ sp = 66 ]
+    DC: PADDUSB     Pq*     Qq-         [ sp = 00 ]
+    DC: PADDUSB     Vdq*    Wdq-        [ sp = 66 ]
+    DD: PADDUSW     Pq*     Qq-         [ sp = 00 ]
+    DD: PADDUSW     Vdq*    Wdq-        [ sp = 66 ]
+    DE: PMAXUB      Pq*     Qq-         [ sp = 00 ]
+    DE: PMAXUB      Vdq*    Wdq-        [ sp = 66 ]
+    DF: PANDN       Pq*     Qq-         [ sp = 00 ]
+    DF: PANDN       Vdq*    Wdq-        [ sp = 66 ]
+    
+    E0: PAVGB       Pq*     Qq-         [ sp = 00 ]
+    E0: PAVGB       Vdq*    Wdq-        [ sp = 66 ]
+    E1: PSRAW       Pq*     Qq-         [ sp = 00 ]
+    E1: PSRAW       Vdq*    Wdq-        [ sp = 66 ]
+    E2: PSRAD       Pq*     Qq-         [ sp = 00 ]
+    E2: PSRAD       Vdq*    Wdq-        [ sp = 66 ]
+    E3: PAVGW       Pq*     Qq-         [ sp = 00 ]
+    E3: PAVGW       Vdq*    Wdq-        [ sp = 66 ]
+    E4: PMULHUW     Pq*     Qq-         [ sp = 00 ]
+    E4: PMULHUW     Vdq*    Wdq-        [ sp = 66 ]
+    E5: PMULHW      Pq*     Qq-         [ sp = 00 ]
+    E5: PMULHW      Vdq*    Wdq-        [ sp = 66 ]
+    E6: CVTDQ2PD    Vpd+    Wq-         [ sp = F3 ]
+    E6: CVTTPD2DQ   Vq+     Wpd-        [ sp = 66 ]
+    E6: CVTPD2DQ    Vq+     Wpd-        [ sp = F2 ]
+    E7: MOVNTQ      Mq+     Pq-         [ sp = 00 ]
+    E7: MOVNTDQ     Mdq+    Vdq-        [ sp = 66 ]
+    E8: PSUBSB      Pq*     Qq-         [ sp = 00 ]
+    E8: PSUBSB      Vdq*    Wdq-        [ sp = 66 ]
+    E9: PSUBSW      Pq*     Qq-         [ sp = 00 ]
+    E9: PSUBSW      Vdq*    Wdq-        [ sp = 66 ]
+    EA: PMINSW      Pq*     Qq-         [ sp = 00 ]
+    EA: PMINSW      Vdq*    Wdq-        [ sp = 66 ]
+    EB: POR         Pq*     Qq-         [ sp = 00 ]
+    EB: POR         Vdq*    Wdq-        [ sp = 66 ]
+    EC: PADDSB      Pq*     Qq-         [ sp = 00 ]
+    EC: PADDSB      Vdq*    Wdq-        [ sp = 66 ]
+    ED: PADDSW      Pq*     Qq-         [ sp = 00 ]
+    ED: PADDSW      Vdq*    Wdq-        [ sp = 66 ]
+    EE: PMAXSW      Pq*     Qq-         [ sp = 00 ]
+    EE: PMAXSW      Vdq*    Wdq-        [ sp = 66 ]
+    EF: PXOR        Pq*     Qq-         [ sp = 00 ]
+    EF: PXOR        Vdq*    Wdq-        [ sp = 66 ]
+    
+    F0: LDDQU       Vpd+    Mdq-        [ sp = F2 ]
+    F1: PSLLW       Pq*     Qq-         [ sp = 00 ]
+    F1: PSLLW       Vdq*    Wdq-        [ sp = 66 ]
+    F2: PSLLD       Pq*     Qq-         [ sp = 00 ]
+    F2: PSLLD       Vdq*    Wdq-        [ sp = 66 ]
+    F3: PSLLQ       Pq*     Qq-         [ sp = 00 ]
+    F3: PSLLQ       Vdq*    Wdq-        [ sp = 66 ]
+    F4: PMULUDQ     Pq*     Qq-         [ sp = 00 ]
+    F4: PMULUDQ     Vdq*    Wdq-        [ sp = 66 ]
+    F5: PMADDWD     Pq*     Qq-         [ sp = 00 ]
+    F5: PMADDWD     Vdq*    Wdq-        [ sp = 66 ]
+    F6: PSADBW      Pq*     Qq-         [ sp = 00 ]
+    F6: PSADBW      Vdq*    Wdq-        [ sp = 66 ]
+    F7: MASKMOVQ    Pq-     Nq-         [ sp = 00 ]
+    F7: MASKMOVDQU  Vdq-    Udq-        [ sp = 66 ]
+    F8: PSUBB       Pq*     Qq-         [ sp = 00 ]
+    F8: PSUBB       Vdq*    Wdq-        [ sp = 66 ]
+    F9: PSUBW       Pq*     Qq-         [ sp = 00 ]
+    F9: PSUBW       Vdq*    Wdq-        [ sp = 66 ]
+    FA: PSUBD       Pq*     Qq-         [ sp = 00 ]
+    FA: PSUBD       Vdq*    Wdq-        [ sp = 66 ]
+    FB: PSUBQ       Pq*     Qq-         [ sp = 00 ]
+    FB: PSUBQ       Vdq*    Wdq-        [ sp = 66 ]
+    FC: PADDB       Pq*     Qq-         [ sp = 00 ]
+    FC: PADDB       Vdq*    Wdq-        [ sp = 66 ]
+    FD: PADDW       Pq*     Qq-         [ sp = 00 ]
+    FD: PADDW       Vdq*    Wdq-        [ sp = 66 ]
+    FE: PADDD       Pq*     Qq-         [ sp = 00 ]
+    FE: PADDD       Vdq*    Wdq-        [ sp = 66 ]
+    
+}

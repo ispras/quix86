@@ -1,0 +1,805 @@
+#!/usr/bin/env python
+
+## +------------------------------------------------------------------------+
+## | quix86                                                                 |
+## +------------------------------------------------------------------------+
+## | This file is part of quix86, an x86-64 instruction decoder.            |
+## |                                                                        |
+## | Copyright (C) 2011 Institute for System Programming of Russian Academy |
+## | of Sciences.                                                           |
+## |                                                                        |
+## | Contact e-mail: <unicluster@ispras.ru>.                                |
+## |                                                                        |
+## | quix86 is free software: you can redistribute it and/or modify it      |
+## | under the terms of the GNU General Public License as published by the  |
+## | Free Software Foundation, either version 3 of the License, or (at your |
+## | option) any later version.                                             |
+## |                                                                        |
+## | quix86 is distributed in the hope that it will be useful, but WITHOUT  |
+## | ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or  |
+## | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License  |
+## | for more details.                                                      |
+## |                                                                        |
+## | You should have received a copy of the GNU General Public License      |
+## | along with quix86.  If not, see <http://www.gnu.org/licenses/>.        |
+## +------------------------------------------------------------------------+
+
+opcodeMapInclusion = '\n'
+
+def defaultIndex(mapId, ln, val):
+    return val
+
+def SIMDPrefixIndex(mapId, ln, sp):
+    if      sp == 0x00: return 0
+    elif    sp == 0x66: return 1
+    elif    sp == 0xF2: return 2
+    elif    sp == 0xF3: return 3
+    else:   fatal(mapId, ln, "bad SIMD prefix value " + str(sp))
+
+def indexSIMDPrefix(mapId, ln, i):
+    if      i == 0:     return 0x00
+    elif    i == 1:     return 0x66
+    elif    i == 2:     return 0xF2
+    elif    i == 3:     return 0xF3
+    else:   fatal(mapId, ln, "bad index for SIMD prefix value " + str(i))
+
+condIDs = {
+        'nb' : ('QX86_OPCODE_MAP_INDEX_NB',  256,    defaultIndex   , defaultIndex ),
+        'pb' : ('QX86_OPCODE_MAP_INDEX_PB',  256,    defaultIndex   , defaultIndex ),
+        'cs' : ('QX86_OPCODE_MAP_INDEX_CS',  3,      defaultIndex   , defaultIndex ),
+        'as' : ('QX86_OPCODE_MAP_INDEX_AS',  3,      defaultIndex   , defaultIndex ),
+        'os' : ('QX86_OPCODE_MAP_INDEX_OS',  3,      defaultIndex   , defaultIndex ),
+        'mod': ('QX86_OPCODE_MAP_INDEX_MOD', 4,      defaultIndex   , defaultIndex ),
+        'reg': ('QX86_OPCODE_MAP_INDEX_REG', 8,      defaultIndex   , defaultIndex ),
+        'rm' : ('QX86_OPCODE_MAP_INDEX_RM',  8,      defaultIndex   , defaultIndex ),
+        'sp' : ('QX86_OPCODE_MAP_INDEX_SP',  4,      SIMDPrefixIndex, indexSIMDPrefix)
+        }
+
+opcodeMapItemsDefinitionStart = '''
+static qx86_opcode_map_item             qx86_opcode_map_{0}_items[]
+                                        =
+{{'''
+
+opcodeMapDefinition = '''
+static qx86_opcode_map                  qx86_opcode_map_{0}
+                                        =
+{{
+    {1}, {2}, qx86_opcode_map_{0}_items
+}};'''
+
+opcodeMapItemUndefined =                                                        \
+'''    /* {0:0>2X} */
+    {{
+        QX86_OPCODE_MAP_ITEM_CODE_NONE, 0, -1, {{{{QX86_OPERAND_FORM_TYPE_NONE, 0, {{{{0,0}}}}}}}}
+    }}'''
+
+opcodeMapItemTransferNoOp =                                                     \
+'''    /* {0:0>2X} */
+    {{
+        QX86_OPCODE_MAP_ITEM_CODE_LINK, &qx86_opcode_map_{1}, -1, {{{{QX86_OPERAND_FORM_TYPE_NONE, 0, {{{{0,0}}}}}}}}
+    }}'''
+
+opcodeMapItemTransferBegin =                                                    \
+'''    /* {0:0>2X} */
+    {{
+        QX86_OPCODE_MAP_ITEM_CODE_LINK, &qx86_opcode_map_{1}, {2},
+'''
+
+opcodeMapItemTransferEnd =                                                      \
+'''    }'''
+
+opcodeMapItemPrefix =                                                           \
+'''    /* {0:0>2X} */
+    {{
+        QX86_OPCODE_MAP_ITEM_CODE_PREFIX, 0, -1, {{{{QX86_OPERAND_FORM_TYPE_NONE, 0, {{{{0,0}}}}}}}}
+    }}'''
+
+opcodeMapItemMnemonicBegin =                                                    \
+'''    {{
+        /* code */                      QX86_MNEMONIC_{0},
+        /* map */                       0,
+
+        /* operandCount */              {1},
+'''
+
+opcodeMapNoOperandsPlaceHolder =                                                \
+'''        /* placeHolder */               {{{{QX86_OPERAND_FORM_TYPE_NONE, 0, {{{{0,0}}}}}}}}
+'''
+
+opcodeMapItemOperandsBegin =                                                    \
+'''        /* operandClasses */
+        {
+'''
+
+opcodeMapItemOperandsEnd =                                                      \
+'''        }
+'''
+
+opcodeMapItemMnemonicEnd =                                                      \
+'''    }'''
+
+opcodeMapItemOperandComplex =                                                   \
+'''            {{
+                /* superclass */        QX86_OPERAND_FORM_TYPE_AMODE,
+                /* attributes */        {2},
+                /* u */                 {{{{ &qx86_amode_{0}, &qx86_stuple_{1} }}}}
+            }}'''
+
+opcodeMapItemOperandSimple =                                                    \
+'''            {{
+                /* superclass */        QX86_OPERAND_FORM_TYPE_RTUPLE,
+                /* attributes */        {1},
+                /* u */                 {{{{ &qx86_rtuple_{0}, 0 }}}}
+            }}'''
+
+opcodeMapItemOperandOne =                                                       \
+'''            {{
+                /* superclass */        QX86_OPERAND_FORM_TYPE_IMPLICIT_1,
+                /* attributes */        {0},
+                /* placeHolder */       {{{{ 0, 0 }}}}
+            }}'''
+
+opcodeMapFirstMapDefinition = '''
+static qx86_opcode_map *                qx86_opcode_maps[QX86_OPCODE_ESCAPE_COUNT]
+                                        =
+{
+    &qx86_opcode_map_1,                 &qx86_opcode_map_2,
+    &qx86_opcode_map_3A,                &qx86_opcode_map_3B
+};
+'''
+
+addressingModes   = {
+    'A' :   'A'    ,#             /**< Far pointer. */
+    'C' :   'C'    ,#             /**< Control register in ModRM <em>reg</em>. */
+    'D' :   'D'    ,#             /**< Debug register in ModRM <em>reg</em>. */
+    'E' :   'E'    ,#             /**< General purpose register or memory operand in ModRM. */
+    'G' :   'G'    ,#             /**< General purpose register in ModRM <em>reg</em>. */
+    'I' :   'I'    ,#             /**< Immediate value. */
+#   'IX':   'QX86_ADDRESSING_MODE_IX'   ,#             /**< Immediate sign-extended value. */
+    'J' :   'J'    ,#             /**< Jump offset. */
+    'M' :   'M'    ,#             /**< Memory operand in ModRM. */
+    'N' :   'N'    ,#             /**< <em>MMX</em> register in ModRM <em>r/m</em>. */
+    'O' :   'O'    ,#             /**< Memory operand encoded as an offset. */
+    'P' :   'P'    ,#             /**< <em>MMX</em> register in ModRM <em>reg</em>. */
+    'Q' :   'Q'    ,#             /**< <em>MMX</em> register or memory operand in ModRM. */
+    'R' :   'R'    ,#             /**< General purpose register in ModRM <em>r/m</em>. */
+    'S' :   'S'    ,#             /**< Segment register in ModRM <em>reg</em>. */
+    'U' :   'U'    ,#             /**< <em>XMM</em> register in ModRM <em>r/m</em>. */
+    'V' :   'V'    ,#             /**< <em>XMM</em> register in ModRM <em>reg</em>. */
+    'W' :   'W'    ,#             /**< <em>XMM</em> register or memory operand in ModRM. */
+    'X' :   'X'    ,#             /**< Memory operand addressed by <tt>DS:<em>r</em>SI</tt>. */
+    'Y' :   'Y'     #             /**< Memory operand addressed by <tt>ES:<em>r</em>DI</tt>. */
+    }
+
+sizeTuples  = {
+    'a' :   'a'     ,#                  /**< Two 16-bit or 32-bit operands for <tt>BOUND</tt>. */
+    'b' :   'b'     ,#                  /**< 8-bit operand. */
+    'd' :   'd'     ,#                  /**< 32-bit operand. */
+    'dq':   'dq'    ,#                  /**< 128-bit operand. */
+    'f' :   'f'     ,#
+    'fe':   'fe'    ,#
+    'fx':   'fx'    ,#
+    'i' :   'i'     ,#                  /**< Pointer operand for <tt>LEA</tt>. */
+    'p' :   'p'     ,#                  /**< 32-bit or 48-bit far pointer. */
+    'pd':   'pd'    ,#                  /**< 128-bit packed double-precision floating-point operand. */
+    'pi':   'pi'    ,#                  /**< 64-bit packed integer operand. */
+    'ps':   'ps'    ,#                  /**< 128-bit packed single-precision floating-point operand. */
+    'q' :   'q'     ,#                  /**< 64-bit operand. */
+    's' :   's'     ,#                  /**< 48-bit or 80-bit pseudo-descriptor. */
+    'sb':   'sb'    ,#
+    'sd':   'sd'    ,#                  /**< 64-bit scalar double-precision floating-point operand. */
+    'se':   'se'    ,#
+    'ss':   'ss'    ,#                  /**< 32-bit scalar single-precision floating-point operand. */
+    'v' :   'v'     ,#                  /**< 16-bit, 32-bit, or 64-bit operand. */
+    'w' :   'w'     ,#                  /**< 16-bit operand. */
+    'z' :   'z'      #                  /**< 16-bit or 32-bit operand. */
+    }
+
+operandOne = { '1' : 'todo' }
+
+operandSimple     =   {
+    'CS' :  'CS'    ,
+    'DS' :  'DS'    ,
+    'ES' :  'ES'    ,
+    'SS' :  'SS'    ,
+    'FS' :  'FS'    ,
+    'GS' :  'GS'    ,
+    'rAX':  'rAX'   ,
+    'AL' :  'AL'    ,
+    'CL' :  'CL'    ,
+    'eAX':  'eAX'   ,
+    'eBX':  'eBX'   ,
+    'eCX':  'eCX'   ,
+    'eDX':  'eDX'   ,
+    'eSP':  'eSP'   ,
+    'eBP':  'eBP'   ,
+    'eSI':  'eSI'   ,
+    'eDI':  'eDI'   ,
+
+    'AX' :  'AX'    ,
+    'DX' :  'DX'    ,
+
+    'r0' :  'r0'    ,
+    'r1' :  'r1'    ,
+    'r2' :  'r2'    ,
+    'r3' :  'r3'    ,
+    'r4' :  'r4'    ,
+    'r5' :  'r5'    ,
+    'r6' :  'r6'    ,
+    'r7' :  'r7'    ,
+
+    'R0B':  'R0B'   ,
+    'R1B':  'R1B'   ,
+    'R2B':  'R2B'   ,
+    'R3B':  'R3B'   ,
+    'R4B':  'R4B'   ,
+    'R5B':  'R5B'   ,
+    'R6B':  'R6B'   ,
+    'R7B':  'R7B'   ,
+    
+    'ST0':  'ST0'   ,
+    'ST1':  'ST1'   ,
+    'ST2':  'ST2'   ,
+    'ST3':  'ST3'   ,
+    'ST4':  'ST4'   ,
+    'ST5':  'ST5'   ,
+    'ST6':  'ST6'   ,
+    'ST7':  'ST7'
+}
+
+accessTypes = {
+    '+?' : 'QX86_OPERAND_ATTRIBUTE_WRITTEN',                                        # May be write
+    '-?' : 'QX86_OPERAND_ATTRIBUTE_READ',                                           # May be read
+    '*?' : 'QX86_OPERAND_ATTRIBUTE_READWRITTEN',                                    # May be write or read
+    '+'  : 'QX86_OPERAND_ATTRIBUTE_RW_CERTAIN | QX86_OPERAND_ATTRIBUTE_WRITTEN',    # Write
+    '-'  : 'QX86_OPERAND_ATTRIBUTE_RW_CERTAIN | QX86_OPERAND_ATTRIBUTE_READ',       # Read
+    '*'  : 'QX86_OPERAND_ATTRIBUTE_RW_CERTAIN | QX86_OPERAND_ATTRIBUTE_READWRITTEN',# Read and write
+    '???': '0' # Indicates that access type value is not present in opcode map
+}
+
+def getIndent(line):
+    size = len(line)
+    i = 0
+    ret = ''
+    while i < size and line[i] == ' ':
+        i = i + 1
+        ret = ' ' + ret
+    return ret
+    
+def makeComment(indent, line):
+    assert(line[0] == '#')
+    line = indent + '//' + line.strip('#')
+    return line
+
+def fatal(mapId, line, text):
+    exit('map ' + mapId + ':' + str(line + 1) + ': ' + text)
+
+# Our RE for checking map lines. Contains 2 groups: first is byte, second is tail after ':'
+import re
+byteMatchProg = re.compile('([0-9a-fA-F]{1,2}):(.*)')
+
+def parseOneOperand(mapId, ln, word):
+    '''
+        Parse one operand from opcode map, contained in word
+        
+        @param mapId:   current map file ID for error reporting
+        @param ln:      current line in map for error reporting
+        @param word:    string containing operand definition
+        
+        @return:        string containing generated C code lines separated by newline
+    '''
+    out = ''
+    accessType = ''
+    idx = word.find('+')
+    if word[len(word) - 2:] in accessTypes:
+        accessType = word[len(word) - 2:]
+        word = word[:len(word) - 2]
+    elif word[len(word) - 1:] in accessTypes:
+        accessType = word[len(word) - 1:]
+        word = word[:len(word) - 1]
+    else:
+        fatal(mapId,ln, 'Failed to extract access type!')
+        accessType = '???'
+
+    #print 'Acc type: ' + accessType
+
+    if word == '.':
+        pass
+    elif word in operandSimple:
+        # Simple operand form.
+        out += opcodeMapItemOperandSimple.format(operandSimple[word], accessTypes[accessType])
+    elif word in operandOne:
+        # Implicit 1.
+        out += opcodeMapItemOperandOne.format(accessTypes[accessType])
+    else:
+        # Complex operand form.
+        addMode = ''
+        
+        # Get addressing mode - upper-case letters.
+        for i in range(0, len(word)):
+            if word[i].isupper():
+                addMode += word[i]
+            else: break
+        # Size tuple remaining.
+        sizeTuple = word[i:]
+        
+        if addMode not in addressingModes:
+            fatal(mapId, ln, 'failed to extract operand ' + word + ' addressing mode')
+        if sizeTuple not in sizeTuples:
+            fatal(mapId, ln, 'failed to extract operand ' + word + ' size class')
+        out += opcodeMapItemOperandComplex.format(addressingModes[addMode], sizeTuples[sizeTuple], accessTypes[accessType])
+    
+    return out
+
+def parseOperands(mapId, ln, words):
+    '''
+        Parse operands, contained in words
+        
+        @param mapId:   current map file ID for error reporting
+        @param ln:      current line in map for error reporting
+        @param words:   strings containing operands definitions
+        
+        @return:        string containing generated C code lines separated by newline
+    '''
+    out = opcodeMapItemOperandsBegin
+        
+    for i in range(0, len(words) - 1):
+        out += parseOneOperand(mapId, ln, words[i]) + ',\n'
+    out += parseOneOperand(mapId, ln, words[len(words) - 1]) + '\n'
+    
+    out += opcodeMapItemOperandsEnd
+    
+    return out
+
+def makeMnemonic(mapId, ln, words):
+    '''
+        Generate C code for mnemonic case
+        
+        @param mapId:   current map file ID for error reporting
+        @param ln:      current line in map for error reporting
+        @param words:   strings containing mnemonic and operands definitions
+        
+        @return:        string containing generated C code lines separated by newline
+    '''
+    opCount = len(words) - 1
+    
+    # Check for transfer with operands case 
+    if opCount == 0: opCount = -1
+    # Check for '.' case which means that instruction takes no operands.
+    if opCount == 1 and words[1] == '.': opCount = 0
+    out = opcodeMapItemMnemonicBegin.format(words[0], opCount)
+    if opCount == 0 or opCount == -1:
+        # Put placeholder
+        out += opcodeMapNoOperandsPlaceHolder.format()
+    if opCount > 0:
+        out += parseOperands(mapId, ln, words[1:])
+    out += opcodeMapItemMnemonicEnd
+    
+    return out
+    
+def makeTransfer(mapId, ln, words, byte):
+    '''
+        Generate C code for opcode map transfer case
+        
+        @param mapId:   current map file ID for error reporting
+        @param ln:      current line in map for error reporting
+        @param words:   strings containing target map ID and operands definitions
+        @param byte:    byte for which we make transfer
+        
+        @return:        string containing generated C code lines separated by newline
+    '''
+    if len(words) == 0:
+        fatal(mapId, i, 'expected target map ID')
+    targetId = words[0]
+    opCount = len(words) - 1
+    
+    if opCount == 0:
+        # Transfer without operands
+        return opcodeMapItemTransferNoOp.format(byte, targetId)
+    else:
+        # Transfer with operands
+        return opcodeMapItemTransferBegin.format(byte, targetId, opCount) + parseOperands(mapId, ln, words[1:]) + opcodeMapItemTransferEnd
+
+
+def finalizeOneMap(mapId, ln, mapName, id, outData):
+    '''
+        Generate list of C code lines for parsed opcode map. Fill in empty cases with undefined value
+
+        @param mapId:   current map file ID for error reporting
+        @param ln:      current line in map for error reporting
+        @param mapName: current map (submap) name
+        @param id:      identifier of map key
+        @param outData: dictionary containing collected data from input file, with possible gaps
+        
+        @return:        list of generated C code lines
+    '''
+    out = opcodeMapItemsDefinitionStart.format(mapName).split('\n')
+    
+    # Fill in gaps with undefined entries
+    for i in range(0, condIDs[id][1]):
+        if i not in outData:
+            outData[i] = opcodeMapItemUndefined.format(condIDs[id][3](mapId, ln, i))
+    for i in range(0, condIDs[id][1] - 1):
+        words = outData[i].split('\n')
+        words[len(words) - 1] += ','
+        out += words
+    out += outData[condIDs[id][1] - 1].split('\n') + ['};']
+
+    # Finish generated code with map definition.
+    out += opcodeMapDefinition.format(mapName, condIDs[id][0], condIDs[id][1] - 1).split('\n')
+    
+    return out
+
+def prepareLine(mapId, ln, line, out):
+    '''
+        Do simple line preprocessing
+        
+        @param mapId:   current map file ID
+        @param ln:      current line in map file for error reporting
+        
+        @return: tuple (1 if done with line and 0 else, indent, processed line)
+    '''
+    indent = getIndent(line)
+    line = line.strip(' ').rstrip('\n ')
+    
+    done = 0
+    
+    if len(line) == 0:
+        # Empty line.
+        out.append('')
+        done = 1
+    elif len(indent) % 4 != 0 and line[0] != '#':
+        # Indent check failed.
+        fatal(mapId, ln, "bad indent")
+    elif line[0] == '#':
+        # Comments.
+        out.append(makeComment(indent, line))
+        done = 1
+    return (done, indent, line)
+
+def parseOuterCondition(mapId, lines, index, id, fixedByte, mapName, curIndent):
+    '''
+        Parse outer condition in form xx: ... [ condition ]. No recursion possible
+        
+        @param mapId:       current map file ID
+        @param lines:       list of current map lines
+        @param index:       index in current map for processing
+        @param id:          key of current map
+        @param fixedByte:   value of fixed byte in line
+        @param mapName:     current map (submap) name
+        @param curIndent:   current fixed indentation
+        
+        @return: tuple (next index to process, output strings, list of not expanded map IDs)
+    '''
+    
+    out = []
+    # Maps case values to C string representation of opcode map item separated by newline.
+    outData = {}
+    # List of not expanded transfer maps
+    notExpanded = []
+    
+    for i in range(index, len(lines)):
+        line = lines[i]
+        
+        # Simple line preprocessing.
+        triple = prepareLine(mapId, i, line, out)
+        if triple[0]: continue
+        indent = triple[1]
+        line = triple[2]
+        
+        if(indent > curIndent):
+            fatal(mapId, i, "indent mismatch: expected indent " + str(len(curIndent)) + ", got " + str(len(indent)))
+        if(indent < curIndent):
+            # Indent decreased - end of inner block.
+            out += finalizeOneMap(mapId, i, mapName, id, outData)
+            return (i, out, notExpanded)
+        
+        # Match pattern
+        match = byteMatchProg.match(line)
+        if match:
+            byte = int(match.group(1), 16)
+            
+            tail = match.group(2).strip()
+            
+            # Remove comments
+            comment = ''
+            idx = tail.find('#')
+            if idx != -1:
+                comment = '//' + tail[idx:].strip('#')
+                tail = tail[:idx].strip(' ')
+            
+            if byte != fixedByte:
+                # End of inner block.
+                out += finalizeOneMap(mapId, i, mapName, id, outData)
+                return (i, out, notExpanded)
+            
+            if tail.startswith('['):
+                # Have condition at the beginning - incorrect.
+                fatal(mapId, i, 'unexpected condition')
+                
+            elif tail.find('[') != -1:
+                # Have condition at the end.
+                idx = tail.find('[')
+                pair = tail[idx:].strip('[] ').split('=')
+                if(len(pair) != 2):
+                    fatal(mapId, i, 'bad condition statement')
+                newId = pair[0].strip()
+                val = int(pair[1].strip(), 16)
+                
+                # Check everything!
+                if newId not in condIDs:
+                    fatal(mapId, i, 'bad condition ' + newId)
+                if newId != id:
+                    fatal(mapId, i, 'expected condition ' + id)
+                if val in outData:
+                    fatal(mapId, i, 'duplicate condition value')
+                
+                tail = tail[:idx].strip()
+                
+                if tail.startswith('$'):
+                    # Have prefix
+                    pfx = tail[1:].rstrip()
+#                   if int(pfx, 16) != byte:
+#                       fatal(mapId, i, "error in prefix notation - bytes must be equal")
+                    outData[condIDs[id][2](mapId, i, val)] = opcodeMapItemPrefix.format(val)
+                elif tail.startswith('->'):
+                    # Have transfer to other map file.
+                    words = tail[2:].strip().split()
+                    
+                    outData[condIDs[id][2](mapId, i, val)] = makeTransfer(mapId, i, words, val)
+                    
+                    # Update not expanded list if necessary.
+                    targetId = words[0]
+                    if targetId not in notExpanded:
+                        notExpanded.append(targetId)
+                else:
+                    # Hope it is mnemonic.
+                    outData[condIDs[id][2](mapId, i, val)] = makeMnemonic(mapId, i, tail.split())
+            else:
+                # End of inner block.
+                out += finalizeOneMap(mapId, i, mapName, id, outData)
+                return (i, out, notExpanded)
+
+        elif line.startswith('}'):
+            # End of opcode map.
+            out += finalizeOneMap(mapId, i, mapName, id, outData)
+            return (i, out, notExpanded)
+
+        else:
+            fatal(mapId, i, 'unexpected opcode map line')
+
+def parseMapLines(mapId, lines, index, id, mapName, curIndent):
+    '''
+        Parse map lines
+        
+        @param mapId:       current map file ID
+        @param lines:       list of current map lines
+        @param index:       index in current map for processing
+        @param id:          key of current map
+        @param mapName:     current map (submap) name
+        @param curIndent:   current fixed indentation
+        
+        @return: tuple (next index to process, output strings, list of not expanded map IDs)
+    '''
+    
+    out = []
+    # Maps case values to C string representation of opcode map item separated by newline.
+    outData = {}
+    # List of not expanded transfer maps
+    notExpanded = []
+    
+    i = index - 1
+    # Have to use such a loop because i is changed inside
+    while i < len(lines) - 1:
+        i += 1
+        line = lines[i]
+        
+        # Simple line preprocessing.
+        triple = prepareLine(mapId, i, line, out)
+        if triple[0]: continue
+        indent = triple[1]
+        line = triple[2]
+        
+        if(indent > curIndent):
+            fatal(mapId, i, "indent mismatch: expected indent " + str(len(curIndent)) + ", got " + str(len(indent)))
+        if(indent < curIndent):
+            # Indent decreased - end of inner block.
+            out += finalizeOneMap(mapId, i, mapName, id, outData)
+            return (i, out, notExpanded)
+           
+        # Match pattern
+        match = byteMatchProg.match(line)
+        if match:
+            byte = int(match.group(1), 16)
+            
+            tail = match.group(2).strip()
+            
+            # Remove comments
+            comment = ''
+            idx = tail.find('#')
+            if idx != -1:
+                comment = '//' + tail[idx:].strip('#')
+                tail = tail[:idx].strip(' ')
+            
+            if tail.startswith('['):
+                # Have condition at the beginning.
+                newId = tail.strip('[] ')
+                newMapName = mapName + '_{0:0>2x}_'.format(byte) + newId
+                outData[condIDs[id][2](mapId, i, byte)] = opcodeMapItemTransferNoOp.format(byte, newMapName)
+                
+                triple = parseMapLines(mapId, lines, i + 1, newId, mapName + '_{0:0>2x}_'.format(byte) + newId, curIndent + '    ')
+                i = triple[0] - 1
+                out += triple[1]
+                # Update not expanded list, if necessary
+                for exp in triple[2]:
+                    if exp not in notExpanded:
+                        notExpanded.append(exp)
+                        
+            elif tail.find('[') != -1:
+                # Have condition at the end.
+                idx = tail.find('[')
+                pair = tail[idx:].strip('[] ').split('=')
+                if(len(pair) != 2):
+                    fatal(mapId, i, 'bad condition statement')
+                newId = pair[0].strip()
+                if newId not in condIDs:
+                    fatal(mapId, i, 'bad condition ' + newId)
+                
+                newMapName = mapName + '_{0:0>2x}_'.format(byte) + newId
+                outData[condIDs[id][2](mapId, i, byte)] = opcodeMapItemTransferNoOp.format(byte, newMapName)
+                
+                triple = parseOuterCondition(mapId, lines, i, newId, byte, newMapName, curIndent)
+                
+                i = triple[0] - 1
+                out += triple[1]
+                # Update not expanded list, if necessary
+                for exp in triple[2]:
+                    if exp not in notExpanded:
+                        notExpanded.append(exp)
+                        
+            elif tail.startswith('$'):
+                # Have prefix
+                pfx = tail[1:].rstrip()
+#               if int(pfx, 16) != byte:
+#                   fatal(mapId, i, "error in prefix notation - bytes must be equal")
+                outData[condIDs[id][2](mapId, i, byte)] = opcodeMapItemPrefix.format(byte)
+            elif tail.startswith('->'):
+                # Have transfer to other map file
+                words = tail[2:].strip().split()
+                
+                outData[condIDs[id][2](mapId, i, byte)] = makeTransfer(mapId, i, words, byte)
+                
+                # Update not expanded list, if necessary
+                targetId = words[0]
+                if targetId not in notExpanded:
+                    notExpanded.append(targetId)
+            else:
+                # Hope it is mnemonic
+                outData[condIDs[id][2](mapId, i, byte)] = makeMnemonic(mapId, i, tail.split())
+
+        elif line.startswith('}'):
+            # End of map encountered
+            out += finalizeOneMap(mapId, i, mapName, id, outData)
+            return (i, out, notExpanded)
+
+        else:
+            fatal(mapId, i, 'unexpected opcode map line')
+    
+    fatal(mapId, i, 'unexpected end of file')
+
+def parseMapStatement(mapId, lines):
+    '''
+        Parse map statement: Map <MapID> { ... } and generate C code
+        
+        @param mapId:   current map file ID
+        @param lines:   lines of current map file
+        
+        @return: tuple (generated C output lines, list of not expanded map IDs)
+    '''
+    out = []
+    for i in range(0, len(lines)):
+        line = lines[i]
+        
+        # Make simple line preprocessing.
+        triple = prepareLine(mapId, i, line, out)
+        
+        # Skip empty lines and comments
+        if triple[0]: continue
+        indent = triple[1]
+        line = triple[2]
+        
+        if line.startswith('Map '):
+            # Map statement itself.
+            words = line.split()
+            mapName = ''
+            id= ''
+            # Check syntax
+            if len(words) != 3:
+                fatal(mapId, i, "bad Map statement (expected 'Map <name> <id>')")
+            else:
+                mapName = words[1]
+                id = words[2]
+                
+            if id not in condIDs:
+                fatal(mapId, i, "invalid identifier")
+    
+            i += 1
+            line = lines[i]
+            
+            indent = getIndent(line)
+            line = line.strip('\n ')
+            if line != '{':
+                fatal(mapId, i, "bad map statement")
+            
+            i += 1
+            triple = parseMapLines(mapId, lines, i, id, mapName, '    ')
+            
+            out += triple[1]
+            
+            return (out, triple[2])
+            
+        else:
+            fatal(mapId, i, "bad map statement")
+
+def parseMapFile(mapId, name):
+    '''
+        Parse one map file, possibly generating submaps for switches
+        
+        @param mapId:   current map file ID
+        @param name:    current map file name
+    
+        @return: tuple (generated C output lines, list of not expanded map IDs)
+    '''
+    
+    # Grab lines from file
+    file = open(name, 'r')
+    lines = file.readlines()
+    file.close()
+    
+    pair =  parseMapStatement(mapId, lines)
+    
+    # Decorate result
+    out = ['/* Generated from file ' + name + ' */'] + pair[0] + ['/* End of file ' + name + ' */']
+    return (out, pair[1])
+
+if __name__ == '__main__':
+    '''
+        Generate opcode map in C from .map files
+        
+        Usage: 'python map2c <map file prefix>',
+            where map file prefix will be concatenated with mapID and .map
+        Example: 'python map2c opcode-map' will try to open files in form 'opcode-map<id>.map',
+            starting with <id> 1 and so on
+            
+        @return:        generated C code on stdout
+    '''
+    import sys
+    
+    baseName = sys.argv[1]
+    out = []
+    # Start with map 1
+    notExpanded = ['1']
+    expanded = []
+    
+    # Go through all maps
+    while len(notExpanded) != 0:
+        pair = parseMapFile(notExpanded[0], baseName + notExpanded[0] + '.map')
+        # Mark parsed map as expanded
+        expanded.append(notExpanded.pop(0))
+        # Update output lines
+        out = pair[0] + out
+        
+        # Update not expanded list and check for cyclic transfer
+        for id in pair[1]:
+            if id in expanded:
+                exit("detected cyclic transfer in map " + expanded[len(expanded) - 1])
+            notExpanded.append(id)
+    
+    # Decorate out to make final C code
+    out = [opcodeMapInclusion] + out + opcodeMapFirstMapDefinition.split('\n')
+    
+    # Output it
+    for line in out:
+        print line
+    
+

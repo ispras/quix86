@@ -1,0 +1,113 @@
+## +------------------------------------------------------------------------+
+## | quix86                                                                 |
+## +------------------------------------------------------------------------+
+## | This file is part of quix86, an x86-64 instruction decoder.            |
+## |                                                                        |
+## | Copyright (C) 2011 Institute for System Programming of Russian Academy |
+## | of Sciences.                                                           |
+## |                                                                        |
+## | Contact e-mail: <unicluster@ispras.ru>.                                |
+## |                                                                        |
+## | quix86 is free software: you can redistribute it and/or modify it      |
+## | under the terms of the GNU General Public License as published by the  |
+## | Free Software Foundation, either version 3 of the License, or (at your |
+## | option) any later version.                                             |
+## |                                                                        |
+## | quix86 is distributed in the hope that it will be useful, but WITHOUT  |
+## | ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or  |
+## | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License  |
+## | for more details.                                                      |
+## |                                                                        |
+## | You should have received a copy of the GNU General Public License      |
+## | along with quix86.  If not, see <http://www.gnu.org/licenses/>.        |
+## +------------------------------------------------------------------------+
+
+## Reference: AMD Architecture Programmer's Manual 3: Table A-10.
+
+## mem32real -> Mss (scalar single)
+## mem80real -> Mse (scalar double extended)
+## mem80dec -> Msb (scalar bcd)
+## mem14/28env -> todo
+## mem16 -> Mw
+## mem16int -> Mw
+## mem32int -> Md
+## mem64int -> Mq
+## mem64real -> Msd (scalar double)
+## mem98/108env -> todo
+
+Map D9 reg
+{
+    00: [ mod ]
+        00: FLD     Mss-
+        01: FLD     Mss-
+        02: FLD     Mss-
+        03: FLD     ST0+ ST0-           [ rm = 00 ]
+        03: FLD     ST0+ ST1-           [ rm = 01 ]
+        03: FLD     ST0+ ST2-           [ rm = 02 ]
+        03: FLD     ST0+ ST3-           [ rm = 03 ]
+        03: FLD     ST0+ ST4-           [ rm = 04 ]
+        03: FLD     ST0+ ST5-           [ rm = 05 ]
+        03: FLD     ST0+ ST6-           [ rm = 06 ]
+        03: FLD     ST0+ ST7-           [ rm = 07 ]
+    01: [ mod ]
+        03: FXCH    ST0* ST0*           [ rm = 00 ]
+        03: FXCH    ST0* ST1*           [ rm = 01 ]
+        03: FXCH    ST0* ST2*           [ rm = 02 ]
+        03: FXCH    ST0* ST3*           [ rm = 03 ]
+        03: FXCH    ST0* ST4*           [ rm = 04 ]
+        03: FXCH    ST0* ST5*           [ rm = 05 ]
+        03: FXCH    ST0* ST6*           [ rm = 06 ]
+        03: FXCH    ST0* ST7*           [ rm = 07 ]
+        
+    02: [ mod ]
+        00: FST     Mss+
+        01: FST     Mss+
+        02: FST     Mss+
+        03: FNOP    .                   [ rm = 00 ]
+    03: FSTP        Mss+                [ mod = 0 ]
+    03: FSTP        Mss+                [ mod = 1 ]
+    03: FSTP        Mss+                [ mod = 2 ]
+    04: [ mod ]
+        00: FLDENV  Mfe-
+        01: FLDENV  Mfe-
+        02: FLDENV  Mfe-
+        03: FCHS    .                   [ rm = 00 ]
+        03: FABS    .                   [ rm = 01 ]
+        03: FTST    .                   [ rm = 04 ]
+        03: FXAM    .                   [ rm = 05 ]
+    05: [ mod ]
+        00: FLDCW   Mw-
+        01: FLDCW   Mw-
+        02: FLDCW   Mw-
+        03: FLD1    .                   [ rm = 00 ]
+        03: FLDL2T  .                   [ rm = 01 ]
+        03: FLDL2E  .                   [ rm = 02 ]
+        03: FLDPI   .                   [ rm = 03 ]
+        03: FLDLG2  .                   [ rm = 04 ]
+        03: FLDLN2  .                   [ rm = 05 ]
+        03: FLDZ    .                   [ rm = 06 ]
+    06: [ mod ]
+        00: FNSTENV Mfe+
+        01: FNSTENV Mfe+
+        02: FNSTENV Mfe+
+        03: F2XM1   .                   [ rm = 00 ]
+        03: FYL2X   .                   [ rm = 01 ]
+        03: FPTAN   .                   [ rm = 02 ]
+        03: FPATAN  .                   [ rm = 03 ]
+        03: FXTRACT .                   [ rm = 04 ]
+        03: FPREM1  .                   [ rm = 05 ]
+        03: FDECSTP .                   [ rm = 06 ]
+        03: FINCSTP .                   [ rm = 07 ]
+    07: [ mod ]
+        00: FNSTCW  Mw+
+        01: FNSTCW  Mw+
+        02: FNSTCW  Mw+
+        03: FPREM   .                   [ rm = 00 ]
+        03: FYL2XP1 .                   [ rm = 01 ]
+        03: FSQRT   .                   [ rm = 02 ]
+        03: FSINCOS .                   [ rm = 03 ]
+        03: FRNDINT .                   [ rm = 04 ]
+        03: FSCALE  .                   [ rm = 05 ]
+        03: FSIN    .                   [ rm = 06 ]
+        03: FCOS    .                   [ rm = 07 ]
+}

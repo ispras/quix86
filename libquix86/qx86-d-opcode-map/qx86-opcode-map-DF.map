@@ -1,0 +1,89 @@
+## +------------------------------------------------------------------------+
+## | quix86                                                                 |
+## +------------------------------------------------------------------------+
+## | This file is part of quix86, an x86-64 instruction decoder.            |
+## |                                                                        |
+## | Copyright (C) 2011 Institute for System Programming of Russian Academy |
+## | of Sciences.                                                           |
+## |                                                                        |
+## | Contact e-mail: <unicluster@ispras.ru>.                                |
+## |                                                                        |
+## | quix86 is free software: you can redistribute it and/or modify it      |
+## | under the terms of the GNU General Public License as published by the  |
+## | Free Software Foundation, either version 3 of the License, or (at your |
+## | option) any later version.                                             |
+## |                                                                        |
+## | quix86 is distributed in the hope that it will be useful, but WITHOUT  |
+## | ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or  |
+## | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License  |
+## | for more details.                                                      |
+## |                                                                        |
+## | You should have received a copy of the GNU General Public License      |
+## | along with quix86.  If not, see <http://www.gnu.org/licenses/>.        |
+## +------------------------------------------------------------------------+
+
+## Reference: AMD Architecture Programmer's Manual 3: Table A-10.
+
+## mem32real -> Mss (scalar single)
+## mem80real -> Mse (scalar double extended)
+## mem80dec -> Msb (scalar bcd)
+## mem14/28env -> todo
+## mem16 -> Mw
+## mem16int -> Mw
+## mem32int -> Md
+## mem64int -> Mq
+## mem64real -> Msd (scalar double)
+## mem98/108env -> todo
+
+Map DF reg
+{
+    00: [ mod ]
+        00: FILD        Mw-
+        01: FILD        Mw-
+        02: FILD        Mw-
+    01: [ mod ]
+        00: FISTTP      Mw+
+        01: FISTTP      Mw+
+        02: FISTTP      Mw+
+    02: [ mod ]
+        00: FIST        Mw+
+        01: FIST        Mw+
+        02: FIST        Mw+
+    03: [ mod ]
+        00: FISTP       Mw+
+        01: FISTP       Mw+
+        02: FISTP       Mw+
+    04: [ mod ]
+        00: FBLD        Msb+
+        01: FBLD        Msb+
+        02: FBLD        Msb+
+        03: FNSTSW      AX+                 [ rm = 00 ]
+    05: [ mod ]
+        00: FILD        Mq-
+        01: FILD        Mq-
+        02: FILD        Mq-
+        03: FUCOMIP     ST0- ST0-           [ rm = 00 ]
+        03: FUCOMIP     ST0- ST1-           [ rm = 01 ]
+        03: FUCOMIP     ST0- ST2-           [ rm = 02 ]
+        03: FUCOMIP     ST0- ST3-           [ rm = 03 ]
+        03: FUCOMIP     ST0- ST4-           [ rm = 04 ]
+        03: FUCOMIP     ST0- ST5-           [ rm = 05 ]
+        03: FUCOMIP     ST0- ST6-           [ rm = 06 ]
+        03: FUCOMIP     ST0- ST7-           [ rm = 07 ]
+    06: [ mod ]
+        00: FBSTP       Msb+
+        01: FBSTP       Msb+
+        02: FBSTP       Msb+
+        03: FCOMIP      ST0- ST0-           [ rm = 00 ]
+        03: FCOMIP      ST0- ST1-           [ rm = 01 ]
+        03: FCOMIP      ST0- ST2-           [ rm = 02 ]
+        03: FCOMIP      ST0- ST3-           [ rm = 03 ]
+        03: FCOMIP      ST0- ST4-           [ rm = 04 ]
+        03: FCOMIP      ST0- ST5-           [ rm = 05 ]
+        03: FCOMIP      ST0- ST6-           [ rm = 06 ]
+        03: FCOMIP      ST0- ST7-           [ rm = 07 ]
+    07: [ mod ]
+        00: FISTP       Mq+
+        01: FISTP       Mq+
+        02: FISTP       Mq+
+}

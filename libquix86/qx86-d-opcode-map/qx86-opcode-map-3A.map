@@ -1,0 +1,177 @@
+## +------------------------------------------------------------------------+
+## | quix86                                                                 |
+## +------------------------------------------------------------------------+
+## | This file is part of quix86, an x86-64 instruction decoder.            |
+## |                                                                        |
+## | Copyright (C) 2011 Institute for System Programming of Russian Academy |
+## | of Sciences.                                                           |
+## |                                                                        |
+## | Contact e-mail: <unicluster@ispras.ru>.                                |
+## |                                                                        |
+## | quix86 is free software: you can redistribute it and/or modify it      |
+## | under the terms of the GNU General Public License as published by the  |
+## | Free Software Foundation, either version 3 of the License, or (at your |
+## | option) any later version.                                             |
+## |                                                                        |
+## | quix86 is distributed in the hope that it will be useful, but WITHOUT  |
+## | ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or  |
+## | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License  |
+## | for more details.                                                      |
+## |                                                                        |
+## | You should have received a copy of the GNU General Public License      |
+## | along with quix86.  If not, see <http://www.gnu.org/licenses/>.        |
+## +------------------------------------------------------------------------+
+
+## Reference: Intel Architecture Software Developer’s Manual 2B: Table A-4.
+Map 3A nb
+{
+    00: PSHUFB      Pq*     Qq-         [ sp = 00 ]
+    00: PSHUFB      Vdq*    Wdq-        [ sp = 66 ]                 # TODO: AVX
+    01: PHADDW      Pq*     Qq-         [ sp = 00 ]
+    01: PHADDW      Vdq*    Wdq-        [ sp = 66 ]                 # TODO: AVX
+    02: PHADDD      Pq*     Qq-         [ sp = 00 ]
+    02: PHADDD      Vdq*    Wdq-        [ sp = 66 ]                 # TODO: AVX
+    03: PHADDSW     Pq*     Qq-         [ sp = 00 ]
+    03: PHADDSW     Vdq*    Wdq-        [ sp = 66 ]                 # TODO: AVX
+    04: PMADDUBSW   Pq*     Qq-         [ sp = 00 ]
+    04: PMADDUBSW   Vdq*    Wdq-        [ sp = 66 ]                 # TODO: AVX
+    05: PHSUBW      Pq*     Qq-         [ sp = 00 ]
+    05: PHSUBW      Vdq*    Wdq-        [ sp = 66 ]                 # TODO: AVX
+    06: PHSUBD      Pq*     Qq-         [ sp = 00 ]
+    06: PHSUBD      Vdq*    Wdq-        [ sp = 66 ]                 # TODO: AVX
+    07: PHSUBSW     Pq*     Qq-         [ sp = 00 ]
+    07: PHSUBSW     Vdq*    Wdq-        [ sp = 66 ]                 # TODO: AVX
+    
+    08: PSIGNB      Pq*     Qq-         [ sp = 00 ]
+    08: PSIGNB      Vdq*    Wdq-        [ sp = 66 ]                 # TODO: AVX
+    09: PSIGNW      Pq*     Qq-         [ sp = 00 ]
+    09: PSIGNW      Vdq*    Wdq-        [ sp = 66 ]                 # TODO: AVX
+    0A: PSIGND      Pq*     Qq-         [ sp = 00 ]
+    0A: PSIGND      Vdq*    Wdq-        [ sp = 66 ]                 # TODO: AVX
+    0B: PMULHRSW    Pq*     Qq-         [ sp = 00 ]
+    0B: PMULHRSW    Vdq*    Wdq-        [ sp = 66 ]                 # TODO: AVX
+    
+    # 0C: VPERMILPS   Vx  Hx  Wx          [ sp = 66 ]                 # TODO: AVX
+    # 0D: VPERMILPD   Vx  Hx  Wx          [ sp = 66 ]                 # TODO: AVX
+    # 0E: VTESTPS     Vx  Wx              [ sp = 66 ]                 # TODO: AVX
+    # 0F: VTESTPD     Vx  Wx              [ sp = 66 ]                 # TODO: AVX
+    
+    10: PBLENDVB    Vdq*    Wdq-        [ sp = 66 ]                 # TODO: AVX
+    14: BLENDVPS    Vdq*    Wdq-        [ sp = 66 ]                 # TODO: AVX
+    15: BLENDVPD    Vdq*    Wdq-        [ sp = 66 ]                 # TODO: AVX
+    17: PTEST       Vdq-    Wdq-        [ sp = 66 ]                 # TODO: AVX
+    
+    # 18: VBROADCASTSS    Vx  Md          [ sp = 66 ]                 # TODO: AVX
+    # 19: VBROADCASTSD    Vqq Mq          [ sp = 66 ]                 # TODO: AVX
+    # 1A: VBROADCASTF128  Vqq Mdq         [ sp = 66 ]                 # TODO: AVX
+    
+    1C: PABSB       Pq+     Qq-         [ sp = 00 ]
+    1C: PABSB       Vdq+    Wdq-        [ sp = 66 ]                 # TODO: AVX
+    1D: PABSW       Pq+     Qq-         [ sp = 00 ]
+    1D: PABSW       Vdq+    Wdq-        [ sp = 66 ]                 # TODO: AVX
+    1E: PABSD       Pq+     Qq-         [ sp = 00 ]
+    1E: PABSD       Vdq+    Wdq-        [ sp = 66 ]                 # TODO: AVX
+    
+    20: [ sp ]
+        66: PMOVSXBW    Vdq+    Mq-     [ mod = 0 ]                 # TODO: AVX
+        66: PMOVSXBW    Vdq+    Mq-     [ mod = 1 ]                 # TODO: AVX
+        66: PMOVSXBW    Vdq+    Mq-     [ mod = 2 ]                 # TODO: AVX
+        66: PMOVSXBW    Vdq+    Udq-    [ mod = 3 ]                 # TODO: AVX
+    21: [ sp ]
+        66: PMOVSXBD    Vdq+    Md-     [ mod = 0 ]                 # TODO: AVX
+        66: PMOVSXBD    Vdq+    Md-     [ mod = 1 ]                 # TODO: AVX
+        66: PMOVSXBD    Vdq+    Md-     [ mod = 2 ]                 # TODO: AVX
+        66: PMOVSXBD    Vdq+    Udq-    [ mod = 3 ]                 # TODO: AVX
+    22: [ sp ]
+        66: PMOVSXBQ    Vdq+    Mw-     [ mod = 0 ]                 # TODO: AVX
+        66: PMOVSXBQ    Vdq+    Mw-     [ mod = 1 ]                 # TODO: AVX
+        66: PMOVSXBQ    Vdq+    Mw-     [ mod = 2 ]                 # TODO: AVX
+        66: PMOVSXBQ    Vdq+    Udq-    [ mod = 3 ]                 # TODO: AVX
+    23: [ sp ]
+        66: PMOVSXWD    Vdq+    Mq-     [ mod = 0 ]                 # TODO: AVX
+        66: PMOVSXWD    Vdq+    Mq-     [ mod = 1 ]                 # TODO: AVX
+        66: PMOVSXWD    Vdq+    Mq-     [ mod = 2 ]                 # TODO: AVX
+        66: PMOVSXWD    Vdq+    Udq-    [ mod = 3 ]                 # TODO: AVX
+    24: [ sp ]
+        66: PMOVSXWQ    Vdq+    Md-     [ mod = 0 ]                 # TODO: AVX
+        66: PMOVSXWQ    Vdq+    Md-     [ mod = 1 ]                 # TODO: AVX
+        66: PMOVSXWQ    Vdq+    Md-     [ mod = 2 ]                 # TODO: AVX
+        66: PMOVSXWQ    Vdq+    Udq-    [ mod = 3 ]                 # TODO: AVX
+    25: [ sp ]
+        66: PMOVSXDQ    Vdq+    Mq-     [ mod = 0 ]                 # TODO: AVX
+        66: PMOVSXDQ    Vdq+    Mq-     [ mod = 1 ]                 # TODO: AVX
+        66: PMOVSXDQ    Vdq+    Mq-     [ mod = 2 ]                 # TODO: AVX
+        66: PMOVSXDQ    Vdq+    Udq-    [ mod = 3 ]                 # TODO: AVX
+    28: PMULDQ          Vdq*    Wdq-    [ sp = 66 ]                 # TODO: AVX
+    29: PCMPEQQ         Vdq*    Wdq-    [ sp = 66 ]                 # TODO: AVX
+    2A: MOVNTDQA        Vdq+    Wdq-    [ sp = 66 ]                 # TODO: AVX
+    2B: PACKUSDW        Vdq*    Wdq-    [ sp = 66 ]                 # TODO: AVX
+    # TODO: AVX 2C, 2D, 2E, 2F
+    
+    30: [ sp ]
+        66: PMOVZXBW    Vdq+    Mq-     [ mod = 0 ]                 # TODO: AVX
+        66: PMOVZXBW    Vdq+    Mq-     [ mod = 1 ]                 # TODO: AVX
+        66: PMOVZXBW    Vdq+    Mq-     [ mod = 2 ]                 # TODO: AVX
+        66: PMOVZXBW    Vdq+    Udq-    [ mod = 3 ]                 # TODO: AVX
+    31: [ sp ]
+        66: PMOVZXBD    Vdq+    Md-     [ mod = 0 ]                 # TODO: AVX
+        66: PMOVZXBD    Vdq+    Md-     [ mod = 1 ]                 # TODO: AVX
+        66: PMOVZXBD    Vdq+    Md-     [ mod = 2 ]                 # TODO: AVX
+        66: PMOVZXBD    Vdq+    Udq-    [ mod = 3 ]                 # TODO: AVX
+    32: [ sp ]
+        66: PMOVZXBQ    Vdq+    Mw-     [ mod = 0 ]                 # TODO: AVX
+        66: PMOVZXBQ    Vdq+    Mw-     [ mod = 1 ]                 # TODO: AVX
+        66: PMOVZXBQ    Vdq+    Mw-     [ mod = 2 ]                 # TODO: AVX
+        66: PMOVZXBQ    Vdq+    Udq-    [ mod = 3 ]                 # TODO: AVX
+    33: [ sp ]
+        66: PMOVZXWD    Vdq+    Mq-     [ mod = 0 ]                 # TODO: AVX
+        66: PMOVZXWD    Vdq+    Mq-     [ mod = 1 ]                 # TODO: AVX
+        66: PMOVZXWD    Vdq+    Mq-     [ mod = 2 ]                 # TODO: AVX
+        66: PMOVZXWD    Vdq+    Udq-    [ mod = 3 ]                 # TODO: AVX
+    34: [ sp ]
+        66: PMOVZXWQ    Vdq+    Md-     [ mod = 0 ]                 # TODO: AVX
+        66: PMOVZXWQ    Vdq+    Md-     [ mod = 1 ]                 # TODO: AVX
+        66: PMOVZXWQ    Vdq+    Md-     [ mod = 2 ]                 # TODO: AVX
+        66: PMOVZXWQ    Vdq+    Udq-    [ mod = 3 ]                 # TODO: AVX
+    35: [ sp ]
+        66: PMOVZXDQ    Vdq+    Mq-     [ mod = 0 ]                 # TODO: AVX
+        66: PMOVZXDQ    Vdq+    Mq-     [ mod = 1 ]                 # TODO: AVX
+        66: PMOVZXDQ    Vdq+    Mq-     [ mod = 2 ]                 # TODO: AVX
+        66: PMOVZXDQ    Vdq+    Udq-    [ mod = 3 ]                 # TODO: AVX
+    37: PCMPGTQ         Vdq*    Wdq-    [ sp = 66 ]                 # TODO: AVX
+    38: PMINSB          Vdq*    Wdq-    [ sp = 66 ]                 # TODO: AVX
+    39: PMINSD          Vdq*    Wdq-    [ sp = 66 ]                 # TODO: AVX
+    3A: PMINUW          Vdq*    Wdq-    [ sp = 66 ]                 # TODO: AVX
+    3B: PMINUD          Vdq*    Wdq-    [ sp = 66 ]                 # TODO: AVX
+    3C: PMAXSB          Vdq*    Wdq-    [ sp = 66 ]                 # TODO: AVX
+    3D: PMAXSD          Vdq*    Wdq-    [ sp = 66 ]                 # TODO: AVX
+    3E: PMAXUW          Vdq*    Wdq-    [ sp = 66 ]                 # TODO: AVX
+    3F: PMAXUD          Vdq*    Wdq-    [ sp = 66 ]                 # TODO: AVX
+    
+    40: PMULLD          Vdq*    Wdq-    [ sp = 66 ]                 # TODO: AVX
+    41: PHMINPOSUW      Vdq+    Wdq-    [ sp = 66 ]                 # TODO: AVX
+    
+    80: [ sp ]
+        66: INVEPT  Gd-     Mdq-        [ cs = 01 ]                 # VMX
+        66: INVEPT  Gq-     Mdq-        [ cs = 02 ]                 # VMX
+    81: [ sp ]
+        66: INVVPID Gd-     Mdq-        [ cs = 01 ]                 # VMX
+        66: INVVPID Gq-     Mdq-        [ cs = 02 ]                 # VMX
+
+    DB: AESIMC      Vdq+    Wdq-        [ sp = 66 ]                 # TODO: AVX
+    DC: AESENC      Vdq*    Wdq-        [ sp = 66 ]                 # TODO: AVX
+    DD: AESENCLAST  Vdq*    Wdq-        [ sp = 66 ]                 # TODO: AVX
+    DE: AESDEC      Vdq*    Wdq-        [ sp = 66 ]                 # TODO: AVX
+    DF: AESDECLAST  Vdq*    Wdq-        [ sp = 66 ]                 # TODO: AVX
+
+    F0: [ sp ]
+        00: MOVBE   Gd+     Md-         [ os = 01 ]
+        00: MOVBE   Gq+     Mq-         [ os = 02 ]
+        66: MOVBE   Gw+     Mw-
+        F2: CRC32   Gd*     Eb-
+    F1: [ sp ]
+        00: MOVBE   Md+     Gd-         [ os = 01 ]
+        00: MOVBE   Mq+     Gq-         [ os = 02 ]
+        66: MOVBE   Mw+     Gw-
+        F2: CRC32   Gd*     Ev-
+}

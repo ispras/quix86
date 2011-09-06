@@ -1,0 +1,44 @@
+## +------------------------------------------------------------------------+
+## | quix86                                                                 |
+## +------------------------------------------------------------------------+
+## | This file is part of quix86, an x86-64 instruction decoder.            |
+## |                                                                        |
+## | Copyright (C) 2011 Institute for System Programming of Russian Academy |
+## | of Sciences.                                                           |
+## |                                                                        |
+## | Contact e-mail: <unicluster@ispras.ru>.                                |
+## |                                                                        |
+## | quix86 is free software: you can redistribute it and/or modify it      |
+## | under the terms of the GNU General Public License as published by the  |
+## | Free Software Foundation, either version 3 of the License, or (at your |
+## | option) any later version.                                             |
+## |                                                                        |
+## | quix86 is distributed in the hope that it will be useful, but WITHOUT  |
+## | ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or  |
+## | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License  |
+## | for more details.                                                      |
+## |                                                                        |
+## | You should have received a copy of the GNU General Public License      |
+## | along with quix86.  If not, see <http://www.gnu.org/licenses/>.        |
+## +------------------------------------------------------------------------+
+
+## Reference: AMD Architecture Programmer's Manual 3: Table A-6.
+## Reference: Intel Architecture Software Developer’s Manual 2B: Table A-6.
+Map M9 reg
+{
+    01: CMPXCHG8B   Mq*?                [ os = 0 ]      # Intel opcode map says that prefixes 66, f3 make this opcode undefined, but AMD is OK
+    01: CMPXCHG8B   Mq*?                [ os = 1 ]
+    01: CMPXCHG16B  Mdq*?               [ os = 2 ]
+    06: [ sp ]
+        00: VMPTRLD Mq-                 [ cs = 1 ]      # VMX
+        00: VMPTRLD Mq-                 [ cs = 2 ]      # VMX
+        66: VMCLEAR Mq-                 [ cs = 1 ]      # VMX
+        66: VMCLEAR Mq-                 [ cs = 2 ]      # VMX
+        F3: VMXON   Mq-                 [ cs = 1 ]      # VMX
+        F3: VMXON   Mq-                 [ cs = 2 ]      # VMX
+    07: [ sp ]
+        00: VMPTRST Mq+                 [ cs = 1 ]      # VMX
+        00: VMPTRST Mq+                 [ cs = 2 ]      # VMX
+        F3: VMPTRST Mq+                 [ cs = 1 ]      # VMX
+        F3: VMPTRST Mq+                 [ cs = 2 ]      # VMX
+}

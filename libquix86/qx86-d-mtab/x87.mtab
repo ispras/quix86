@@ -1,0 +1,113 @@
+## +------------------------------------------------------------------------+
+## | quix86                                                                 |
+## +------------------------------------------------------------------------+
+## | This file is part of quix86, an x86-64 instruction decoder.            |
+## |                                                                        |
+## | Copyright (C) 2011 Institute for System Programming of Russian Academy |
+## | of Sciences.                                                           |
+## |                                                                        |
+## | Contact e-mail: <unicluster@ispras.ru>.                                |
+## |                                                                        |
+## | quix86 is free software: you can redistribute it and/or modify it      |
+## | under the terms of the GNU General Public License as published by the  |
+## | Free Software Foundation, either version 3 of the License, or (at your |
+## | option) any later version.                                             |
+## |                                                                        |
+## | quix86 is distributed in the hope that it will be useful, but WITHOUT  |
+## | ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or  |
+## | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License  |
+## | for more details.                                                      |
+## |                                                                        |
+## | You should have received a copy of the GNU General Public License      |
+## | along with quix86.  If not, see <http://www.gnu.org/licenses/>.        |
+## +------------------------------------------------------------------------+
+
+## Default properties for x87 subset.
+*                   .
+
+## x87 subset instructions.
+F2XM1               .
+FABS                .
+FADD                .
+FADDP               .
+FIADD               .
+FBLD                .
+FBSTP               .
+FCHS                .
+FNCLEX              .
+FCMOVB              .
+FCMOVBE             .
+FCMOVE              .
+FCMOVNB             .
+FCMOVNBE            .
+FCMOVNE             .
+FCMOVNU             .
+FCMOVU              .
+FCOM                .
+FCOMP               .
+FCOMPP              .
+FCOMI               .
+FCOMIP              .
+FCOS                .
+FDECSTP             .
+FDIV                .
+FDIVP               .
+FIDIV               .
+FDIVR               .
+FDIVRP              .
+FIDIVR              .
+FFREE               .
+FICOM               .
+FICOMP              .
+FILD                .
+FINCSTP             .
+FNINIT              .
+FIST                .
+FISTP               .
+FISTTP              .
+FLD                 .
+FLD1                .
+FLDCW               .
+FLDENV              .
+FLDL2E              .
+FLDL2T              .
+FLDLG2              .
+FLDLN2              .
+FLDPI               .
+FLDZ                .
+FMUL                .
+FMULP               .
+FIMUL               .
+FNOP                .
+FPATAN              .
+FPREM               .
+FPREM1              .
+FPTAN               .
+FRNDINT             .
+FSCALE              .
+FSIN                .
+FSINCOS             .
+FSQRT               .
+FST                 .
+FSTP                .
+FNSTCW              .
+FNSTENV             .
+FNSTSW              .
+FSUB                .
+FSUBP               .
+FISUB               .
+FSUBR               .
+FSUBRP              .
+FISUBR              .
+FTST                .
+FUCOM               .
+FUCOMP              .
+FUCOMPP             .
+FUCOMI              .
+FUCOMIP             .
+FWAIT               .
+FXAM                .
+FXCH                .
+FXTRACT             .
+FYL2X               .
+FYL2XP1             .

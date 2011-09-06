@@ -1,0 +1,141 @@
+## +------------------------------------------------------------------------+
+## | quix86                                                                 |
+## +------------------------------------------------------------------------+
+## | This file is part of quix86, an x86-64 instruction decoder.            |
+## |                                                                        |
+## | Copyright (C) 2011 Institute for System Programming of Russian Academy |
+## | of Sciences.                                                           |
+## |                                                                        |
+## | Contact e-mail: <unicluster@ispras.ru>.                                |
+## |                                                                        |
+## | quix86 is free software: you can redistribute it and/or modify it      |
+## | under the terms of the GNU General Public License as published by the  |
+## | Free Software Foundation, either version 3 of the License, or (at your |
+## | option) any later version.                                             |
+## |                                                                        |
+## | quix86 is distributed in the hope that it will be useful, but WITHOUT  |
+## | ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or  |
+## | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License  |
+## | for more details.                                                      |
+## |                                                                        |
+## | You should have received a copy of the GNU General Public License      |
+## | along with quix86.  If not, see <http://www.gnu.org/licenses/>.        |
+## +------------------------------------------------------------------------+
+
+## Default properties for SSE2 subset.
+*                   .
+
+## SSE2 subset instructions.
+ADDPD               .
+ADDPS               .
+ADDSD               .
+ADDSS               .
+ANDNPD              .
+ANDPD               .
+CMPPD               .
+CMPSD_SSE           .
+COMISD              .
+CVTDQ2PD            .
+CVTDQ2PS            .
+CVTPD2DQ            .
+CVTPD2PI            .
+CVTPD2PS            .
+CVTPI2PD            .
+CVTPS2DQ            .
+CVTPS2PD            .
+CVTSD2SI            .
+CVTSD2SS            .
+CVTSI2SD            .
+CVTSS2SD            .
+CVTTPD2DQ           .
+CVTTPD2PI           .
+CVTTPS2DQ           .
+CVTTSD2SI           .
+DIVPD               .
+DIVSD               .
+MASKMOVDQU          .
+MAXPD               .
+MAXSD               .
+MINPD               .
+MINSD               .
+MOVAPD              .
+MOVDQ2Q             .
+MOVDQA              .
+MOVDQU              .
+MOVHPD              .
+MOVLPD              .
+MOVMSKPD            .
+MOVNTDQ             .
+MOVNTPD             .
+MOVQ                .
+MOVQ2DQ             .
+MOVSD_SSE           .
+MOVUPD              .
+MULPD               .
+MULSD               .
+ORPD                .
+PACKSSDW            .
+PACKSSWB            .
+PACKUSWB            .
+PADDB               .
+PADDD               .
+PADDQ               .
+PADDSB              .
+PADDSW              .
+PADDUSB             .
+PADDUSW             .
+PADDW               .
+PAND                .
+PANDN               .
+PCMPEQB             .
+PCMPEQD             .
+PCMPEQW             .
+PCMPGTB             .
+PCMPGTD             .
+PCMPGTW             .
+PMADDWD             .
+PMOVMSKB            .
+PMULHW              .
+PMULLW              .
+PMULUDQ             .
+POR                 .
+PSHUFD              .
+PSHUFHW             .
+PSHUFLW             .
+PSLLD               .
+PSLLDQ              .
+PSLLQ               .
+PSLLW               .
+PSRAD               .
+PSRAW               .
+PSRLD               .
+PSRLDQ              .
+PSRLQ               .
+PSRLW               .
+PSUBB               .
+PSUBD               .
+PSUBQ               .
+PSUBSB              .
+PSUBSW              .
+PSUBUSB             .
+PSUBUSW             .
+PSUBW               .
+PUNPCKHBW           .
+PUNPCKHDQ           .
+PUNPCKHQDQ          .
+PUNPCKHWD           .
+PUNPCKLBW           .
+PUNPCKLDQ           .
+PUNPCKLQDQ          .
+PUNPCKLWD           .
+PXOR                .
+RCPSS               .
+SHUFPD              .
+SQRTPD              .
+SQRTSD              .
+SUBPD               .
+SUBSD               .
+UCOMISD             .
+UNPCKHPD            .
+UNPCKLPD            .
+XORPD               .

@@ -1,0 +1,90 @@
+## +------------------------------------------------------------------------+
+## | quix86                                                                 |
+## +------------------------------------------------------------------------+
+## | This file is part of quix86, an x86-64 instruction decoder.            |
+## |                                                                        |
+## | Copyright (C) 2011 Institute for System Programming of Russian Academy |
+## | of Sciences.                                                           |
+## |                                                                        |
+## | Contact e-mail: <unicluster@ispras.ru>.                                |
+## |                                                                        |
+## | quix86 is free software: you can redistribute it and/or modify it      |
+## | under the terms of the GNU General Public License as published by the  |
+## | Free Software Foundation, either version 3 of the License, or (at your |
+## | option) any later version.                                             |
+## |                                                                        |
+## | quix86 is distributed in the hope that it will be useful, but WITHOUT  |
+## | ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or  |
+## | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License  |
+## | for more details.                                                      |
+## |                                                                        |
+## | You should have received a copy of the GNU General Public License      |
+## | along with quix86.  If not, see <http://www.gnu.org/licenses/>.        |
+## +------------------------------------------------------------------------+
+
+## TODO: check everything!
+
+## Reference: AMD Architecture Programmer's Manual 3: Tables A-6, A-7.
+## Reference: Intel Architecture Software Developer’s Manual 2B: Table A-6.
+
+Map M7 reg
+{
+    00: [ mod ]
+        00: SGDT    Ms+
+        01: SGDT    Ms+
+        02: SGDT    Ms+
+        03: [ rm ]
+            01: VMCALL      .           [ cs = 1 ]      # VMX
+            01: VMCALL      .           [ cs = 2 ]      # VMX
+            02: VMLAUNCH    .           [ cs = 1 ]      # VMX
+            02: VMLAUNCH    .           [ cs = 2 ]      # VMX
+            03: VMRESUME    .           [ cs = 1 ]      # VMX
+            03: VMRESUME    .           [ cs = 2 ]      # VMX
+            04: VMXOFF      .           [ cs = 1 ]      # VMX
+            04: VMXOFF      .           [ cs = 2 ]      # VMX
+    01: [ mod ]
+        00: SIDT    Ms+
+        01: SIDT    Ms+
+        02: SIDT    Ms+
+        03: MONITOR .                   [ rm = 0 ]
+        03: MWAIT   .                   [ rm = 1 ]
+    02: [ mod ]
+        00: LGDT    Ms-
+        01: LGDT    Ms-
+        02: LGDT    Ms-
+        03: [ rm ]
+            00: XGETBV  .
+            01: XSETBV  .
+    03: [ mod ]
+        00: LIDT    Ms-
+        01: LIDT    Ms-
+        02: LIDT    Ms-
+        03: [ rm ] 
+            00: VMRUN   .               [ cs = 1 ]      # SVM
+            00: VMRUN   .               [ cs = 2 ]      # SVM
+            01: VMMCALL .                               # SVM
+            02: VMLOAD  .               [ cs = 1 ]      # SVM
+            02: VMLOAD  .               [ cs = 2 ]      # SVM
+            03: VMSAVE  .               [ cs = 1 ]      # SVM
+            03: VMSAVE  .               [ cs = 2 ]      # SVM
+            04: STGI    .               [ cs = 1 ]      # SVM
+            04: STGI    .               [ cs = 2 ]      # SVM
+            05: CLGI    .               [ cs = 1 ]      # SVM
+            05: CLGI    .               [ cs = 2 ]      # SVM
+            06: SKINIT  .               [ cs = 1 ]      # SVM
+            06: SKINIT  .               [ cs = 2 ]      # SVM
+            07: INVLPGA .               [ cs = 1 ]      # SVM
+            07: INVLPGA .               [ cs = 2 ]      # SVM
+    04: SMSW        Mw+                 [ mod = 0 ]
+    04: SMSW        Mw+                 [ mod = 1 ]
+    04: SMSW        Mw+                 [ mod = 2 ]
+    04: SMSW        Rv+                 [ mod = 3 ]
+    06: LMSW        Ew-
+    07: [ mod ]
+        00: INVLPG  Mb-
+        01: INVLPG  Mb-
+        02: INVLPG  Mb-
+        03: [ rm ]
+            00: SWAPGS  .               [ cs = 2 ]
+            01: RDTSCP  .
+}

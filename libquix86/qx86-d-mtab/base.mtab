@@ -1,0 +1,192 @@
+## +------------------------------------------------------------------------+
+## | quix86                                                                 |
+## +------------------------------------------------------------------------+
+## | This file is part of quix86, an x86-64 instruction decoder.            |
+## |                                                                        |
+## | Copyright (C) 2011 Institute for System Programming of Russian Academy |
+## | of Sciences.                                                           |
+## |                                                                        |
+## | Contact e-mail: <unicluster@ispras.ru>.                                |
+## |                                                                        |
+## | quix86 is free software: you can redistribute it and/or modify it      |
+## | under the terms of the GNU General Public License as published by the  |
+## | Free Software Foundation, either version 3 of the License, or (at your |
+## | option) any later version.                                             |
+## |                                                                        |
+## | quix86 is distributed in the hope that it will be useful, but WITHOUT  |
+## | ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or  |
+## | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License  |
+## | for more details.                                                      |
+## |                                                                        |
+## | You should have received a copy of the GNU General Public License      |
+## | along with quix86.  If not, see <http://www.gnu.org/licenses/>.        |
+## +------------------------------------------------------------------------+
+
+## Default properties for base subset.
+*                   .
+
+## Base subset instructions.
+AAA                 .
+AAD                 .
+AAM                 .
+AAS                 .
+ADC                 INTERLOCKABLE
+ADD                 INTERLOCKABLE
+AND                 INTERLOCKABLE
+BOUND               .
+BSF                 .
+BSR                 .
+BSWAP               .
+BT                  .
+BTC                 INTERLOCKABLE
+BTR                 INTERLOCKABLE
+BTS                 INTERLOCKABLE
+CALL                FIXED_SIZE_64, $TRANSFER, $TRANSFER_LINKED
+CALLF               $TRANSFER, $TRANSFER_LINKED
+CBW                 +
+    CBW             <CWDE
+    CWDE            <CDQE, >CBW
+    CDQE            >CWDE
+CWD                 +
+    CWD             <CDQ
+    CDQ             <CQO, >CWD
+    CQO             >CDQ
+CLC                 .
+CLD                 .
+CLFLUSH             .
+CMC                 .
+CMOVcc              $CONDITIONAL_EXECUTION
+CMP                 .
+CMPS                +
+    CMPSB           REP, REPZ
+    CMPSW           REP, REPZ, <CMPSD
+    CMPSD           REP, REPZ, <CMPSQ, >CMPSW
+    CMPSQ           REP, REPZ, >CMPSD
+CMPXCHG             INTERLOCKABLE
+CMPXCHG8B           INTERLOCKABLE
+CMPXCHG16B          INTERLOCKABLE
+CPUID               .
+DAA                 .
+DAS                 .
+DEC                 INTERLOCKABLE
+DIV                 .
+ENTER               DEFAULT_SIZE_64
+IDIV                .
+IMUL                .
+IN                  .
+INC                 INTERLOCKABLE
+INS                 +
+    INSB            REP
+    INSW            REP, <INSD
+    INSD            REP, >INSW
+INT                 $TRANSFER, $TRANSFER_LINKED, $TRANSFER_SERVICE
+INTO                $CONDITIONAL_EXECUTION, $TRANSFER, $TRANSFER_LINKED, $TRANSFER_SERVICE
+Jcc                 FIXED_SIZE_64, $CONDITIONAL_EXECUTION, $TRANSFER
+JCXZ                +
+    JCXZ            FIXED_SIZE_64, $CONDITIONAL_EXECUTION, $TRANSFER
+    JECXZ           FIXED_SIZE_64, $CONDITIONAL_EXECUTION, $TRANSFER
+    JRCXZ           FIXED_SIZE_64, $CONDITIONAL_EXECUTION, $TRANSFER
+JMP                 FIXED_SIZE_64, $TRANSFER
+JMPF                $TRANSFER
+LAHF                .
+LsS                 +
+    LES             .
+    LCS             .
+    LSS             .
+    LDS             .
+    LFS             .
+    LGS             .
+LEA                 .
+LEAVE               DEFAULT_SIZE_64
+LFENCE              .
+LODS                +
+    LODSB           REP
+    LODSW           REP, <LODSD
+    LODSD           REP, <LODSQ, >LODSW
+    LODSQ           REP, >LODSD
+LOOPcc              +
+    LOOP            FIXED_SIZE_64, $CONDITIONAL_EXECUTION, $TRANSFER
+    LOOPZ           FIXED_SIZE_64, $CONDITIONAL_EXECUTION, $TRANSFER
+    LOOPNZ          FIXED_SIZE_64, $CONDITIONAL_EXECUTION, $TRANSFER
+LZCNT               .
+MFENCE              .
+MOV                 .
+MOVBE               .
+MOVD                .
+MOVNTI              .
+MOVS                +
+    MOVSB           REP
+    MOVSW           REP, <MOVSD
+    MOVSD           REP, <MOVSQ, >MOVSW
+    MOVSQ           REP, >MOVSD
+MOVSX               .
+MOVSXD              .
+MOVZX               .
+MUL                 .
+NEG                 INTERLOCKABLE
+NOP                 .
+NOT                 INTERLOCKABLE
+OR                  INTERLOCKABLE
+OUT                 .
+OUTS                +
+    OUTSB           REP
+    OUTSW           REP, <OUTSD
+    OUTSD           REP, >OUTSW
+PAUSE               .
+POP                 DEFAULT_SIZE_64
+POPA                +
+    POPA            <POPAD
+    POPAD           >POPA
+POPCNT              .
+POPF                +
+    POPF            DEFAULT_SIZE_64, <POPFD
+    POPFD           DEFAULT_SIZE_64, <POPFQ, >POPF
+    POPFQ           DEFAULT_SIZE_64, >POPFD
+PREFETCH            +
+    PREFETCH        .
+    PREFETCHW       .
+    PREFETCHNTA     .
+    PREFETCHT0      .
+    PREFETCHT1      .
+    PREFETCHT2      .
+PUSH                DEFAULT_SIZE_64
+PUSHA               +
+    PUSHA           <PUSHAD
+    PUSHAD          >PUSHA
+PUSHF               +
+    PUSHF           DEFAULT_SIZE_64, <PUSHFD
+    PUSHFD          DEFAULT_SIZE_64, <PUSHFQ, >PUSHF
+    PUSHFQ          DEFAULT_SIZE_64, >PUSHFD
+RCL                 .
+RCR                 .
+RET                 FIXED_SIZE_64, $TRANSFER, $TRANSFER_LINKED_BACK
+RETF                $TRANSFER, $TRANSFER_LINKED_BACK
+ROL                 .
+ROR                 .
+SAHF                .
+SAR                 .
+SBB                 INTERLOCKABLE
+SCAS                +
+    SCASB           REP, REPZ
+    SCASW           REP, REPZ, <SCASD
+    SCASD           REP, REPZ, <SCASQ, >SCASW
+    SCASQ           REP, REPZ, >SCASD
+SETcc               .
+SFENCE              .
+SHL                 .
+SHLD                .
+SHR                 .
+SHRD                .
+STC                 .
+STD                 .
+STOS                +
+    STOSB           REP
+    STOSW           REP, <STOSD
+    STOSD           REP, <STOSQ, >STOSW
+    STOSQ           REP, >STOSD
+SUB                 INTERLOCKABLE
+TEST                .
+XADD                INTERLOCKABLE
+XCHG                INTERLOCKABLE, IMPLICIT_LOCK
+XLAT                .
+XOR                 INTERLOCKABLE

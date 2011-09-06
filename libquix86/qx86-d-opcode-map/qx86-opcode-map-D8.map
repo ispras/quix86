@@ -1,0 +1,136 @@
+## +------------------------------------------------------------------------+
+## | quix86                                                                 |
+## +------------------------------------------------------------------------+
+## | This file is part of quix86, an x86-64 instruction decoder.            |
+## |                                                                        |
+## | Copyright (C) 2011 Institute for System Programming of Russian Academy |
+## | of Sciences.                                                           |
+## |                                                                        |
+## | Contact e-mail: <unicluster@ispras.ru>.                                |
+## |                                                                        |
+## | quix86 is free software: you can redistribute it and/or modify it      |
+## | under the terms of the GNU General Public License as published by the  |
+## | Free Software Foundation, either version 3 of the License, or (at your |
+## | option) any later version.                                             |
+## |                                                                        |
+## | quix86 is distributed in the hope that it will be useful, but WITHOUT  |
+## | ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or  |
+## | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License  |
+## | for more details.                                                      |
+## |                                                                        |
+## | You should have received a copy of the GNU General Public License      |
+## | along with quix86.  If not, see <http://www.gnu.org/licenses/>.        |
+## +------------------------------------------------------------------------+
+
+## Reference: AMD Architecture Programmer's Manual 3: Table A-10.
+
+## mem32real -> Mss (scalar single)
+## mem80real -> Mse (scalar double extended)
+## mem80dec -> Msb (scalar bcd)
+## mem14/28env -> todo
+## mem16 -> Mw
+## mem16int -> Mw
+## mem32int -> Md
+## mem64int -> Mq
+## mem64real -> Msd (scalar double)
+## mem98/108env -> todo
+
+Map D8 reg
+{
+    00: [ mod ]
+        00: FADD    Mss-
+        01: FADD    Mss-
+        02: FADD    Mss-
+        03: FADD    ST0* ST0-           [ rm = 00 ]
+        03: FADD    ST0* ST1-           [ rm = 01 ]
+        03: FADD    ST0* ST2-           [ rm = 02 ]
+        03: FADD    ST0* ST3-           [ rm = 03 ]
+        03: FADD    ST0* ST4-           [ rm = 04 ]
+        03: FADD    ST0* ST5-           [ rm = 05 ]
+        03: FADD    ST0* ST6-           [ rm = 06 ]
+        03: FADD    ST0* ST7-           [ rm = 07 ]
+    01: [ mod ]
+        00: FMUL    Mss-
+        01: FMUL    Mss-
+        02: FMUL    Mss-
+        03: FMUL    ST0* ST0-           [ rm = 00 ]
+        03: FMUL    ST0* ST1-           [ rm = 01 ]
+        03: FMUL    ST0* ST2-           [ rm = 02 ]
+        03: FMUL    ST0* ST3-           [ rm = 03 ]
+        03: FMUL    ST0* ST4-           [ rm = 04 ]
+        03: FMUL    ST0* ST5-           [ rm = 05 ]
+        03: FMUL    ST0* ST6-           [ rm = 06 ]
+        03: FMUL    ST0* ST7-           [ rm = 07 ]
+    02: [ mod ]
+        00: FCOM    Mss-
+        01: FCOM    Mss-
+        02: FCOM    Mss-
+        03: FCOM    ST0- ST0-           [ rm = 00 ]
+        03: FCOM    ST0- ST1-           [ rm = 01 ]
+        03: FCOM    ST0- ST2-           [ rm = 02 ]
+        03: FCOM    ST0- ST3-           [ rm = 03 ]
+        03: FCOM    ST0- ST4-           [ rm = 04 ]
+        03: FCOM    ST0- ST5-           [ rm = 05 ]
+        03: FCOM    ST0- ST6-           [ rm = 06 ]
+        03: FCOM    ST0- ST7-           [ rm = 07 ]
+    03: [ mod ]
+        00: FCOMP   Mss-
+        01: FCOMP   Mss-
+        02: FCOMP   Mss-
+        03: FCOMP   ST0- ST0-           [ rm = 00 ]
+        03: FCOMP   ST0- ST1-           [ rm = 01 ]
+        03: FCOMP   ST0- ST2-           [ rm = 02 ]
+        03: FCOMP   ST0- ST3-           [ rm = 03 ]
+        03: FCOMP   ST0- ST4-           [ rm = 04 ]
+        03: FCOMP   ST0- ST5-           [ rm = 05 ]
+        03: FCOMP   ST0- ST6-           [ rm = 06 ]
+        03: FCOMP   ST0- ST7-           [ rm = 07 ]
+    04: [ mod ]
+        00: FSUB    Mss-
+        01: FSUB    Mss-
+        02: FSUB    Mss-
+        03: FSUB    ST0* ST0-           [ rm = 00 ]
+        03: FSUB    ST0* ST1-           [ rm = 01 ]
+        03: FSUB    ST0* ST2-           [ rm = 02 ]
+        03: FSUB    ST0* ST3-           [ rm = 03 ]
+        03: FSUB    ST0* ST4-           [ rm = 04 ]
+        03: FSUB    ST0* ST5-           [ rm = 05 ]
+        03: FSUB    ST0* ST6-           [ rm = 06 ]
+        03: FSUB    ST0* ST7-           [ rm = 07 ]
+    05: [ mod ]
+        00: FSUBR   Mss-
+        01: FSUBR   Mss-
+        02: FSUBR   Mss-
+        03: FSUBR   ST0* ST0-           [ rm = 00 ]
+        03: FSUBR   ST0* ST1-           [ rm = 01 ]
+        03: FSUBR   ST0* ST2-           [ rm = 02 ]
+        03: FSUBR   ST0* ST3-           [ rm = 03 ]
+        03: FSUBR   ST0* ST4-           [ rm = 04 ]
+        03: FSUBR   ST0* ST5-           [ rm = 05 ]
+        03: FSUBR   ST0* ST6-           [ rm = 06 ]
+        03: FSUBR   ST0* ST7-           [ rm = 07 ]
+    06: [ mod ]
+        00: FDIV    Mss-
+        01: FDIV    Mss-
+        02: FDIV    Mss-
+        03: FDIV    ST0* ST0-           [ rm = 00 ]
+        03: FDIV    ST0* ST1-           [ rm = 01 ]
+        03: FDIV    ST0* ST2-           [ rm = 02 ]
+        03: FDIV    ST0* ST3-           [ rm = 03 ]
+        03: FDIV    ST0* ST4-           [ rm = 04 ]
+        03: FDIV    ST0* ST5-           [ rm = 05 ]
+        03: FDIV    ST0* ST6-           [ rm = 06 ]
+        03: FDIV    ST0* ST7-           [ rm = 07 ]
+    07: [ mod ]
+        00: FDIVR   Mss-
+        01: FDIVR   Mss-
+        02: FDIVR   Mss-
+        03: FDIVR   ST0* ST0-           [ rm = 00 ]
+        03: FDIVR   ST0* ST1-           [ rm = 01 ]
+        03: FDIVR   ST0* ST2-           [ rm = 02 ]
+        03: FDIVR   ST0* ST3-           [ rm = 03 ]
+        03: FDIVR   ST0* ST4-           [ rm = 04 ]
+        03: FDIVR   ST0* ST5-           [ rm = 05 ]
+        03: FDIVR   ST0* ST6-           [ rm = 06 ]
+        03: FDIVR   ST0* ST7-           [ rm = 07 ]
+}

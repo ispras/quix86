@@ -1,0 +1,118 @@
+## +------------------------------------------------------------------------+
+## | quix86                                                                 |
+## +------------------------------------------------------------------------+
+## | This file is part of quix86, an x86-64 instruction decoder.            |
+## |                                                                        |
+## | Copyright (C) 2011 Institute for System Programming of Russian Academy |
+## | of Sciences.                                                           |
+## |                                                                        |
+## | Contact e-mail: <unicluster@ispras.ru>.                                |
+## |                                                                        |
+## | quix86 is free software: you can redistribute it and/or modify it      |
+## | under the terms of the GNU General Public License as published by the  |
+## | Free Software Foundation, either version 3 of the License, or (at your |
+## | option) any later version.                                             |
+## |                                                                        |
+## | quix86 is distributed in the hope that it will be useful, but WITHOUT  |
+## | ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or  |
+## | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License  |
+## | for more details.                                                      |
+## |                                                                        |
+## | You should have received a copy of the GNU General Public License      |
+## | along with quix86.  If not, see <http://www.gnu.org/licenses/>.        |
+## +------------------------------------------------------------------------+
+
+## Reference: AMD Architecture Programmer's Manual 3: Table A-10.
+
+## mem32real -> Mss (scalar single)
+## mem80real -> Mse (scalar double extended)
+## mem80dec -> Msb (scalar bcd)
+## mem14/28env -> todo
+## mem16 -> Mw
+## mem16int -> Mw
+## mem32int -> Md
+## mem64int -> Mq
+## mem64real -> Msd (scalar double)
+## mem98/108env -> todo
+
+Map DC reg
+{
+    00: [ mod ]
+        00: FADD        Msd-
+        01: FADD        Msd-
+        02: FADD        Msd-
+        03: FADD        ST0* ST0-           [ rm = 00 ]
+        03: FADD        ST1* ST0-           [ rm = 01 ]
+        03: FADD        ST2* ST0-           [ rm = 02 ]
+        03: FADD        ST3* ST0-           [ rm = 03 ]
+        03: FADD        ST4* ST0-           [ rm = 04 ]
+        03: FADD        ST5* ST0-           [ rm = 05 ]
+        03: FADD        ST6* ST0-           [ rm = 06 ]
+        03: FADD        ST7* ST0-           [ rm = 07 ]
+    01: [ mod ]
+        00: FMUL        Msd-
+        01: FMUL        Msd-
+        02: FMUL        Msd-
+        03: FMUL        ST0* ST0-           [ rm = 00 ]
+        03: FMUL        ST1* ST0-           [ rm = 01 ]
+        03: FMUL        ST2* ST0-           [ rm = 02 ]
+        03: FMUL        ST3* ST0-           [ rm = 03 ]
+        03: FMUL        ST4* ST0-           [ rm = 04 ]
+        03: FMUL        ST5* ST0-           [ rm = 05 ]
+        03: FMUL        ST6* ST0-           [ rm = 06 ]
+        03: FMUL        ST7* ST0-           [ rm = 07 ]
+    02: FCOM            Msd-                [ mod = 0 ]
+    02: FCOM            Msd-                [ mod = 1 ]
+    02: FCOM            Msd-                [ mod = 2 ]
+    03: FCOMP           Msd-                [ mod = 0 ]
+    03: FCOMP           Msd-                [ mod = 1 ]
+    03: FCOMP           Msd-                [ mod = 2 ]
+    04: [ mod ]
+        00: FSUB        Msd-
+        01: FSUB        Msd-
+        02: FSUB        Msd-
+        03: FSUBR       ST0* ST0-           [ rm = 00 ]
+        03: FSUBR       ST1* ST0-           [ rm = 01 ]
+        03: FSUBR       ST2* ST0-           [ rm = 02 ]
+        03: FSUBR       ST3* ST0-           [ rm = 03 ]
+        03: FSUBR       ST4* ST0-           [ rm = 04 ]
+        03: FSUBR       ST5* ST0-           [ rm = 05 ]
+        03: FSUBR       ST6* ST0-           [ rm = 06 ]
+        03: FSUBR       ST7* ST0-           [ rm = 07 ]
+    05: [ mod ]
+        00: FSUBR       Msd-
+        01: FSUBR       Msd-
+        02: FSUBR       Msd-
+        03: FSUB        ST0* ST0-           [ rm = 00 ]
+        03: FSUB        ST1* ST0-           [ rm = 01 ]
+        03: FSUB        ST2* ST0-           [ rm = 02 ]
+        03: FSUB        ST3* ST0-           [ rm = 03 ]
+        03: FSUB        ST4* ST0-           [ rm = 04 ]
+        03: FSUB        ST5* ST0-           [ rm = 05 ]
+        03: FSUB        ST6* ST0-           [ rm = 06 ]
+        03: FSUB        ST7* ST0-           [ rm = 07 ]
+    06: [ mod ]
+        00: FDIV        Msd-
+        01: FDIV        Msd-
+        02: FDIV        Msd-
+        03: FDIVR       ST0* ST0-           [ rm = 00 ]
+        03: FDIVR       ST1* ST0-           [ rm = 01 ]
+        03: FDIVR       ST2* ST0-           [ rm = 02 ]
+        03: FDIVR       ST3* ST0-           [ rm = 03 ]
+        03: FDIVR       ST4* ST0-           [ rm = 04 ]
+        03: FDIVR       ST5* ST0-           [ rm = 05 ]
+        03: FDIVR       ST6* ST0-           [ rm = 06 ]
+        03: FDIVR       ST7* ST0-           [ rm = 07 ]
+    07: [ mod ]
+        00: FDIVR       Msd-
+        01: FDIVR       Msd-
+        02: FDIVR       Msd-
+        03: FDIV        ST0* ST0-           [ rm = 00 ]
+        03: FDIV        ST1* ST0-           [ rm = 01 ]
+        03: FDIV        ST2* ST0-           [ rm = 02 ]
+        03: FDIV        ST3* ST0-           [ rm = 03 ]
+        03: FDIV        ST4* ST0-           [ rm = 04 ]
+        03: FDIV        ST5* ST0-           [ rm = 05 ]
+        03: FDIV        ST6* ST0-           [ rm = 06 ]
+        03: FDIV        ST7* ST0-           [ rm = 07 ]
+}
