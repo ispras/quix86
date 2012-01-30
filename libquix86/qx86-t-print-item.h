@@ -33,10 +33,10 @@
  */
 struct qx86_print_item
 {
-    const qx86_uint8 *                  number;
+    QX86_CONST qx86_uint8 *             number;
     int                                 numberSize;
 
-    const char *                        string;
+    QX86_CONST char *                   string;
 };
 
 #endif /* QX86_T_PRINT_ITEM_H */

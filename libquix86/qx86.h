@@ -88,6 +88,11 @@
 #   define QX86_CONST                   const
 #   define QX86_INLINE                  inline
 #   define QX86_RESTRICT                restrict
+#elif defined(__GNUC__) && (__GNUC__ >= 4)
+    /* GNU C supported. */
+#   define QX86_CONST                   const
+#   define QX86_INLINE                  inline
+#   define QX86_RESTRICT                restrict
 #elif defined(__cplusplus)
     /* C++ mode supports const and inline.  */
 #   define QX86_CONST                   const

@@ -32,7 +32,7 @@ qx86_print(qx86_print_item *items, char *buffer, int *bufferSize)
     QX86_CONST qx86_uint8 *             x;
 
     /* XXX */
-    static const char                   hexDigits[16]
+    static QX86_CONST char              hexDigits[16]
                                         =
     {
         '0', '1', '2', '3',             '4', '5', '6', '7',

@@ -33,10 +33,10 @@
  */
 struct qx86_stuple
 {
-    const char *                        referenceName;
-    const char *                        name;
+    QX86_CONST char *                   referenceName;
+    QX86_CONST char *                   name;
 
-    const char *                        atoms[4];
+    QX86_CONST char *                   atoms[4];
     int                                 sizes[4];
 };
 

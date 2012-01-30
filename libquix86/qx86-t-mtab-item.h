@@ -33,8 +33,8 @@
  */
 struct qx86_mtab_item
 {
-    const char *                        referenceName;
-    const char *                        name;
+    QX86_CONST char *                   referenceName;
+    QX86_CONST char *                   name;
 
     qx86_uint8                          attributes;
     qx86_uint8                          iclass;

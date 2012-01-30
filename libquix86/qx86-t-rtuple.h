@@ -33,8 +33,8 @@
  */
 struct qx86_rtuple
 {
-    const char *                        referenceName;
-    const char *                        name;
+    QX86_CONST char *                   referenceName;
+    QX86_CONST char *                   name;
 
     int                                 rindexes[12];
 };

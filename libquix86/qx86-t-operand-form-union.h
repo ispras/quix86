@@ -36,7 +36,7 @@
  */
 union qx86_operand_form_union
 {
-    const void *                        initializer[2];
+    QX86_CONST void *                   initializer[2];
 
     qx86_operand_form_amode             a;
     qx86_operand_form_rtuple            r;
