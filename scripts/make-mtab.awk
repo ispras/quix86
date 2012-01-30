@@ -266,17 +266,17 @@ function printHeader(fileName, i, x)
     print "   | Contact e-mail: <unicluster@ispras.ru>.                                |"       > fileName
     print "   |                                                                        |"       > fileName
     print "   | quix86 is free software: you can redistribute it and/or modify it      |"       > fileName
-    print "   | under the terms of the GNU General Public License as published by the  |"       > fileName
-    print "   | Free Software Foundation, either version 3 of the License, or (at your |"       > fileName
-    print "   | option) any later version.                                             |"       > fileName
+    print "   | under the terms of the GNU Lesser General Public License as published  |"       > fileName
+    print "   | by the Free Software Foundation, either version 3 of the License, or   |"       > fileName
+    print "   | (at your option) any later version.                                    |"       > fileName
     print "   |                                                                        |"       > fileName
     print "   | quix86 is distributed in the hope that it will be useful, but WITHOUT  |"       > fileName
     print "   | ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or  |"       > fileName
-    print "   | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License  |"       > fileName
-    print "   | for more details.                                                      |"       > fileName
+    print "   | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public   |"       > fileName
+    print "   | License for more details.                                              |"       > fileName
     print "   |                                                                        |"       > fileName
-    print "   | You should have received a copy of the GNU General Public License      |"       > fileName
-    print "   | along with quix86.  If not, see <http://www.gnu.org/licenses/>.        |"       > fileName
+    print "   | You should have received a copy of the GNU Lesser General Public       |"       > fileName
+    print "   | License along with quix86. If not, see <http://www.gnu.org/licenses/>. |"       > fileName
     print "   +------------------------------------------------------------------------+ */"    > fileName
     print ""                                                                                    > fileName
 
