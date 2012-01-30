@@ -12,17 +12,17 @@
 // | Contact e-mail: <unicluster@ispras.ru>.                                |
 // |                                                                        |
 // | quix86 is free software: you can redistribute it and/or modify it      |
-// | under the terms of the GNU General Public License as published by the  |
-// | Free Software Foundation, either version 3 of the License, or (at your |
-// | option) any later version.                                             |
+// | under the terms of the GNU Lesser General Public License as published  |
+// | by the  Free Software Foundation, either version 3 of the License, or  |
+// | (at your option) any later version.                                    |
 // |                                                                        |
 // | quix86 is distributed in the hope that it will be useful, but WITHOUT  |
 // | ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or  |
-// | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License  |
-// | for more details.                                                      |
+// | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public   |
+// | License for more details.                                              |
 // |                                                                        |
-// | You should have received a copy of the GNU General Public License      |
-// | along with quix86.  If not, see <http://www.gnu.org/licenses/>.        |
+// | You should have received a copy of the GNU Lesser General Public       |
+// | License along with quix86. If not, see <http://www.gnu.org/licenses/>. |
 // +------------------------------------------------------------------------+
 
 // Reference: AMD Architecture Programmer's Manual 3: Table A-6.
@@ -405,17 +405,17 @@ static qx86_opcode_map                  qx86_opcode_map_M9
 // | Contact e-mail: <unicluster@ispras.ru>.                                |
 // |                                                                        |
 // | quix86 is free software: you can redistribute it and/or modify it      |
-// | under the terms of the GNU General Public License as published by the  |
-// | Free Software Foundation, either version 3 of the License, or (at your |
-// | option) any later version.                                             |
+// | under the terms of the GNU Lesser General Public License as published  |
+// | by the  Free Software Foundation, either version 3 of the License, or  |
+// | (at your option) any later version.                                    |
 // |                                                                        |
 // | quix86 is distributed in the hope that it will be useful, but WITHOUT  |
 // | ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or  |
-// | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License  |
-// | for more details.                                                      |
+// | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public   |
+// | License for more details.                                              |
 // |                                                                        |
-// | You should have received a copy of the GNU General Public License      |
-// | along with quix86.  If not, see <http://www.gnu.org/licenses/>.        |
+// | You should have received a copy of the GNU Lesser General Public       |
+// | License along with quix86. If not, see <http://www.gnu.org/licenses/>. |
 // +------------------------------------------------------------------------+
 
 // Reference: AMD Architecture Programmer's Manual 3: Table A-6.
@@ -535,17 +535,17 @@ static qx86_opcode_map                  qx86_opcode_map_M8
 // | Contact e-mail: <unicluster@ispras.ru>.                                |
 // |                                                                        |
 // | quix86 is free software: you can redistribute it and/or modify it      |
-// | under the terms of the GNU General Public License as published by the  |
-// | Free Software Foundation, either version 3 of the License, or (at your |
-// | option) any later version.                                             |
+// | under the terms of the GNU Lesser General Public License as published  |
+// | by the  Free Software Foundation, either version 3 of the License, or  |
+// | (at your option) any later version.                                    |
 // |                                                                        |
 // | quix86 is distributed in the hope that it will be useful, but WITHOUT  |
 // | ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or  |
-// | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License  |
-// | for more details.                                                      |
+// | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public   |
+// | License for more details.                                              |
 // |                                                                        |
-// | You should have received a copy of the GNU General Public License      |
-// | along with quix86.  If not, see <http://www.gnu.org/licenses/>.        |
+// | You should have received a copy of the GNU Lesser General Public       |
+// | License along with quix86. If not, see <http://www.gnu.org/licenses/>. |
 // +------------------------------------------------------------------------+
 
 // Reference: AMD Architecture Programmer's Manual 3: Table A-6.
@@ -605,17 +605,17 @@ static qx86_opcode_map                  qx86_opcode_map_M10
 // | Contact e-mail: <unicluster@ispras.ru>.                                |
 // |                                                                        |
 // | quix86 is free software: you can redistribute it and/or modify it      |
-// | under the terms of the GNU General Public License as published by the  |
-// | Free Software Foundation, either version 3 of the License, or (at your |
-// | option) any later version.                                             |
+// | under the terms of the GNU Lesser General Public License as published  |
+// | by the  Free Software Foundation, either version 3 of the License, or  |
+// | (at your option) any later version.                                    |
 // |                                                                        |
 // | quix86 is distributed in the hope that it will be useful, but WITHOUT  |
 // | ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or  |
-// | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License  |
-// | for more details.                                                      |
+// | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public   |
+// | License for more details.                                              |
 // |                                                                        |
-// | You should have received a copy of the GNU General Public License      |
-// | along with quix86.  If not, see <http://www.gnu.org/licenses/>.        |
+// | You should have received a copy of the GNU Lesser General Public       |
+// | License along with quix86. If not, see <http://www.gnu.org/licenses/>. |
 // +------------------------------------------------------------------------+
 
 // Reference: AMD Architecture Programmer's Manual 3: Tables A-6, A-7.
@@ -989,17 +989,17 @@ static qx86_opcode_map                  qx86_opcode_map_M15
 // | Contact e-mail: <unicluster@ispras.ru>.                                |
 // |                                                                        |
 // | quix86 is free software: you can redistribute it and/or modify it      |
-// | under the terms of the GNU General Public License as published by the  |
-// | Free Software Foundation, either version 3 of the License, or (at your |
-// | option) any later version.                                             |
+// | under the terms of the GNU Lesser General Public License as published  |
+// | by the  Free Software Foundation, either version 3 of the License, or  |
+// | (at your option) any later version.                                    |
 // |                                                                        |
 // | quix86 is distributed in the hope that it will be useful, but WITHOUT  |
 // | ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or  |
-// | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License  |
-// | for more details.                                                      |
+// | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public   |
+// | License for more details.                                              |
 // |                                                                        |
-// | You should have received a copy of the GNU General Public License      |
-// | along with quix86.  If not, see <http://www.gnu.org/licenses/>.        |
+// | You should have received a copy of the GNU Lesser General Public       |
+// | License along with quix86. If not, see <http://www.gnu.org/licenses/>. |
 // +------------------------------------------------------------------------+
 
 // TODO: this separate map is present only on AMD.
@@ -1109,17 +1109,17 @@ static qx86_opcode_map                  qx86_opcode_map_M17
 // | Contact e-mail: <unicluster@ispras.ru>.                                |
 // |                                                                        |
 // | quix86 is free software: you can redistribute it and/or modify it      |
-// | under the terms of the GNU General Public License as published by the  |
-// | Free Software Foundation, either version 3 of the License, or (at your |
-// | option) any later version.                                             |
+// | under the terms of the GNU Lesser General Public License as published  |
+// | by the  Free Software Foundation, either version 3 of the License, or  |
+// | (at your option) any later version.                                    |
 // |                                                                        |
 // | quix86 is distributed in the hope that it will be useful, but WITHOUT  |
 // | ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or  |
-// | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License  |
-// | for more details.                                                      |
+// | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public   |
+// | License for more details.                                              |
 // |                                                                        |
-// | You should have received a copy of the GNU General Public License      |
-// | along with quix86.  If not, see <http://www.gnu.org/licenses/>.        |
+// | You should have received a copy of the GNU Lesser General Public       |
+// | License along with quix86. If not, see <http://www.gnu.org/licenses/>. |
 // +------------------------------------------------------------------------+
 
 // Reference: AMD Architecture Programmer's Manual 3: Table A-6.
@@ -1378,17 +1378,17 @@ static qx86_opcode_map                  qx86_opcode_map_M14
 // | Contact e-mail: <unicluster@ispras.ru>.                                |
 // |                                                                        |
 // | quix86 is free software: you can redistribute it and/or modify it      |
-// | under the terms of the GNU General Public License as published by the  |
-// | Free Software Foundation, either version 3 of the License, or (at your |
-// | option) any later version.                                             |
+// | under the terms of the GNU Lesser General Public License as published  |
+// | by the  Free Software Foundation, either version 3 of the License, or  |
+// | (at your option) any later version.                                    |
 // |                                                                        |
 // | quix86 is distributed in the hope that it will be useful, but WITHOUT  |
 // | ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or  |
-// | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License  |
-// | for more details.                                                      |
+// | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public   |
+// | License for more details.                                              |
 // |                                                                        |
-// | You should have received a copy of the GNU General Public License      |
-// | along with quix86.  If not, see <http://www.gnu.org/licenses/>.        |
+// | You should have received a copy of the GNU Lesser General Public       |
+// | License along with quix86. If not, see <http://www.gnu.org/licenses/>. |
 // +------------------------------------------------------------------------+
 
 // Reference: AMD Architecture Programmer's Manual 3: Table A-6.
@@ -1620,17 +1620,17 @@ static qx86_opcode_map                  qx86_opcode_map_M13
 // | Contact e-mail: <unicluster@ispras.ru>.                                |
 // |                                                                        |
 // | quix86 is free software: you can redistribute it and/or modify it      |
-// | under the terms of the GNU General Public License as published by the  |
-// | Free Software Foundation, either version 3 of the License, or (at your |
-// | option) any later version.                                             |
+// | under the terms of the GNU Lesser General Public License as published  |
+// | by the  Free Software Foundation, either version 3 of the License, or  |
+// | (at your option) any later version.                                    |
 // |                                                                        |
 // | quix86 is distributed in the hope that it will be useful, but WITHOUT  |
 // | ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or  |
-// | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License  |
-// | for more details.                                                      |
+// | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public   |
+// | License for more details.                                              |
 // |                                                                        |
-// | You should have received a copy of the GNU General Public License      |
-// | along with quix86.  If not, see <http://www.gnu.org/licenses/>.        |
+// | You should have received a copy of the GNU Lesser General Public       |
+// | License along with quix86. If not, see <http://www.gnu.org/licenses/>. |
 // +------------------------------------------------------------------------+
 
 // Reference: AMD Architecture Programmer's Manual 3: Table A-6.
@@ -1862,17 +1862,17 @@ static qx86_opcode_map                  qx86_opcode_map_M12
 // | Contact e-mail: <unicluster@ispras.ru>.                                |
 // |                                                                        |
 // | quix86 is free software: you can redistribute it and/or modify it      |
-// | under the terms of the GNU General Public License as published by the  |
-// | Free Software Foundation, either version 3 of the License, or (at your |
-// | option) any later version.                                             |
+// | under the terms of the GNU Lesser General Public License as published  |
+// | by the  Free Software Foundation, either version 3 of the License, or  |
+// | (at your option) any later version.                                    |
 // |                                                                        |
 // | quix86 is distributed in the hope that it will be useful, but WITHOUT  |
 // | ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or  |
-// | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License  |
-// | for more details.                                                      |
+// | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public   |
+// | License for more details.                                              |
 // |                                                                        |
-// | You should have received a copy of the GNU General Public License      |
-// | along with quix86.  If not, see <http://www.gnu.org/licenses/>.        |
+// | You should have received a copy of the GNU Lesser General Public       |
+// | License along with quix86. If not, see <http://www.gnu.org/licenses/>. |
 // +------------------------------------------------------------------------+
 
 // Reference: Intel Architecture Software Developer’s Manual 2B: Table A-5.
@@ -4618,17 +4618,17 @@ static qx86_opcode_map                  qx86_opcode_map_3B
 // | Contact e-mail: <unicluster@ispras.ru>.                                |
 // |                                                                        |
 // | quix86 is free software: you can redistribute it and/or modify it      |
-// | under the terms of the GNU General Public License as published by the  |
-// | Free Software Foundation, either version 3 of the License, or (at your |
-// | option) any later version.                                             |
+// | under the terms of the GNU Lesser General Public License as published  |
+// | by the  Free Software Foundation, either version 3 of the License, or  |
+// | (at your option) any later version.                                    |
 // |                                                                        |
 // | quix86 is distributed in the hope that it will be useful, but WITHOUT  |
 // | ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or  |
-// | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License  |
-// | for more details.                                                      |
+// | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public   |
+// | License for more details.                                              |
 // |                                                                        |
-// | You should have received a copy of the GNU General Public License      |
-// | along with quix86.  If not, see <http://www.gnu.org/licenses/>.        |
+// | You should have received a copy of the GNU Lesser General Public       |
+// | License along with quix86. If not, see <http://www.gnu.org/licenses/>. |
 // +------------------------------------------------------------------------+
 
 // Reference: Intel Architecture Software Developer’s Manual 2B: Table A-4.
@@ -9310,17 +9310,17 @@ static qx86_opcode_map                  qx86_opcode_map_3A
 // | Contact e-mail: <unicluster@ispras.ru>.                                |
 // |                                                                        |
 // | quix86 is free software: you can redistribute it and/or modify it      |
-// | under the terms of the GNU General Public License as published by the  |
-// | Free Software Foundation, either version 3 of the License, or (at your |
-// | option) any later version.                                             |
+// | under the terms of the GNU Lesser General Public License as published  |
+// | by the  Free Software Foundation, either version 3 of the License, or  |
+// | (at your option) any later version.                                    |
 // |                                                                        |
 // | quix86 is distributed in the hope that it will be useful, but WITHOUT  |
 // | ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or  |
-// | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License  |
-// | for more details.                                                      |
+// | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public   |
+// | License for more details.                                              |
 // |                                                                        |
-// | You should have received a copy of the GNU General Public License      |
-// | along with quix86.  If not, see <http://www.gnu.org/licenses/>.        |
+// | You should have received a copy of the GNU Lesser General Public       |
+// | License along with quix86. If not, see <http://www.gnu.org/licenses/>. |
 // +------------------------------------------------------------------------+
 
 // Reference: AMD Architecture Programmer's Manual 3: Tables A-6, A-7.
@@ -9434,17 +9434,17 @@ static qx86_opcode_map                  qx86_opcode_map_M16
 // | Contact e-mail: <unicluster@ispras.ru>.                                |
 // |                                                                        |
 // | quix86 is free software: you can redistribute it and/or modify it      |
-// | under the terms of the GNU General Public License as published by the  |
-// | Free Software Foundation, either version 3 of the License, or (at your |
-// | option) any later version.                                             |
+// | under the terms of the GNU Lesser General Public License as published  |
+// | by the  Free Software Foundation, either version 3 of the License, or  |
+// | (at your option) any later version.                                    |
 // |                                                                        |
 // | quix86 is distributed in the hope that it will be useful, but WITHOUT  |
 // | ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or  |
-// | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License  |
-// | for more details.                                                      |
+// | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public   |
+// | License for more details.                                              |
 // |                                                                        |
-// | You should have received a copy of the GNU General Public License      |
-// | along with quix86.  If not, see <http://www.gnu.org/licenses/>.        |
+// | You should have received a copy of the GNU Lesser General Public       |
+// | License along with quix86. If not, see <http://www.gnu.org/licenses/>. |
 // +------------------------------------------------------------------------+
 
 // TODO: this separate map is present only on AMD.
@@ -9589,17 +9589,17 @@ static qx86_opcode_map                  qx86_opcode_map_MP
 // | Contact e-mail: <unicluster@ispras.ru>.                                |
 // |                                                                        |
 // | quix86 is free software: you can redistribute it and/or modify it      |
-// | under the terms of the GNU General Public License as published by the  |
-// | Free Software Foundation, either version 3 of the License, or (at your |
-// | option) any later version.                                             |
+// | under the terms of the GNU Lesser General Public License as published  |
+// | by the  Free Software Foundation, either version 3 of the License, or  |
+// | (at your option) any later version.                                    |
 // |                                                                        |
 // | quix86 is distributed in the hope that it will be useful, but WITHOUT  |
 // | ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or  |
-// | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License  |
-// | for more details.                                                      |
+// | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public   |
+// | License for more details.                                              |
 // |                                                                        |
-// | You should have received a copy of the GNU General Public License      |
-// | along with quix86.  If not, see <http://www.gnu.org/licenses/>.        |
+// | You should have received a copy of the GNU Lesser General Public       |
+// | License along with quix86. If not, see <http://www.gnu.org/licenses/>. |
 // +------------------------------------------------------------------------+
 
 // TODO: check everything!
@@ -10603,17 +10603,17 @@ static qx86_opcode_map                  qx86_opcode_map_M7
 // | Contact e-mail: <unicluster@ispras.ru>.                                |
 // |                                                                        |
 // | quix86 is free software: you can redistribute it and/or modify it      |
-// | under the terms of the GNU General Public License as published by the  |
-// | Free Software Foundation, either version 3 of the License, or (at your |
-// | option) any later version.                                             |
+// | under the terms of the GNU Lesser General Public License as published  |
+// | by the  Free Software Foundation, either version 3 of the License, or  |
+// | (at your option) any later version.                                    |
 // |                                                                        |
 // | quix86 is distributed in the hope that it will be useful, but WITHOUT  |
 // | ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or  |
-// | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License  |
-// | for more details.                                                      |
+// | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public   |
+// | License for more details.                                              |
 // |                                                                        |
-// | You should have received a copy of the GNU General Public License      |
-// | along with quix86.  If not, see <http://www.gnu.org/licenses/>.        |
+// | You should have received a copy of the GNU Lesser General Public       |
+// | License along with quix86. If not, see <http://www.gnu.org/licenses/>. |
 // +------------------------------------------------------------------------+
 
 // Reference: AMD Architecture Programmer's Manual 3: Table A-6.
@@ -10847,17 +10847,17 @@ static qx86_opcode_map                  qx86_opcode_map_M6
 // | Contact e-mail: <unicluster@ispras.ru>.                                |
 // |                                                                        |
 // | quix86 is free software: you can redistribute it and/or modify it      |
-// | under the terms of the GNU General Public License as published by the  |
-// | Free Software Foundation, either version 3 of the License, or (at your |
-// | option) any later version.                                             |
+// | under the terms of the GNU Lesser General Public License as published  |
+// | by the  Free Software Foundation, either version 3 of the License, or  |
+// | (at your option) any later version.                                    |
 // |                                                                        |
 // | quix86 is distributed in the hope that it will be useful, but WITHOUT  |
 // | ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or  |
-// | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License  |
-// | for more details.                                                      |
+// | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public   |
+// | License for more details.                                              |
 // |                                                                        |
-// | You should have received a copy of the GNU General Public License      |
-// | along with quix86.  If not, see <http://www.gnu.org/licenses/>.        |
+// | You should have received a copy of the GNU Lesser General Public       |
+// | License along with quix86. If not, see <http://www.gnu.org/licenses/>. |
 // +------------------------------------------------------------------------+
 
 // Reference: AMD Architecture Programmer's Manual 3: Table A-6.
@@ -10987,17 +10987,17 @@ static qx86_opcode_map                  qx86_opcode_map_M5
 // | Contact e-mail: <unicluster@ispras.ru>.                                |
 // |                                                                        |
 // | quix86 is free software: you can redistribute it and/or modify it      |
-// | under the terms of the GNU General Public License as published by the  |
-// | Free Software Foundation, either version 3 of the License, or (at your |
-// | option) any later version.                                             |
+// | under the terms of the GNU Lesser General Public License as published  |
+// | by the  Free Software Foundation, either version 3 of the License, or  |
+// | (at your option) any later version.                                    |
 // |                                                                        |
 // | quix86 is distributed in the hope that it will be useful, but WITHOUT  |
 // | ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or  |
-// | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License  |
-// | for more details.                                                      |
+// | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public   |
+// | License for more details.                                              |
 // |                                                                        |
-// | You should have received a copy of the GNU General Public License      |
-// | along with quix86.  If not, see <http://www.gnu.org/licenses/>.        |
+// | You should have received a copy of the GNU Lesser General Public       |
+// | License along with quix86. If not, see <http://www.gnu.org/licenses/>. |
 // +------------------------------------------------------------------------+
 
 // Reference: AMD Architecture Programmer's Manual 3: Table A-6.
@@ -11063,17 +11063,17 @@ static qx86_opcode_map                  qx86_opcode_map_M4
 // | Contact e-mail: <unicluster@ispras.ru>.                                |
 // |                                                                        |
 // | quix86 is free software: you can redistribute it and/or modify it      |
-// | under the terms of the GNU General Public License as published by the  |
-// | Free Software Foundation, either version 3 of the License, or (at your |
-// | option) any later version.                                             |
+// | under the terms of the GNU Lesser General Public License as published  |
+// | by the  Free Software Foundation, either version 3 of the License, or  |
+// | (at your option) any later version.                                    |
 // |                                                                        |
 // | quix86 is distributed in the hope that it will be useful, but WITHOUT  |
 // | ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or  |
-// | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License  |
-// | for more details.                                                      |
+// | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public   |
+// | License for more details.                                              |
 // |                                                                        |
-// | You should have received a copy of the GNU General Public License      |
-// | along with quix86.  If not, see <http://www.gnu.org/licenses/>.        |
+// | You should have received a copy of the GNU Lesser General Public       |
+// | License along with quix86. If not, see <http://www.gnu.org/licenses/>. |
 // +------------------------------------------------------------------------+
 
 // Reference: AMD Architecture Programmer's Manual 3: Table A-6.
@@ -19593,17 +19593,17 @@ static qx86_opcode_map                  qx86_opcode_map_M3
 // | Contact e-mail: <unicluster@ispras.ru>.                                |
 // |                                                                        |
 // | quix86 is free software: you can redistribute it and/or modify it      |
-// | under the terms of the GNU General Public License as published by the  |
-// | Free Software Foundation, either version 3 of the License, or (at your |
-// | option) any later version.                                             |
+// | under the terms of the GNU Lesser General Public License as published  |
+// | by the  Free Software Foundation, either version 3 of the License, or  |
+// | (at your option) any later version.                                    |
 // |                                                                        |
 // | quix86 is distributed in the hope that it will be useful, but WITHOUT  |
 // | ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or  |
-// | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License  |
-// | for more details.                                                      |
+// | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public   |
+// | License for more details.                                              |
 // |                                                                        |
-// | You should have received a copy of the GNU General Public License      |
-// | along with quix86.  If not, see <http://www.gnu.org/licenses/>.        |
+// | You should have received a copy of the GNU Lesser General Public       |
+// | License along with quix86. If not, see <http://www.gnu.org/licenses/>. |
 // +------------------------------------------------------------------------+
 
 // Reference: AMD Architecture Programmer's Manual 3: Table A-10.
@@ -20510,17 +20510,17 @@ static qx86_opcode_map                  qx86_opcode_map_DF
 // | Contact e-mail: <unicluster@ispras.ru>.                                |
 // |                                                                        |
 // | quix86 is free software: you can redistribute it and/or modify it      |
-// | under the terms of the GNU General Public License as published by the  |
-// | Free Software Foundation, either version 3 of the License, or (at your |
-// | option) any later version.                                             |
+// | under the terms of the GNU Lesser General Public License as published  |
+// | by the  Free Software Foundation, either version 3 of the License, or  |
+// | (at your option) any later version.                                    |
 // |                                                                        |
 // | quix86 is distributed in the hope that it will be useful, but WITHOUT  |
 // | ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or  |
-// | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License  |
-// | for more details.                                                      |
+// | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public   |
+// | License for more details.                                              |
 // |                                                                        |
-// | You should have received a copy of the GNU General Public License      |
-// | along with quix86.  If not, see <http://www.gnu.org/licenses/>.        |
+// | You should have received a copy of the GNU Lesser General Public       |
+// | License along with quix86. If not, see <http://www.gnu.org/licenses/>. |
 // +------------------------------------------------------------------------+
 
 // Reference: AMD Architecture Programmer's Manual 3: Table A-10.
@@ -22072,17 +22072,17 @@ static qx86_opcode_map                  qx86_opcode_map_DE
 // | Contact e-mail: <unicluster@ispras.ru>.                                |
 // |                                                                        |
 // | quix86 is free software: you can redistribute it and/or modify it      |
-// | under the terms of the GNU General Public License as published by the  |
-// | Free Software Foundation, either version 3 of the License, or (at your |
-// | option) any later version.                                             |
+// | under the terms of the GNU Lesser General Public License as published  |
+// | by the  Free Software Foundation, either version 3 of the License, or  |
+// | (at your option) any later version.                                    |
 // |                                                                        |
 // | quix86 is distributed in the hope that it will be useful, but WITHOUT  |
 // | ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or  |
-// | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License  |
-// | for more details.                                                      |
+// | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public   |
+// | License for more details.                                              |
 // |                                                                        |
-// | You should have received a copy of the GNU General Public License      |
-// | along with quix86.  If not, see <http://www.gnu.org/licenses/>.        |
+// | You should have received a copy of the GNU Lesser General Public       |
+// | License along with quix86. If not, see <http://www.gnu.org/licenses/>. |
 // +------------------------------------------------------------------------+
 
 // Reference: AMD Architecture Programmer's Manual 3: Table A-10.
@@ -23235,17 +23235,17 @@ static qx86_opcode_map                  qx86_opcode_map_DD
 // | Contact e-mail: <unicluster@ispras.ru>.                                |
 // |                                                                        |
 // | quix86 is free software: you can redistribute it and/or modify it      |
-// | under the terms of the GNU General Public License as published by the  |
-// | Free Software Foundation, either version 3 of the License, or (at your |
-// | option) any later version.                                             |
+// | under the terms of the GNU Lesser General Public License as published  |
+// | by the  Free Software Foundation, either version 3 of the License, or  |
+// | (at your option) any later version.                                    |
 // |                                                                        |
 // | quix86 is distributed in the hope that it will be useful, but WITHOUT  |
 // | ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or  |
-// | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License  |
-// | for more details.                                                      |
+// | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public   |
+// | License for more details.                                              |
 // |                                                                        |
-// | You should have received a copy of the GNU General Public License      |
-// | along with quix86.  If not, see <http://www.gnu.org/licenses/>.        |
+// | You should have received a copy of the GNU Lesser General Public       |
+// | License along with quix86. If not, see <http://www.gnu.org/licenses/>. |
 // +------------------------------------------------------------------------+
 
 // Reference: AMD Architecture Programmer's Manual 3: Table A-10.
@@ -24751,17 +24751,17 @@ static qx86_opcode_map                  qx86_opcode_map_DC
 // | Contact e-mail: <unicluster@ispras.ru>.                                |
 // |                                                                        |
 // | quix86 is free software: you can redistribute it and/or modify it      |
-// | under the terms of the GNU General Public License as published by the  |
-// | Free Software Foundation, either version 3 of the License, or (at your |
-// | option) any later version.                                             |
+// | under the terms of the GNU Lesser General Public License as published  |
+// | by the  Free Software Foundation, either version 3 of the License, or  |
+// | (at your option) any later version.                                    |
 // |                                                                        |
 // | quix86 is distributed in the hope that it will be useful, but WITHOUT  |
 // | ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or  |
-// | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License  |
-// | for more details.                                                      |
+// | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public   |
+// | License for more details.                                              |
 // |                                                                        |
-// | You should have received a copy of the GNU General Public License      |
-// | along with quix86.  If not, see <http://www.gnu.org/licenses/>.        |
+// | You should have received a copy of the GNU Lesser General Public       |
+// | License along with quix86. If not, see <http://www.gnu.org/licenses/>. |
 // +------------------------------------------------------------------------+
 
 // Reference: AMD Architecture Programmer's Manual 3: Table A-10.
@@ -26256,17 +26256,17 @@ static qx86_opcode_map                  qx86_opcode_map_DB
 // | Contact e-mail: <unicluster@ispras.ru>.                                |
 // |                                                                        |
 // | quix86 is free software: you can redistribute it and/or modify it      |
-// | under the terms of the GNU General Public License as published by the  |
-// | Free Software Foundation, either version 3 of the License, or (at your |
-// | option) any later version.                                             |
+// | under the terms of the GNU Lesser General Public License as published  |
+// | by the  Free Software Foundation, either version 3 of the License, or  |
+// | (at your option) any later version.                                    |
 // |                                                                        |
 // | quix86 is distributed in the hope that it will be useful, but WITHOUT  |
 // | ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or  |
-// | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License  |
-// | for more details.                                                      |
+// | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public   |
+// | License for more details.                                              |
 // |                                                                        |
-// | You should have received a copy of the GNU General Public License      |
-// | along with quix86.  If not, see <http://www.gnu.org/licenses/>.        |
+// | You should have received a copy of the GNU Lesser General Public       |
+// | License along with quix86. If not, see <http://www.gnu.org/licenses/>. |
 // +------------------------------------------------------------------------+
 
 // Reference: AMD Architecture Programmer's Manual 3: Table A-10.
@@ -27492,17 +27492,17 @@ static qx86_opcode_map                  qx86_opcode_map_DA
 // | Contact e-mail: <unicluster@ispras.ru>.                                |
 // |                                                                        |
 // | quix86 is free software: you can redistribute it and/or modify it      |
-// | under the terms of the GNU General Public License as published by the  |
-// | Free Software Foundation, either version 3 of the License, or (at your |
-// | option) any later version.                                             |
+// | under the terms of the GNU Lesser General Public License as published  |
+// | by the  Free Software Foundation, either version 3 of the License, or  |
+// | (at your option) any later version.                                    |
 // |                                                                        |
 // | quix86 is distributed in the hope that it will be useful, but WITHOUT  |
 // | ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or  |
-// | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License  |
-// | for more details.                                                      |
+// | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public   |
+// | License for more details.                                              |
 // |                                                                        |
-// | You should have received a copy of the GNU General Public License      |
-// | along with quix86.  If not, see <http://www.gnu.org/licenses/>.        |
+// | You should have received a copy of the GNU Lesser General Public       |
+// | License along with quix86. If not, see <http://www.gnu.org/licenses/>. |
 // +------------------------------------------------------------------------+
 
 // Reference: AMD Architecture Programmer's Manual 3: Table A-10.
@@ -28626,17 +28626,17 @@ static qx86_opcode_map                  qx86_opcode_map_D9
 // | Contact e-mail: <unicluster@ispras.ru>.                                |
 // |                                                                        |
 // | quix86 is free software: you can redistribute it and/or modify it      |
-// | under the terms of the GNU General Public License as published by the  |
-// | Free Software Foundation, either version 3 of the License, or (at your |
-// | option) any later version.                                             |
+// | under the terms of the GNU Lesser General Public License as published  |
+// | by the  Free Software Foundation, either version 3 of the License, or  |
+// | (at your option) any later version.                                    |
 // |                                                                        |
 // | quix86 is distributed in the hope that it will be useful, but WITHOUT  |
 // | ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or  |
-// | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License  |
-// | for more details.                                                      |
+// | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public   |
+// | License for more details.                                              |
 // |                                                                        |
-// | You should have received a copy of the GNU General Public License      |
-// | along with quix86.  If not, see <http://www.gnu.org/licenses/>.        |
+// | You should have received a copy of the GNU Lesser General Public       |
+// | License along with quix86. If not, see <http://www.gnu.org/licenses/>. |
 // +------------------------------------------------------------------------+
 
 // Reference: AMD Architecture Programmer's Manual 3: Table A-10.
@@ -30468,17 +30468,17 @@ static qx86_opcode_map                  qx86_opcode_map_D8
 // | Contact e-mail: <unicluster@ispras.ru>.                                |
 // |                                                                        |
 // | quix86 is free software: you can redistribute it and/or modify it      |
-// | under the terms of the GNU General Public License as published by the  |
-// | Free Software Foundation, either version 3 of the License, or (at your |
-// | option) any later version.                                             |
+// | under the terms of the GNU Lesser General Public License as published  |
+// | by the  Free Software Foundation, either version 3 of the License, or  |
+// | (at your option) any later version.                                    |
 // |                                                                        |
 // | quix86 is distributed in the hope that it will be useful, but WITHOUT  |
 // | ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or  |
-// | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License  |
-// | for more details.                                                      |
+// | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public   |
+// | License for more details.                                              |
 // |                                                                        |
-// | You should have received a copy of the GNU General Public License      |
-// | along with quix86.  If not, see <http://www.gnu.org/licenses/>.        |
+// | You should have received a copy of the GNU Lesser General Public       |
+// | License along with quix86. If not, see <http://www.gnu.org/licenses/>. |
 // +------------------------------------------------------------------------+
 
 // Reference: AMD Architecture Programmer's Manual 3: Table A-6.
@@ -30541,17 +30541,17 @@ static qx86_opcode_map                  qx86_opcode_map_M11
 // | Contact e-mail: <unicluster@ispras.ru>.                                |
 // |                                                                        |
 // | quix86 is free software: you can redistribute it and/or modify it      |
-// | under the terms of the GNU General Public License as published by the  |
-// | Free Software Foundation, either version 3 of the License, or (at your |
-// | option) any later version.                                             |
+// | under the terms of the GNU Lesser General Public License as published  |
+// | by the  Free Software Foundation, either version 3 of the License, or  |
+// | (at your option) any later version.                                    |
 // |                                                                        |
 // | quix86 is distributed in the hope that it will be useful, but WITHOUT  |
 // | ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or  |
-// | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License  |
-// | for more details.                                                      |
+// | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public   |
+// | License for more details.                                              |
 // |                                                                        |
-// | You should have received a copy of the GNU General Public License      |
-// | along with quix86.  If not, see <http://www.gnu.org/licenses/>.        |
+// | You should have received a copy of the GNU Lesser General Public       |
+// | License along with quix86. If not, see <http://www.gnu.org/licenses/>. |
 // +------------------------------------------------------------------------+
 
 // Reference: AMD Architecture Programmer's Manual 3: Table A-6.
@@ -30635,17 +30635,17 @@ static qx86_opcode_map                  qx86_opcode_map_M2
 // | Contact e-mail: <unicluster@ispras.ru>.                                |
 // |                                                                        |
 // | quix86 is free software: you can redistribute it and/or modify it      |
-// | under the terms of the GNU General Public License as published by the  |
-// | Free Software Foundation, either version 3 of the License, or (at your |
-// | option) any later version.                                             |
+// | under the terms of the GNU Lesser General Public License as published  |
+// | by the  Free Software Foundation, either version 3 of the License, or  |
+// | (at your option) any later version.                                    |
 // |                                                                        |
 // | quix86 is distributed in the hope that it will be useful, but WITHOUT  |
 // | ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or  |
-// | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License  |
-// | for more details.                                                      |
+// | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public   |
+// | License for more details.                                              |
 // |                                                                        |
-// | You should have received a copy of the GNU General Public License      |
-// | along with quix86.  If not, see <http://www.gnu.org/licenses/>.        |
+// | You should have received a copy of the GNU Lesser General Public       |
+// | License along with quix86. If not, see <http://www.gnu.org/licenses/>. |
 // +------------------------------------------------------------------------+
 
 // Reference: AMD Architecture Programmer's Manual 3: Table A-6.
@@ -30708,17 +30708,17 @@ static qx86_opcode_map                  qx86_opcode_map_M1A
 // | Contact e-mail: <unicluster@ispras.ru>.                                |
 // |                                                                        |
 // | quix86 is free software: you can redistribute it and/or modify it      |
-// | under the terms of the GNU General Public License as published by the  |
-// | Free Software Foundation, either version 3 of the License, or (at your |
-// | option) any later version.                                             |
+// | under the terms of the GNU Lesser General Public License as published  |
+// | by the  Free Software Foundation, either version 3 of the License, or  |
+// | (at your option) any later version.                                    |
 // |                                                                        |
 // | quix86 is distributed in the hope that it will be useful, but WITHOUT  |
 // | ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or  |
-// | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License  |
-// | for more details.                                                      |
+// | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public   |
+// | License for more details.                                              |
 // |                                                                        |
-// | You should have received a copy of the GNU General Public License      |
-// | along with quix86.  If not, see <http://www.gnu.org/licenses/>.        |
+// | You should have received a copy of the GNU Lesser General Public       |
+// | License along with quix86. If not, see <http://www.gnu.org/licenses/>. |
 // +------------------------------------------------------------------------+
 
 // Reference: AMD Architecture Programmer's Manual 3: Table A-6.
@@ -30898,17 +30898,17 @@ static qx86_opcode_map                  qx86_opcode_map_M1_Ev_Ib
 // | Contact e-mail: <unicluster@ispras.ru>.                                |
 // |                                                                        |
 // | quix86 is free software: you can redistribute it and/or modify it      |
-// | under the terms of the GNU General Public License as published by the  |
-// | Free Software Foundation, either version 3 of the License, or (at your |
-// | option) any later version.                                             |
+// | under the terms of the GNU Lesser General Public License as published  |
+// | by the  Free Software Foundation, either version 3 of the License, or  |
+// | (at your option) any later version.                                    |
 // |                                                                        |
 // | quix86 is distributed in the hope that it will be useful, but WITHOUT  |
 // | ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or  |
-// | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License  |
-// | for more details.                                                      |
+// | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public   |
+// | License for more details.                                              |
 // |                                                                        |
-// | You should have received a copy of the GNU General Public License      |
-// | along with quix86.  If not, see <http://www.gnu.org/licenses/>.        |
+// | You should have received a copy of the GNU Lesser General Public       |
+// | License along with quix86. If not, see <http://www.gnu.org/licenses/>. |
 // +------------------------------------------------------------------------+
 
 // Reference: AMD Architecture Programmer's Manual 3: Table A-6.
@@ -31088,17 +31088,17 @@ static qx86_opcode_map                  qx86_opcode_map_M1_Ev_Iz
 // | Contact e-mail: <unicluster@ispras.ru>.                                |
 // |                                                                        |
 // | quix86 is free software: you can redistribute it and/or modify it      |
-// | under the terms of the GNU General Public License as published by the  |
-// | Free Software Foundation, either version 3 of the License, or (at your |
-// | option) any later version.                                             |
+// | under the terms of the GNU Lesser General Public License as published  |
+// | by the  Free Software Foundation, either version 3 of the License, or  |
+// | (at your option) any later version.                                    |
 // |                                                                        |
 // | quix86 is distributed in the hope that it will be useful, but WITHOUT  |
 // | ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or  |
-// | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License  |
-// | for more details.                                                      |
+// | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public   |
+// | License for more details.                                              |
 // |                                                                        |
-// | You should have received a copy of the GNU General Public License      |
-// | along with quix86.  If not, see <http://www.gnu.org/licenses/>.        |
+// | You should have received a copy of the GNU Lesser General Public       |
+// | License along with quix86. If not, see <http://www.gnu.org/licenses/>. |
 // +------------------------------------------------------------------------+
 
 // Reference: AMD Architecture Programmer's Manual 3: Table A-6.
@@ -31278,17 +31278,17 @@ static qx86_opcode_map                  qx86_opcode_map_M1_Eb_Ib
 // | Contact e-mail: <unicluster@ispras.ru>.                                |
 // |                                                                        |
 // | quix86 is free software: you can redistribute it and/or modify it      |
-// | under the terms of the GNU General Public License as published by the  |
-// | Free Software Foundation, either version 3 of the License, or (at your |
-// | option) any later version.                                             |
+// | under the terms of the GNU Lesser General Public License as published  |
+// | by the  Free Software Foundation, either version 3 of the License, or  |
+// | (at your option) any later version.                                    |
 // |                                                                        |
 // | quix86 is distributed in the hope that it will be useful, but WITHOUT  |
 // | ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or  |
-// | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License  |
-// | for more details.                                                      |
+// | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public   |
+// | License for more details.                                              |
 // |                                                                        |
-// | You should have received a copy of the GNU General Public License      |
-// | along with quix86.  If not, see <http://www.gnu.org/licenses/>.        |
+// | You should have received a copy of the GNU Lesser General Public       |
+// | License along with quix86. If not, see <http://www.gnu.org/licenses/>. |
 // +------------------------------------------------------------------------+
 
 // Reference: AMD Architecture Programmer's Manual 3: Table A-3.
@@ -42098,17 +42098,17 @@ static qx86_opcode_map                  qx86_opcode_map_2
 // | Contact e-mail: <unicluster@ispras.ru>.                                |
 // |                                                                        |
 // | quix86 is free software: you can redistribute it and/or modify it      |
-// | under the terms of the GNU General Public License as published by the  |
-// | Free Software Foundation, either version 3 of the License, or (at your |
-// | option) any later version.                                             |
+// | under the terms of the GNU Lesser General Public License as published  |
+// | by the  Free Software Foundation, either version 3 of the License, or  |
+// | (at your option) any later version.                                    |
 // |                                                                        |
 // | quix86 is distributed in the hope that it will be useful, but WITHOUT  |
 // | ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or  |
-// | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License  |
-// | for more details.                                                      |
+// | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public   |
+// | License for more details.                                              |
 // |                                                                        |
-// | You should have received a copy of the GNU General Public License      |
-// | along with quix86.  If not, see <http://www.gnu.org/licenses/>.        |
+// | You should have received a copy of the GNU Lesser General Public       |
+// | License along with quix86. If not, see <http://www.gnu.org/licenses/>. |
 // +------------------------------------------------------------------------+
 
 // Reference: AMD Architecture Programmer's Manual 3: Table A-1, A-2.
