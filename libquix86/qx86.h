@@ -25,6 +25,22 @@
 #ifndef QUIX86_H
 #define QUIX86_H
 
+/**
+ * Major <tt>quix86</tt> version number.
+ *
+ * \author                              icee
+ * \since                               1.1
+ */
+#define QX86_MAJOR_VERSION              1
+
+/**
+ * Minor <tt>quix86</tt> version number.
+ *
+ * \author                              icee
+ * \since                               1.1
+ */
+#define QX86_MINOR_VERSION              1
+
 /* Provide definitions for INT8..INT64 and UINT8..UINT64.  */
 #ifdef _MSC_VER
     /* Definitions for INT8..INT64.  */
@@ -398,10 +414,6 @@ typedef union qx86_operand_form_union   qx86_operand_form_union;
  */
 #define QX86_SIZE_OCTETS(size)          (2 << (size))
 
-/* XXX XXX XXX */
-extern QX86_CONST qx86_mtab_item        qx86_mtab[QX86_MNEMONIC_COUNT];
-extern QX86_CONST qx86_rtab_item        qx86_rtab[QX86_REGISTER_COUNT];
-
 /**
  * Calculate effective address of an <em>x86</em> memory operand.
  *
@@ -436,6 +448,44 @@ QX86_EXTERN_C int
 qx86_decode(qx86_insn *insn, int processorMode, QX86_CONST void *ptr, int ptrSize);
 
 /**
+ * Get <em>x86</em> mnemonic information.
+ *
+ * \param                               mindex
+ *                                      Mnemonic index, one of #qx86_mnemonic
+ *                                      enumerators.
+ *
+ * \return                              Pointer to mnemonic structure; \c NULL
+ *                                      if \a mindex is invalid.
+ *
+ * \author                              icee
+ * \since                               1.1
+ */
+QX86_EXTERN_C QX86_CONST qx86_mtab_item *
+qx86_minfo(int mindex);
+
+/**
+ * Rename an <em>x86</em> mnemonic.  This function changes name used in search
+ * and print functions.
+ *
+ * The buffer pointed to by \a name is \b not copied and must remain valid
+ * for the whole \c quix86 lifetime.
+ *
+ * Passing \c NULL as \a name resets mnemonic name to its default, reference
+ * name.
+ *
+ * \param                               mindex
+ *                                      Mnemonic index, one of #qx86_mnemonic
+ *                                      enumerators.
+ * \param                               name
+ *                                      Name pointer.
+ *
+ * \author                              icee
+ * \since                               1.1
+ */
+QX86_EXTERN_C void
+qx86_minfo_rename(int rindex, QX86_CONST char *name);
+
+/**
  * Print a decoded <em>x86</em> instruction using the Intel format.
  *
  * TODO: documentation.
@@ -456,5 +506,43 @@ qx86_decode(qx86_insn *insn, int processorMode, QX86_CONST void *ptr, int ptrSiz
  */
 QX86_EXTERN_C int
 qx86_print_intel(QX86_CONST qx86_insn *insn, QX86_CONST qx86_print_options_intel *options, char *buffer, int *bufferSize);
+
+/**
+ * Get <em>x86</em> register information.
+ *
+ * \param                               rindex
+ *                                      Register index, one of #qx86_register
+ *                                      enumerators.
+ *
+ * \return                              Pointer to register structure; \c NULL
+ *                                      if \a rindex is invalid.
+ *
+ * \author                              icee
+ * \since                               1.1
+ */
+QX86_EXTERN_C QX86_CONST qx86_rtab_item *
+qx86_rinfo(int rindex);
+
+/**
+ * Rename an <em>x86</em> register.  This function changes name used in search
+ * and print functions.
+ *
+ * The buffer pointed to by \a name is \b not copied and must remain valid
+ * for the whole \c quix86 lifetime.
+ *
+ * Passing \c NULL as \a name resets register name to its default, reference
+ * name.
+ *
+ * \param                               rindex
+ *                                      Register index, one of #qx86_register
+ *                                      enumerators.
+ * \param                               name
+ *                                      Name pointer.
+ *
+ * \author                              icee
+ * \since                               1.1
+ */
+QX86_EXTERN_C void
+qx86_rinfo_rename(int rindex, QX86_CONST char *name);
 
 #endif

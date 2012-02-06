@@ -340,7 +340,7 @@ function printSource(fileName, i, x)
 
     ## Print definition header.
     print "/* Reference: AMD and Intel manuals.  */"                                            > fileName
-    print "QX86_CONST qx86_mtab_item               qx86_mtab[QX86_MNEMONIC_COUNT]"              > fileName
+    print "static qx86_mtab_item                   qx86_mtab[QX86_MNEMONIC_COUNT]"              > fileName
     print "                                        ="                                           > fileName
     print "{"                                                                                   > fileName
     print "    {"                                                                               > fileName
