@@ -22,6 +22,15 @@
 ## | License along with quix86. If not, see <http://www.gnu.org/licenses/>. |
 ## +------------------------------------------------------------------------+
 
+function cprint()
+{
+    ## If both g_cprint_line and current line are empty, ignore.
+    if ((g_cprint_line != "") || ($0 != "")) print
+
+    ## Store line.
+    g_cprint_line = $0
+}
+
 function preprocess(fileName, t_fileName, t_guard, t_line)
 {
     ## Put the file into list of preprocessed files.
@@ -46,7 +55,7 @@ function preprocess(fileName, t_fileName, t_guard, t_line)
             if (t_fileName in g_stdFiles)
             {
                 ## Print the line.
-                print
+                cprint()
             }
             else if (t_fileName in g_preprocessedFiles)
             {
@@ -76,7 +85,7 @@ function preprocess(fileName, t_fileName, t_guard, t_line)
             if (!g_boxCommentSeen)
             {
                 ## Store flag and continue.
-                g_boxCommentSeen = 1; print; continue
+                g_boxCommentSeen = 1; cprint(); continue
             }
 
             ## Ignore this whole comment.
@@ -92,7 +101,7 @@ function preprocess(fileName, t_fileName, t_guard, t_line)
         else
         {
             ## Normal code line.  Print it.
-            print
+            cprint()
         }
     }
 }
@@ -112,6 +121,9 @@ BEGIN {
     ## Make sure standard includes don't get cut out.
     g_stdFiles["inttypes.h"] = 1
     g_stdFiles["stdint.h"] = 1
+
+    ## Initialize g_cprint_line with something non-empty.
+    g_cprint_line = "*"
 
     ## Begin the recursive fun.
     preprocess(ARGV[1])
