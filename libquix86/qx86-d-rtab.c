@@ -24,8 +24,7 @@
 
 /* Reference: AMD Architecture Programmer's Manual 1: Sections 3.1, 4.3, 5.4,
    6.2.  */
-//static
-QX86_CONST qx86_rtab_item               qx86_rtab[QX86_REGISTER_COUNT]
+static qx86_rtab_item                   qx86_rtab[QX86_REGISTER_COUNT]
                                         =
 {
     {

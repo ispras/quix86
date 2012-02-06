@@ -111,9 +111,11 @@ quix86_c_FILES							= qx86-d-amode.c					\
 										  qx86-f-decode-rtuple.c			\
 										  qx86-f-extract-address.inl		\
 										  qx86-f-opcode-map-choose.c		\
+										  qx86-f-minfo.c					\
 										  qx86-f-print.c  					\
 										  qx86-f-print-intel.c				\
 										  qx86-f-pump.inl					\
+										  qx86-f-rinfo.c					\
 										  qx86-f-unpump.inl					\
 										  qx86-t-ctx.h						\
 										  qx86-t-mtab-item.h				\

@@ -130,13 +130,13 @@ static int *                            qx86_modrm_scale[4];
 static int *                            qx86_modrm_rindex[QX86_RCLASS_COUNT];
 
 /* Private data: mnemonic table; qx86-d-mtab.c; generated.  */
-//static qx86_mtab_item                   qx86_mtab[QX86_MNEMONIC_COUNT];
+static qx86_mtab_item                   qx86_mtab[QX86_MNEMONIC_COUNT];
 
 /* Private data: opcode maps; qx86-d-opcode-map.c; generated.  */
 static qx86_opcode_map *                qx86_opcode_maps[QX86_OPCODE_ESCAPE_COUNT];
 
 /* Private data: register table; qx86-d-rtab.c.  */
-//static qx86_rtab_item                   qx86_rtab[QX86_REGISTER_COUNT];
+static qx86_rtab_item                   qx86_rtab[QX86_REGISTER_COUNT];
 
 /* Private data: register tuples; qx86-d-rtuple.c.  */
 static qx86_rtuple                      qx86_rtuple_AL;
@@ -262,6 +262,8 @@ static qx86_stuple                      qx86_stuple_z;
 #include <qx86-f-decode-operand.c>
 #include <qx86-f-decode-prefixes.c>
 #include <qx86-f-decode-rtuple.c>
+#include <qx86-f-minfo.c>
 #include <qx86-f-opcode-map-choose.c>
 #include <qx86-f-print.c>
 #include <qx86-f-print-intel.c>
+#include <qx86-f-rinfo.c>
