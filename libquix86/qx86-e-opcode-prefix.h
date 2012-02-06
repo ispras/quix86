@@ -22,28 +22,24 @@
    | License along with quix86. If not, see <http://www.gnu.org/licenses/>. |
    +------------------------------------------------------------------------+ */
 
-static int
-qx86_decode_amode_j(qx86_insn *insn, int index)
+#ifndef QX86_E_OPCODE_PREFIX_H
+#define QX86_E_OPCODE_PREFIX_H
+
+/**
+ * Enumeration of <em>x86</em> opcode extension prefixes.
+ *
+ * \author                              icee
+ * \since                               1.1
+ */
+enum
 {
-    qx86_operand *                      operand;
+    QX86_OPCODE_PREFIX_NONE             = 0,
 
-    /* Initialize operand.  */
-    operand                             = insn->operands + index;
-    operand->ot                         = QX86_OPERAND_TYPE_JUMP_OFFSET;
-    operand->u.j.offsetSize             = (qx86_uint8) operand->size;
+    QX86_OPCODE_PREFIX_66               = 1,
+    QX86_OPCODE_PREFIX_F2               = 2,
+    QX86_OPCODE_PREFIX_F3               = 3,
 
-    /* Operand size has been recorded before.  */
-    switch (operand->size)
-    {
-    case 1:
-    case 2:
-    case 4:
-    case 8:
-        /* Good operand size.  */
-        return qx86_pump(insn, operand->u.j.offset, operand->size);
+    QX86_OPCODE_PREFIX_COUNT            = 4
+};
 
-    default:
-        /* Invalid operand size; internal error.  */
-        return QX86_E_INTERNAL;
-    }
-}
+#endif /* QX86_E_OPCODE_PREFIX_H */

@@ -41,8 +41,6 @@ struct qx86_mtab_item
 
     int                                 demoted;
     int                                 promoted;
-
-    // TODO: AT&T print.
 };
 
 #endif /* QX86_T_MTAB_ITEM_H */

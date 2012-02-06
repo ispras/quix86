@@ -234,6 +234,7 @@ typedef union qx86_operand_form_union   qx86_operand_form_union;
 #include <qx86-e-opcode-escape.h>
 #include <qx86-e-opcode-map-index.h>
 #include <qx86-e-opcode-map-item-code.h>
+#include <qx86-e-opcode-prefix.h>
 #include <qx86-e-operand-attribute.h>
 #include <qx86-e-operand-form-type.h>
 #include <qx86-e-operand-type.h>

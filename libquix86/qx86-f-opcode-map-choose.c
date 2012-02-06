@@ -64,29 +64,21 @@ qx86_opcode_map_choose(qx86_insn *insn, qx86_opcode_map *map, qx86_opcode_map_it
     case QX86_OPCODE_MAP_INDEX_AS:
         /* Effective address size, an attribute.  */
         index = insn->attributes.addressSize;
-        
-        /* Done.  */
         break;
 
     case QX86_OPCODE_MAP_INDEX_CS:
         /* Code size.  */
         index = insn->processorMode & QX86_SIZE_MASK;
-
-        /* Done.  */
         break;
 
     case QX86_OPCODE_MAP_INDEX_OS:
         /* Effective operand size, an attribute.  */
         index = insn->attributes.operandSize;
-
-        /* Done.  */
         break;
 
     case QX86_OPCODE_MAP_INDEX_SP:
         /* Opcode extension (SIMD) prefix, a modifier.  */
         index = insn->modifiers.opcodePrefix;
-
-        /* Done.  */
         break;
 
     case QX86_OPCODE_MAP_INDEX_MOD:
