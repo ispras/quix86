@@ -52,6 +52,7 @@ quix86_h_FILES							= qx86-e-defect.h					\
 										  qx86-e-mnemonic.h					\
 										  qx86-e-modrm-field.h				\
 										  qx86-e-opcode-escape.h			\
+										  qx86-e-opcode-prefix.h			\
 										  qx86-e-operand-attribute.h		\
 										  qx86-e-operand-form-type.h		\
 										  qx86-e-operand-type.h				\

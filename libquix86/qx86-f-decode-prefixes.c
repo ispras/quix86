@@ -41,7 +41,7 @@ qx86_decode_prefixes(qx86_insn *insn)
 
     /* Initialize modifiers: defaults.  */
     insn->modifiers.escape              = QX86_OPCODE_ESCAPE_NONE;
-    insn->modifiers.opcodePrefix        = 0; /* XXX enum needed */
+    insn->modifiers.opcodePrefix        = QX86_OPCODE_PREFIX_NONE;
     insn->modifiers.sriOverride         = QX86_REGISTER_NONE;
     insn->modifiers.repeatPrefix        = 0; /* XXX enum needed.  */
 
@@ -127,8 +127,11 @@ qx86_decode_prefixes(qx86_insn *insn)
             continue;
 
         case 0x66:
-            /* Operand size override and opcode extension.  */
-            oso = 1; insn->modifiers.opcodePrefix = 1;
+            /* Operand size override.  */
+            oso = 1;
+
+            /* Also used as an opcode extension.  */
+            insn->modifiers.opcodePrefix = QX86_OPCODE_PREFIX_66;
             continue;
 
         case 0x67:
@@ -137,20 +140,24 @@ qx86_decode_prefixes(qx86_insn *insn)
             continue;
 
         case 0xF0:
-            /* LOCK.  Ignored for now.  XXX.  */
+            /* LOCK.  */
             insn->attributes.interlocked = 1;
             continue;
 
         case 0xF2:
-            /* REPNZ.  Ignored for now.  XXX.  */
-            insn->modifiers.opcodePrefix = 2;
+            /* REPNZ.  */
             insn->modifiers.repeatPrefix = 0xF2;
+
+            /* Also used as an opcode extension.  */
+            insn->modifiers.opcodePrefix = QX86_OPCODE_PREFIX_F2;
             continue;
 
         case 0xF3:
-            /* REP/REPZ.  Ignored for now.  XXX.  */
-            insn->modifiers.opcodePrefix = 3;
+            /* REP/REPZ.  */
             insn->modifiers.repeatPrefix = 0xF3;
+
+            /* Also used as an opcode extension.  */
+            insn->modifiers.opcodePrefix = QX86_OPCODE_PREFIX_F3;
             continue;
 
         default:
@@ -168,14 +175,14 @@ qx86_decode_prefixes(qx86_insn *insn)
         break;
     }
 
-    /* oso can also get a value of 2.  */
+    /* The oso attribute can also get a value of 2 in presence of REX.  */
     if (insn->modifiers.rexIndex >= 0)
     {
-        /* Get the w field.  */
+        /* Evaluate the w field.  */
         if (QX86_REX_W(insn->modifiers.rex)) oso = 2;
     }
 
-    /* Define effective address and operand sizes.  XXX.  */
+    /* Define effective address and operand sizes.  */
     insn->attributes.addressSize        = (qx86_uint8) qx86_address_size[insn->processorMode & QX86_SIZE_MASK][aso];
     insn->attributes.addressSizeOverridden
                                         = 0 != aso;
@@ -183,10 +190,10 @@ qx86_decode_prefixes(qx86_insn *insn)
     insn->attributes.operandSizeOverridden
                                         = 0 != oso;
 
-    /* Define REX stuff.  XXX.  */
+    /* Define REX stuff.  */
     if (insn->modifiers.rexIndex >= 0)
     {
-        /* Yes extensions.  */
+        /* Calculate extensions.  */
         insn->modifiers.extendedB       = 2 | QX86_REX_B(insn->modifiers.rex);
         insn->modifiers.extendedR       = 2 | QX86_REX_R(insn->modifiers.rex);
         insn->modifiers.extendedX       = 2 | QX86_REX_X(insn->modifiers.rex);

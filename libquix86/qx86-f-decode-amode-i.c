@@ -27,7 +27,7 @@ qx86_decode_amode_i(qx86_insn *insn, int index)
 {
     qx86_operand *                      operand;
 
-    /* Initialize operand.  XXX */
+    /* Initialize operand.  */
     operand                             = insn->operands + index;
     operand->ot                         = QX86_OPERAND_TYPE_IMMEDIATE;
     operand->u.i.valueSize              = (qx86_uint8) operand->size;

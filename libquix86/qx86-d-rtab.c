@@ -684,66 +684,66 @@ static qx86_rtab_item                   qx86_rtab[QX86_REGISTER_COUNT]
 
     {
         "YMM0",                         "YMM0",
-        QX86_RCLASS_YMM,                16
+        QX86_RCLASS_YMM,                32
     },
     {
         "YMM1",                         "YMM1",
-        QX86_RCLASS_YMM,                16
+        QX86_RCLASS_YMM,                32
     },
     {
         "YMM2",                         "YMM2",
-        QX86_RCLASS_YMM,                16
+        QX86_RCLASS_YMM,                32
     },
     {
         "YMM3",                         "YMM3",
-        QX86_RCLASS_YMM,                16
+        QX86_RCLASS_YMM,                32
     },
     {
         "YMM4",                         "YMM4",
-        QX86_RCLASS_YMM,                16
+        QX86_RCLASS_YMM,                32
     },
     {
         "YMM5",                         "YMM5",
-        QX86_RCLASS_YMM,                16
+        QX86_RCLASS_YMM,                32
     },
     {
         "YMM6",                         "YMM6",
-        QX86_RCLASS_YMM,                16
+        QX86_RCLASS_YMM,                32
     },
     {
         "YMM7",                         "YMM7",
-        QX86_RCLASS_YMM,                16
+        QX86_RCLASS_YMM,                32
     },
     {
         "YMM8",                         "YMM8",
-        QX86_RCLASS_YMM,                16
+        QX86_RCLASS_YMM,                32
     },
     {
         "YMM9",                         "YMM9",
-        QX86_RCLASS_YMM,                16
+        QX86_RCLASS_YMM,                32
     },
     {
         "YMM10",                        "YMM10",
-        QX86_RCLASS_YMM,                16
+        QX86_RCLASS_YMM,                32
     },
     {
         "YMM11",                        "YMM11",
-        QX86_RCLASS_YMM,                16
+        QX86_RCLASS_YMM,                32
     },
     {
         "YMM12",                        "YMM12",
-        QX86_RCLASS_YMM,                16
+        QX86_RCLASS_YMM,                32
     },
     {
         "YMM13",                        "YMM13",
-        QX86_RCLASS_YMM,                16
+        QX86_RCLASS_YMM,                32
     },
     {
         "YMM14",                        "YMM14",
-        QX86_RCLASS_YMM,                16
+        QX86_RCLASS_YMM,                32
     },
     {
         "YMM15",                        "YMM15",
-        QX86_RCLASS_YMM,                16
+        QX86_RCLASS_YMM,                32
     }
 };
