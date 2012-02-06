@@ -263,7 +263,9 @@ static qx86_stuple                      qx86_stuple_z;
 #include <qx86-f-decode-prefixes.c>
 #include <qx86-f-decode-rtuple.c>
 #include <qx86-f-minfo.c>
+#include <qx86-f-minfo-rename.c>
 #include <qx86-f-opcode-map-choose.c>
 #include <qx86-f-print.c>
 #include <qx86-f-print-intel.c>
 #include <qx86-f-rinfo.c>
+#include <qx86-f-rinfo-rename.c>
