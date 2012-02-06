@@ -25,7 +25,7 @@
 int
 qx86_print_intel(QX86_CONST qx86_insn *insn, QX86_CONST qx86_print_options_intel *options, char *buffer, int *bufferSize)
 {
-    qx86_print_item                     items[32];  /* TODO: size.  */
+    qx86_print_item                     items[64];
     qx86_print_item *                   item;
 
     QX86_CONST qx86_operand *           operand;
@@ -39,7 +39,7 @@ qx86_print_intel(QX86_CONST qx86_insn *insn, QX86_CONST qx86_print_options_intel
     /* Start with item pointing at items.  */
     item = items;
 
-    /* Print lock prefix.  TODO.  */
+    /* Print lock prefix.  */
     if (insn->attributes.interlocked)
     {
         item->number                    = 0;
@@ -47,7 +47,7 @@ qx86_print_intel(QX86_CONST qx86_insn *insn, QX86_CONST qx86_print_options_intel
         item                            = item + 1;
     }
 
-    /* Print repeat prefixes.  TODO: this will be rewritten after p/l commit.  */
+    /* Print repeat prefixes.  */
     if (insn->modifiers.repeatPrefix)
     {
         /* Do print.  */

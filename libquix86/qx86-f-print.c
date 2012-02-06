@@ -25,19 +25,18 @@
 static int
 qx86_print(qx86_print_item *items, char *buffer, int *bufferSize)
 {
-    qx86_print_item *                   item;
-    int                                 size;
-
-    QX86_CONST char *                   p;
-    QX86_CONST qx86_uint8 *             x;
-
-    /* XXX */
     static QX86_CONST char              hexDigits[16]
                                         =
     {
         '0', '1', '2', '3',             '4', '5', '6', '7',
         '8', '9', 'A', 'B',             'C', 'D', 'E', 'F'
     };
+
+    qx86_print_item *                   item;
+    int                                 size;
+
+    QX86_CONST char *                   p;
+    QX86_CONST qx86_uint8 *             x;
 
     /* XXX */
     (void) qx86_flip_case;
