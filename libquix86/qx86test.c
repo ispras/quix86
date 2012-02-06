@@ -55,7 +55,5 @@ main(void)
         printf("                                > %llX\n", address);
     }
 
-    printf("EAX is %d\n", qx86_rinfo(QX86_REGISTER_EAX)->size);
-
     return 0;
 }
