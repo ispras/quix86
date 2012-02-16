@@ -440,7 +440,7 @@ def prepareLine(mapId, ln, line, out):
         @return: tuple (1 if done with line and 0 else, indent, processed line)
     '''
     indent = getIndent(line)
-    line = line.strip(' ').rstrip('\n ')
+    line = line.strip(' ').rstrip('\r\n ')
     
     done = 0
     
@@ -727,7 +727,7 @@ def parseMapStatement(mapId, lines):
             line = lines[i]
             
             indent = getIndent(line)
-            line = line.strip('\n ')
+            line = line.strip('\n\r ')
             if line != '{':
                 fatal(mapId, i, "bad map statement")
             
