@@ -57,6 +57,7 @@ FDIVR               .
 FDIVRP              .
 FIDIVR              .
 FFREE               .
+FFREEP              .
 FICOM               .
 FICOMP              .
 FILD                .

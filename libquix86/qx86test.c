@@ -20,8 +20,9 @@ int
 main(void)
 {
     unsigned char                       raw[]
+                                        = "\xDF\xC0";
 //                                      = "\x66\x0f\xba\x64\x24\x6c\x00";
-                                        = "\x41\x89\x3c\x24\x00\x00\x00";
+//                                      = "\x41\x89\x3c\x24\x00\x00\x00";
 //                                      = "\x0F\x01\xC4";
 //                                      = "\x8b\x4d\xf4";
 //                                      = "\xB4\x42";

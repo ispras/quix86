@@ -41,6 +41,14 @@ Map DF reg
         00: FILD        Mw-
         01: FILD        Mw-
         02: FILD        Mw-
+        03: FFREEP      ST0-                [ rm = 00 ]
+        03: FFREEP      ST1-                [ rm = 01 ]
+        03: FFREEP      ST2-                [ rm = 02 ]
+        03: FFREEP      ST3-                [ rm = 03 ]
+        03: FFREEP      ST4-                [ rm = 04 ]
+        03: FFREEP      ST5-                [ rm = 05 ]
+        03: FFREEP      ST6-                [ rm = 06 ]
+        03: FFREEP      ST7-                [ rm = 07 ]
     01: [ mod ]
         00: FISTTP      Mw+
         01: FISTTP      Mw+

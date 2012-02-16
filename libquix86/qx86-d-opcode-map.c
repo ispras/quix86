@@ -19620,6 +19620,129 @@ static qx86_opcode_map                  qx86_opcode_map_M3
 // mem98/108env -> todo
 
 
+static qx86_opcode_map_item             qx86_opcode_map_DF_00_mod_03_rm_items[]
+                                        =
+{
+    {
+        /* code */                      QX86_MNEMONIC_FFREEP,
+        /* map */                       0,
+
+        /* operandCount */              1,
+        /* operandClasses */
+        {
+            {
+                /* superclass */        QX86_OPERAND_FORM_TYPE_RTUPLE,
+                /* attributes */        QX86_OPERAND_ATTRIBUTE_RW_CERTAIN | QX86_OPERAND_ATTRIBUTE_READ,
+                /* u */                 {{ &qx86_rtuple_ST0, 0 }}
+            }
+        }
+    },
+    {
+        /* code */                      QX86_MNEMONIC_FFREEP,
+        /* map */                       0,
+
+        /* operandCount */              1,
+        /* operandClasses */
+        {
+            {
+                /* superclass */        QX86_OPERAND_FORM_TYPE_RTUPLE,
+                /* attributes */        QX86_OPERAND_ATTRIBUTE_RW_CERTAIN | QX86_OPERAND_ATTRIBUTE_READ,
+                /* u */                 {{ &qx86_rtuple_ST1, 0 }}
+            }
+        }
+    },
+    {
+        /* code */                      QX86_MNEMONIC_FFREEP,
+        /* map */                       0,
+
+        /* operandCount */              1,
+        /* operandClasses */
+        {
+            {
+                /* superclass */        QX86_OPERAND_FORM_TYPE_RTUPLE,
+                /* attributes */        QX86_OPERAND_ATTRIBUTE_RW_CERTAIN | QX86_OPERAND_ATTRIBUTE_READ,
+                /* u */                 {{ &qx86_rtuple_ST2, 0 }}
+            }
+        }
+    },
+    {
+        /* code */                      QX86_MNEMONIC_FFREEP,
+        /* map */                       0,
+
+        /* operandCount */              1,
+        /* operandClasses */
+        {
+            {
+                /* superclass */        QX86_OPERAND_FORM_TYPE_RTUPLE,
+                /* attributes */        QX86_OPERAND_ATTRIBUTE_RW_CERTAIN | QX86_OPERAND_ATTRIBUTE_READ,
+                /* u */                 {{ &qx86_rtuple_ST3, 0 }}
+            }
+        }
+    },
+    {
+        /* code */                      QX86_MNEMONIC_FFREEP,
+        /* map */                       0,
+
+        /* operandCount */              1,
+        /* operandClasses */
+        {
+            {
+                /* superclass */        QX86_OPERAND_FORM_TYPE_RTUPLE,
+                /* attributes */        QX86_OPERAND_ATTRIBUTE_RW_CERTAIN | QX86_OPERAND_ATTRIBUTE_READ,
+                /* u */                 {{ &qx86_rtuple_ST4, 0 }}
+            }
+        }
+    },
+    {
+        /* code */                      QX86_MNEMONIC_FFREEP,
+        /* map */                       0,
+
+        /* operandCount */              1,
+        /* operandClasses */
+        {
+            {
+                /* superclass */        QX86_OPERAND_FORM_TYPE_RTUPLE,
+                /* attributes */        QX86_OPERAND_ATTRIBUTE_RW_CERTAIN | QX86_OPERAND_ATTRIBUTE_READ,
+                /* u */                 {{ &qx86_rtuple_ST5, 0 }}
+            }
+        }
+    },
+    {
+        /* code */                      QX86_MNEMONIC_FFREEP,
+        /* map */                       0,
+
+        /* operandCount */              1,
+        /* operandClasses */
+        {
+            {
+                /* superclass */        QX86_OPERAND_FORM_TYPE_RTUPLE,
+                /* attributes */        QX86_OPERAND_ATTRIBUTE_RW_CERTAIN | QX86_OPERAND_ATTRIBUTE_READ,
+                /* u */                 {{ &qx86_rtuple_ST6, 0 }}
+            }
+        }
+    },
+    {
+        /* code */                      QX86_MNEMONIC_FFREEP,
+        /* map */                       0,
+
+        /* operandCount */              1,
+        /* operandClasses */
+        {
+            {
+                /* superclass */        QX86_OPERAND_FORM_TYPE_RTUPLE,
+                /* attributes */        QX86_OPERAND_ATTRIBUTE_RW_CERTAIN | QX86_OPERAND_ATTRIBUTE_READ,
+                /* u */                 {{ &qx86_rtuple_ST7, 0 }}
+            }
+        }
+    }
+};
+
+static qx86_opcode_map                  qx86_opcode_map_DF_00_mod_03_rm
+                                        =
+{
+    QX86_OPCODE_MAP_INDEX_RM, 7, qx86_opcode_map_DF_00_mod_03_rm_items
+};
+
 static qx86_opcode_map_item             qx86_opcode_map_DF_00_mod_items[]
                                         =
 {
@@ -19667,7 +19790,7 @@ static qx86_opcode_map_item             qx86_opcode_map_DF_00_mod_items[]
     },
     /* 03 */
     {
-        QX86_OPCODE_MAP_ITEM_CODE_NONE, 0, -1, {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
+        QX86_OPCODE_MAP_ITEM_CODE_LINK, &qx86_opcode_map_DF_00_mod_03_rm, -1, {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
     }
 };
 
