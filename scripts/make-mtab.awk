@@ -23,7 +23,7 @@
 ## +------------------------------------------------------------------------+
 
 ## Define a mnemonic.
-function defineMnemonic(list, clist, n, i, t_attribute, t_attributeString, t_attributeNo, t_ccString, t_demoted, t_iclassString, t_mnemonic, t_oldFS, t_promoted)
+function defineMnemonic(list, clist, n, i, t_attribute, t_attributeString, t_attributeNo, t_ccString, t_currentCcString, t_demoted, t_iclassString, t_mnemonic, t_oldFS, t_promoted)
 {
     ## Cut off mnemonic.
     gsub(/^[^ \t\v]+[ \t\v]+/, "")
@@ -141,7 +141,16 @@ function defineMnemonic(list, clist, n, i, t_attribute, t_attributeString, t_att
         t_mnemonic = list[i]
 
         ## Watch out for null t_ccString.
-        if (!t_ccString) t_ccString = "QX86_CC_" clist[i]
+        if (t_ccString)
+        {
+            ## Got a global one.
+            t_currentCcString = t_ccString
+        }
+        else
+        {
+            ## Get from list.
+            t_currentCcString = "QX86_CC_" clist[i]
+        }
 
         ## If t_mnemonic contains an asterisk, this is the new defaults.
         if ("*" == t_mnemonic)
@@ -154,7 +163,7 @@ function defineMnemonic(list, clist, n, i, t_attribute, t_attributeString, t_att
         g_mtab_name[g_mtabSize]             = t_mnemonic
         g_mtab_attributes[g_mtabSize]       = t_attributeString
         g_mtab_iclass[g_mtabSize]           = t_iclassString
-        g_mtab_cc[g_mtabSize]               = t_ccString
+        g_mtab_cc[g_mtabSize]               = t_currentCcString
         g_mtab_demoted[g_mtabSize]          = t_demoted
         g_mtab_promoted[g_mtabSize]         = t_promoted
 
