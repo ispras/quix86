@@ -43,7 +43,8 @@ CPPFLAGS								= -DQUIX86_BUILD -I.
 CPPFLAGS_SHARED							= $(CPPFLAGS) -DQUIX86_SHARED
 CPPFLAGS_STATIC							= $(CPPFLAGS) -DQUIX86_STATIC
 
-quix86_h_FILES							= qx86-e-defect.h					\
+quix86_h_FILES							= qx86-e-cc.h						\
+										  qx86-e-defect.h					\
 										  qx86-e-disp.h						\
 										  qx86-e-error.h					\
 										  qx86-e-iclass.h					\

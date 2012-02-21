@@ -23,7 +23,7 @@
 ## +------------------------------------------------------------------------+
 
 ## Define a mnemonic.
-function defineMnemonic(list, n, i, t_attribute, t_attributeString, t_attributeNo, t_demoted, t_iclassString, t_mnemonic, t_oldFS, t_promoted)
+function defineMnemonic(list, clist, n, i, t_attribute, t_attributeString, t_attributeNo, t_ccString, t_demoted, t_iclassString, t_mnemonic, t_oldFS, t_promoted)
 {
     ## Cut off mnemonic.
     gsub(/^[^ \t\v]+[ \t\v]+/, "")
@@ -53,6 +53,17 @@ function defineMnemonic(list, n, i, t_attribute, t_attributeString, t_attributeN
 
             ## Pass.
             break
+        }
+
+        ## Parse out condition code.
+        if (t_attribute ~ /^?/)
+        {
+            ## Remove prefix.
+            gsub(/^?/, "", t_attribute)
+
+            ## Store.
+            t_ccString = "QX86_CC_" t_attribute
+            continue
         }
 
         ## Parse out demotion.
@@ -129,6 +140,9 @@ function defineMnemonic(list, n, i, t_attribute, t_attributeString, t_attributeN
         ## Get t_mnemonic.
         t_mnemonic = list[i]
 
+        ## Watch out for null t_ccString.
+        if (!t_ccString) t_ccString = "QX86_CC_" clist[i]
+
         ## If t_mnemonic contains an asterisk, this is the new defaults.
         if ("*" == t_mnemonic)
         {
@@ -140,6 +154,7 @@ function defineMnemonic(list, n, i, t_attribute, t_attributeString, t_attributeN
         g_mtab_name[g_mtabSize]             = t_mnemonic
         g_mtab_attributes[g_mtabSize]       = t_attributeString
         g_mtab_iclass[g_mtabSize]           = t_iclassString
+        g_mtab_cc[g_mtabSize]               = t_ccString
         g_mtab_demoted[g_mtabSize]          = t_demoted
         g_mtab_promoted[g_mtabSize]         = t_promoted
 
@@ -149,7 +164,7 @@ function defineMnemonic(list, n, i, t_attribute, t_attributeString, t_attributeN
 }
 
 ## Process one input file.
-function process(t_list, t_prefix)
+function process(t_clist, t_list, t_prefix)
 {
     ## Scan file.
     for (g_lineNo = 1; 1 == getline < g_fileName; ++g_lineNo)
@@ -182,30 +197,30 @@ function process(t_list, t_prefix)
             t_prefix = $1; gsub(/cc$/, "", t_prefix)
 
             ## Make list.
-            t_list[ 0] = t_prefix "A"
-            t_list[ 1] = t_prefix "AE"
-            t_list[ 2] = t_prefix "B"
-            t_list[ 3] = t_prefix "BE"
-            t_list[ 4] = t_prefix "G"
-            t_list[ 5] = t_prefix "GE"
-            t_list[ 6] = t_prefix "L"
-            t_list[ 7] = t_prefix "LE"
-            t_list[ 8] = t_prefix "O"
-            t_list[ 9] = t_prefix "NO"
-            t_list[10] = t_prefix "P"
-            t_list[11] = t_prefix "NP"
-            t_list[12] = t_prefix "S"
-            t_list[13] = t_prefix "NS"
-            t_list[14] = t_prefix "Z"
-            t_list[15] = t_prefix "NZ"
+            t_list[ 0] = t_prefix "A" ; t_clist[ 0] = "A"
+            t_list[ 1] = t_prefix "AE"; t_clist[ 1] = "AE"
+            t_list[ 2] = t_prefix "B" ; t_clist[ 2] = "B"
+            t_list[ 3] = t_prefix "BE"; t_clist[ 3] = "BE"
+            t_list[ 4] = t_prefix "G" ; t_clist[ 4] = "G"
+            t_list[ 5] = t_prefix "GE"; t_clist[ 5] = "GE"
+            t_list[ 6] = t_prefix "L" ; t_clist[ 6] = "L"
+            t_list[ 7] = t_prefix "LE"; t_clist[ 7] = "LE"
+            t_list[ 8] = t_prefix "O" ; t_clist[ 8] = "O"
+            t_list[ 9] = t_prefix "NO"; t_clist[ 9] = "NO"
+            t_list[10] = t_prefix "P" ; t_clist[10] = "P"
+            t_list[11] = t_prefix "NP"; t_clist[11] = "NP"
+            t_list[12] = t_prefix "S" ; t_clist[12] = "S"
+            t_list[13] = t_prefix "NS"; t_clist[13] = "NS"
+            t_list[14] = t_prefix "Z" ; t_clist[14] = "Z"
+            t_list[15] = t_prefix "NZ"; t_clist[15] = "NZ"
 
             ## Process.
-            defineMnemonic(t_list, 16)
+            defineMnemonic(t_list, t_clist, 16)
         }
         else
         {
             ## Process one mnemonic.
-            t_list[0] = $1; defineMnemonic(t_list, 1)
+            t_list[0] = $1; t_clist[0] = "NONE"; defineMnemonic(t_list, t_clist, 1)
         }
     }
 }
@@ -231,6 +246,11 @@ function sort(i, j, x)
                 x                       = g_mtab_attributes[i]
                 g_mtab_attributes[i]    = g_mtab_attributes[j]
                 g_mtab_attributes[j]    = x
+
+                ## Swap cc.
+                x                       = g_mtab_cc[i]
+                g_mtab_cc[i]            = g_mtab_cc[j]
+                g_mtab_cc[j]            = x
 
                 ## Swap iclass.
                 x                       = g_mtab_iclass[i]
@@ -345,7 +365,8 @@ function printSource(fileName, i, x)
     print "{"                                                                                   > fileName
     print "    {"                                                                               > fileName
     print "        0,                              0,"                                          > fileName
-    print "        QX86_MATTRIBUTE_NONE,           QX86_ICLASS_NONE,"                           > fileName
+    print "        QX86_MATTRIBUTE_NONE,"                                                       > fileName
+    print "        QX86_ICLASS_NONE,               QX86_CC_NONE,"                               > fileName
     print "        QX86_MNEMONIC_NONE,             QX86_MNEMONIC_NONE"                          > fileName
     print "    },"                                                                              > fileName
 
@@ -358,7 +379,8 @@ function printSource(fileName, i, x)
         ## Print item.
         printf "    {\n"                                                                        > fileName
         printf "        %-31s %s\n", x, x                                                       > fileName
-        printf "        %-31s %s\n", g_mtab_attributes[i] ",", g_mtab_iclass[i] ","             > fileName
+        printf "        %s\n", g_mtab_attributes[i] ","                                         > fileName
+        printf "        %-31s %s\n", g_mtab_iclass[i] ",", g_mtab_cc[i] ","                     > fileName
         printf "        %-31s %s\n", "QX86_MNEMONIC_" g_mtab_demoted[i] ",", "QX86_MNEMONIC_" g_mtab_promoted[i] \
                                                                                                 > fileName
 

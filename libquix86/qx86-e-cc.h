@@ -22,27 +22,39 @@
    | License along with quix86. If not, see <http://www.gnu.org/licenses/>. |
    +------------------------------------------------------------------------+ */
 
-#ifndef QX86_T_MTAB_ITEM_H
-#define QX86_T_MTAB_ITEM_H
+#ifndef QX86_E_CC_H
+#define QX86_E_CC_H
 
 /**
- * Mnemonic table item definition structure.
+ * Enumeration of <em>x86</em> condition codes.
  *
  * \author                              icee
  * \since                               1.0
  */
-struct qx86_mtab_item
+enum
 {
-    QX86_CONST char *                   referenceName;
-    QX86_CONST char *                   name;
+    QX86_CC_O                           = 0,
+    QX86_CC_NO                          = 1,
+    QX86_CC_B                           = 2,
+    QX86_CC_AE                          = 3,
+    QX86_CC_Z                           = 4,
+    QX86_CC_NZ                          = 5,
+    QX86_CC_BE                          = 6,
+    QX86_CC_A                           = 7,
+    QX86_CC_S                           = 8,
+    QX86_CC_NS                          = 9,
+    QX86_CC_P                           = 10,
+    QX86_CC_NP                          = 11,
+    QX86_CC_L                           = 12,
+    QX86_CC_GE                          = 13,
+    QX86_CC_LE                          = 14,
+    QX86_CC_G                           = 15,
+    
+    QX86_CC_NONE                        = 16,
 
-    qx86_uint8                          attributes;
-
-    qx86_uint8                          iclass;
-    qx86_uint8                          cc;
-
-    int                                 demoted;
-    int                                 promoted;
+    QX86_CC_CXZ                         = 17,
+    QX86_CC_ECXZ                        = 18,
+    QX86_CC_RCXZ                        = 19
 };
 
-#endif /* QX86_T_MTAB_ITEM_H */
+#endif /* QX86_E_CC_H */

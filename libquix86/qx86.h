@@ -223,6 +223,7 @@ typedef union qx86_operand_union        qx86_operand_union;
 typedef union qx86_operand_form_union   qx86_operand_form_union;
 
 /* Public API enumerations.  */
+#include <qx86-e-cc.h>
 #include <qx86-e-defect.h>
 #include <qx86-e-disp.h>
 #include <qx86-e-error.h>
