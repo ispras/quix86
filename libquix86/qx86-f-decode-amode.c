@@ -44,7 +44,11 @@ qx86_decode_amode(qx86_insn *insn, int index)
     operand->size                       = stuple->sizes[insn->attributes.operandSize];
 
     /* Call decode function if present.  */
-    if (amode->decodeFunc) return amode->decodeFunc(insn, index);
+    if (amode->decodeFunc)
+    {
+        /* Test for special value.  */
+        if (QX86_E_API != (result = amode->decodeFunc(insn, index))) return result;
+    }
 
     /* Otherwise, default ModRM-based decode process.  */
     if (QX86_MODRM_FIELD_NONE == amode->modrmField) return QX86_E_INTERNAL;
@@ -52,6 +56,14 @@ qx86_decode_amode(qx86_insn *insn, int index)
     /* Get rclass.  */
     if (QX86_RCLASS_RESERVED_3 == amode->rclass)
     {
+        /* Handle a special defect case.  */
+        if (!operand->size)
+        {
+            /* Convert "i" to "v".  */
+            stuple                  = &qx86_stuple_v;
+            operand->size           = stuple->sizes[insn->attributes.operandSize];
+        }
+
         /* This pseudo-class needs further evaluation via operand->size.  */
         switch (operand->size)
         {
@@ -102,7 +114,7 @@ qx86_decode_amode(qx86_insn *insn, int index)
         if (3 != QX86_MODRM_MOD(insn->modifiers.modrm))
         {
             /* Values other than 3 are for memory operands.  */
-            return qx86_decode_amode_m(insn, index);
+            if (QX86_E_API != (result = qx86_decode_amode_m(insn, index))) return result;
         }
     }
 

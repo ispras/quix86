@@ -56,6 +56,9 @@ qx86_decode_amode_m(qx86_insn *insn, int index)
     {
         /* Detected a defect.  */
         insn->defects |= QX86_DEFECT_MODRM_MOD_3;
+
+        /* Return a special value.  */
+        return QX86_E_API;
     }
 
     /* Calculate b, x, bmask and xmask.  */

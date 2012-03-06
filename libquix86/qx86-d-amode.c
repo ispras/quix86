@@ -90,7 +90,7 @@ static qx86_amode                       qx86_amode_M
                                         =
 {
     "M",                                "M",
-    QX86_MODRM_FIELD_NONE,              QX86_RCLASS_NONE,
+    QX86_MODRM_FIELD_MOD,               QX86_RCLASS_RESERVED_3,
     qx86_decode_amode_m
 };
 

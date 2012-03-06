@@ -54,7 +54,10 @@ enum
 
     QX86_CC_CXZ                         = 17,
     QX86_CC_ECXZ                        = 18,
-    QX86_CC_RCXZ                        = 19
+    QX86_CC_RCXZ                        = 19,
+    QX86_CC_CXO                         = 20,
+    QX86_CC_ECXO                        = 21,
+    QX86_CC_RCXO                        = 22
 };
 
 #endif /* QX86_E_CC_H */
