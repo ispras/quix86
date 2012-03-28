@@ -112,7 +112,52 @@ qx86_decode(qx86_insn *insn, int processorMode, QX86_CONST void *ptr, int ptrSiz
         }
     }
 
-    /* Step 5.  Finalize instruction structure.  */
+    /* Step 7.  Process idioms.  */
+    switch (insn->mnemonic)
+    {
+    case QX86_MNEMONIC_XCHG:
+        /* XCHG rAX, rAX when encoded as 90h is interpreted as a NOP which makes
+           a difference in 64-bit mode because of no implicit GPR extension.  */
+        if ((QX86_OPERAND_FORM_TYPE_RTUPLE == insn->operandForms[0]->ft) && (QX86_OPERAND_FORM_TYPE_RTUPLE == insn->operandForms[1]->ft))
+        {
+            /* Both operands are register tuples, this indicates the 9Xh
+               opcodes.  */
+            if (&qx86_rtuple_r0 == insn->operandForms[0]->u.r.rtuple)
+            {
+                /* This is the 90h opcode.  */
+                if (insn->operands[0].u.r.rindex == insn->operands[1].u.r.rindex)
+                {
+                    /* Not an XCHG: NOP or PAUSE.  */
+                    insn->mnemonic      = 0xF3 == insn->modifiers.repeatPrefix ? QX86_MNEMONIC_PAUSE : QX86_MNEMONIC_NOP;
+                    insn->operandCount  = 0;
+                }
+            }
+        }
+
+        /* Done.  */
+        break;
+
+    case QX86_MNEMONIC_MOV:
+        /* Moves to CR0 have additional possibilities.  */
+        if ((QX86_OPERAND_TYPE_REGISTER == insn->operands[0].ot) && (QX86_REGISTER_CR0 == insn->operands[0].u.r.rindex))
+        {
+            /* Move to CR0 is interpreted as move to CR8 when LOCK prefix is
+               present.  */
+            if (insn->attributes.interlocked)
+            {
+                /* Update to CR8.  TODO: should LOCK be reclassified instead?  */
+                insn->operands[0].u.r.rindex
+                                        = QX86_REGISTER_CR8;
+                insn->attributes.interlocked
+                                        = 0;
+            }
+        }
+
+        /* Done.  */
+        break;
+    }
+
+    /* Step 6.  Finalize instruction structure.  */
     insn->iclass                        = qx86_mtab[insn->mnemonic].iclass;
 
     /* Success.  */

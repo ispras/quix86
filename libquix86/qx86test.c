@@ -20,7 +20,7 @@ int
 main(void)
 {
     unsigned char                       raw[]
-                                        = "\x8D\xC0";
+                                        = "\x44\x0F\x22\x00";
 //                                      = "\xDF\xC0";
 //                                      = "\x66\x0f\xba\x64\x24\x6c\x00";
 //                                      = "\x41\x89\x3c\x24\x00\x00\x00";
