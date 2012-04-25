@@ -12,6 +12,7 @@ callback(void *data, int rindex, int subreg, unsigned char *value)
 
     if (rindex == QX86_REGISTER_EBP) *(unsigned *)value = 0x10002000;
     if( rindex == QX86_REGISTER_SS) *(unsigned long long*)value = 0;
+    if( rindex == QX86_REGISTER_RIP) *(unsigned long long*)value = 0xA00000000;
     
     return 1;
 }
@@ -20,10 +21,11 @@ int
 main(void)
 {
     unsigned char                       raw[]
-                                        = "\x44\x0F\x22\x00";
+//                                      = "\x44\x0F\x22\x00";
 //                                      = "\xDF\xC0";
 //                                      = "\x66\x0f\xba\x64\x24\x6c\x00";
 //                                      = "\x41\x89\x3c\x24\x00\x00\x00";
+                                        = "\x0F\x01\x15\x11\x11\x11\x11";
 //                                      = "\x0F\x01\xC4";
 //                                      = "\x8b\x4d\xf4";
 //                                      = "\xB4\x42";
