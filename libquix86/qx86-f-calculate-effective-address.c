@@ -129,10 +129,8 @@ qx86_calculate_effective_address(QX86_CONST qx86_insn *insn, int operandIndex, q
         /* Convert to an address.  */
         qx86_extract_address(value, address);
 
-        /* RIP-relative addressing requires next RIP. */
-        if(QX86_REGISTER_RIP == operand->u.m.bri) {
-            *address += insn->rawSize;
-        }
+        /* RIP-relative addressing uses incremented RIP.  */
+        if (QX86_REGISTER_RIP == operand->u.m.bri) *address += insn->rawSize;
 
         /* Add to offset.  */
         offset += *address;
