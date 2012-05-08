@@ -22,20 +22,9 @@
 ## | License along with quix86. If not, see <http://www.gnu.org/licenses/>. |
 ## +------------------------------------------------------------------------+
 
-## Default properties for Intel VT-x subset.
-*                   .
-
-## Intel VT-x subset instructions.
-INVEPT              .
-INVVPID             .
-VMCALL              .
-VMCLEAR             .
-VMFUNC              .
-VMLAUNCH            .
-VMPTRLD             .
-VMPTRST             .
-VMREAD              .
-VMRESUME            .
-VMWRITE             .
-VMXOFF              .
-VMXON               .
+## Reference: AMD Architecture Programmer's Manual 3: Table A-6.
+Map M11_C6 reg
+{
+    00: MOV     Eb+ Ib-
+    07: XABORT  Ib-                     [ rm = 00 ]         # TSX
+}

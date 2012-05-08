@@ -34,6 +34,7 @@ INT1                $TRANSFER, $TRANSFER_LINKED, $TRANSFER_SERVICE
 INT3                $TRANSFER, $TRANSFER_LINKED, $TRANSFER_SERVICE
 INVD                .
 INVLPG              .
+INVPCID             .
 IRET                +
     IRET            <IRETD, $TRANSFER, $TRANSFER_LINKED_BACK, $TRANSFER_SERVICE
     IRETD           <IRETQ, >IRET, $TRANSFER, $TRANSFER_LINKED_BACK, $TRANSFER_SERVICE
@@ -51,6 +52,8 @@ LSL                 .
 LTR                 .
 MONITOR             .
 MWAIT               .
+RDFSBASE            .
+RDGSBASE            .
 RDMSR               .
 RDPMC               .
 RDTSC               .
@@ -68,12 +71,16 @@ SYSCALL             $TRANSFER, $TRANSFER_LINKED, $TRANSFER_SERVICE
 SYSENTER            $TRANSFER, $TRANSFER_LINKED, $TRANSFER_SERVICE
 SYSEXIT             $TRANSFER, $TRANSFER_LINKED_BACK, $TRANSFER_SERVICE
 SYSRET              $TRANSFER, $TRANSFER_LINKED_BACK, $TRANSFER_SERVICE
+UD1                 .
 UD2                 .
 VERR                .
 VERW                .
 WBINVD              .
+WRFSBASE            .
+WRGSBASE            .
 WRMSR               .
 XGETBV              .
 XRSTOR              .
 XSAVE               .
+XSAVEOPT            .
 XSETBV              .

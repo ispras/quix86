@@ -140,6 +140,7 @@ mtab_FILES								= qx86-d-mtab/3dnow.mtab			\
 										  qx86-d-mtab/ssse3.mtab			\
 										  qx86-d-mtab/svm.mtab				\
 										  qx86-d-mtab/system.mtab			\
+										  qx86-d-mtab/tsx.mtab				\
 										  qx86-d-mtab/vtx.mtab				\
 										  qx86-d-mtab/x87.mtab
 

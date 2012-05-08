@@ -523,76 +523,6 @@ static qx86_opcode_map                  qx86_opcode_map_M8
     QX86_OPCODE_MAP_INDEX_REG, 7, qx86_opcode_map_M8_items
 };
 /* End of file qx86-d-opcode-map/qx86-opcode-map-M8.map */
-/* Generated from file qx86-d-opcode-map/qx86-opcode-map-M10.map */
-// +------------------------------------------------------------------------+
-// | quix86                                                                 |
-// +------------------------------------------------------------------------+
-// | This file is part of quix86, an x86-64 instruction decoder.            |
-// |                                                                        |
-// | Copyright (C) 2011 Institute for System Programming of Russian Academy |
-// | of Sciences.                                                           |
-// |                                                                        |
-// | Contact e-mail: <unicluster@ispras.ru>.                                |
-// |                                                                        |
-// | quix86 is free software: you can redistribute it and/or modify it      |
-// | under the terms of the GNU Lesser General Public License as published  |
-// | by the  Free Software Foundation, either version 3 of the License, or  |
-// | (at your option) any later version.                                    |
-// |                                                                        |
-// | quix86 is distributed in the hope that it will be useful, but WITHOUT  |
-// | ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or  |
-// | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public   |
-// | License for more details.                                              |
-// |                                                                        |
-// | You should have received a copy of the GNU Lesser General Public       |
-// | License along with quix86. If not, see <http://www.gnu.org/licenses/>. |
-// +------------------------------------------------------------------------+
-
-// Reference: AMD Architecture Programmer's Manual 3: Table A-6.
-
-static qx86_opcode_map_item             qx86_opcode_map_M10_items[]
-                                        =
-{
-    /* 00 */
-    {
-        QX86_OPCODE_MAP_ITEM_CODE_NONE, 0, -1, {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
-    },
-    /* 01 */
-    {
-        QX86_OPCODE_MAP_ITEM_CODE_NONE, 0, -1, {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
-    },
-    /* 02 */
-    {
-        QX86_OPCODE_MAP_ITEM_CODE_NONE, 0, -1, {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
-    },
-    /* 03 */
-    {
-        QX86_OPCODE_MAP_ITEM_CODE_NONE, 0, -1, {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
-    },
-    /* 04 */
-    {
-        QX86_OPCODE_MAP_ITEM_CODE_NONE, 0, -1, {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
-    },
-    /* 05 */
-    {
-        QX86_OPCODE_MAP_ITEM_CODE_NONE, 0, -1, {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
-    },
-    /* 06 */
-    {
-        QX86_OPCODE_MAP_ITEM_CODE_NONE, 0, -1, {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
-    },
-    /* 07 */
-    {
-        QX86_OPCODE_MAP_ITEM_CODE_NONE, 0, -1, {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
-    }
-};
-
-static qx86_opcode_map                  qx86_opcode_map_M10
-                                        =
-{
-    QX86_OPCODE_MAP_INDEX_REG, 7, qx86_opcode_map_M10_items
-};
-/* End of file qx86-d-opcode-map/qx86-opcode-map-M10.map */
 /* Generated from file qx86-d-opcode-map/qx86-opcode-map-M15.map */
 // +------------------------------------------------------------------------+
 // | quix86                                                                 |
@@ -621,6 +551,59 @@ static qx86_opcode_map                  qx86_opcode_map_M10
 // Reference: AMD Architecture Programmer's Manual 3: Tables A-6, A-7.
 // Reference: Intel Architecture Software Developer’s Manual 2B: Table A-6.
 
+static qx86_opcode_map_item             qx86_opcode_map_M15_00_sp_f3_os_items[]
+                                        =
+{
+    {
+        /* code */                      QX86_MNEMONIC_RDFSBASE,
+        /* map */                       0,
+
+        /* operandCount */              1,
+        /* operandClasses */
+        {
+            {
+                /* superclass */        QX86_OPERAND_FORM_TYPE_AMODE,
+                /* attributes */        QX86_OPERAND_ATTRIBUTE_RW_CERTAIN | QX86_OPERAND_ATTRIBUTE_WRITTEN,
+                /* u */                 {{ &qx86_amode_R, &qx86_stuple_d }}
+            }
+        }
+    },
+    {
+        /* code */                      QX86_MNEMONIC_RDFSBASE,
+        /* map */                       0,
+
+        /* operandCount */              1,
+        /* operandClasses */
+        {
+            {
+                /* superclass */        QX86_OPERAND_FORM_TYPE_AMODE,
+                /* attributes */        QX86_OPERAND_ATTRIBUTE_RW_CERTAIN | QX86_OPERAND_ATTRIBUTE_WRITTEN,
+                /* u */                 {{ &qx86_amode_R, &qx86_stuple_d }}
+            }
+        }
+    },
+    {
+        /* code */                      QX86_MNEMONIC_RDFSBASE,
+        /* map */                       0,
+
+        /* operandCount */              1,
+        /* operandClasses */
+        {
+            {
+                /* superclass */        QX86_OPERAND_FORM_TYPE_AMODE,
+                /* attributes */        QX86_OPERAND_ATTRIBUTE_RW_CERTAIN | QX86_OPERAND_ATTRIBUTE_WRITTEN,
+                /* u */                 {{ &qx86_amode_R, &qx86_stuple_q }}
+            }
+        }
+    }
+};
+
+static qx86_opcode_map                  qx86_opcode_map_M15_00_sp_f3_os
+                                        =
+{
+    QX86_OPCODE_MAP_INDEX_OS, 2, qx86_opcode_map_M15_00_sp_f3_os_items
+};
+
 static qx86_opcode_map_item             qx86_opcode_map_M15_00_sp_items[]
                                         =
 {
@@ -648,7 +631,7 @@ static qx86_opcode_map_item             qx86_opcode_map_M15_00_sp_items[]
     },
     /* F3 */
     {
-        QX86_OPCODE_MAP_ITEM_CODE_NONE, 0, -1, {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
+        QX86_OPCODE_MAP_ITEM_CODE_LINK, &qx86_opcode_map_M15_00_sp_f3_os, -1, {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
     }
 };
 
@@ -656,6 +639,59 @@ static qx86_opcode_map                  qx86_opcode_map_M15_00_sp
                                         =
 {
     QX86_OPCODE_MAP_INDEX_SP, 3, qx86_opcode_map_M15_00_sp_items
+};
+
+static qx86_opcode_map_item             qx86_opcode_map_M15_01_sp_f3_os_items[]
+                                        =
+{
+    {
+        /* code */                      QX86_MNEMONIC_RDGSBASE,
+        /* map */                       0,
+
+        /* operandCount */              1,
+        /* operandClasses */
+        {
+            {
+                /* superclass */        QX86_OPERAND_FORM_TYPE_AMODE,
+                /* attributes */        QX86_OPERAND_ATTRIBUTE_RW_CERTAIN | QX86_OPERAND_ATTRIBUTE_WRITTEN,
+                /* u */                 {{ &qx86_amode_R, &qx86_stuple_d }}
+            }
+        }
+    },
+    {
+        /* code */                      QX86_MNEMONIC_RDGSBASE,
+        /* map */                       0,
+
+        /* operandCount */              1,
+        /* operandClasses */
+        {
+            {
+                /* superclass */        QX86_OPERAND_FORM_TYPE_AMODE,
+                /* attributes */        QX86_OPERAND_ATTRIBUTE_RW_CERTAIN | QX86_OPERAND_ATTRIBUTE_WRITTEN,
+                /* u */                 {{ &qx86_amode_R, &qx86_stuple_d }}
+            }
+        }
+    },
+    {
+        /* code */                      QX86_MNEMONIC_RDGSBASE,
+        /* map */                       0,
+
+        /* operandCount */              1,
+        /* operandClasses */
+        {
+            {
+                /* superclass */        QX86_OPERAND_FORM_TYPE_AMODE,
+                /* attributes */        QX86_OPERAND_ATTRIBUTE_RW_CERTAIN | QX86_OPERAND_ATTRIBUTE_WRITTEN,
+                /* u */                 {{ &qx86_amode_R, &qx86_stuple_q }}
+            }
+        }
+    }
+};
+
+static qx86_opcode_map                  qx86_opcode_map_M15_01_sp_f3_os
+                                        =
+{
+    QX86_OPCODE_MAP_INDEX_OS, 2, qx86_opcode_map_M15_01_sp_f3_os_items
 };
 
 static qx86_opcode_map_item             qx86_opcode_map_M15_01_sp_items[]
@@ -685,7 +721,7 @@ static qx86_opcode_map_item             qx86_opcode_map_M15_01_sp_items[]
     },
     /* F3 */
     {
-        QX86_OPCODE_MAP_ITEM_CODE_NONE, 0, -1, {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
+        QX86_OPCODE_MAP_ITEM_CODE_LINK, &qx86_opcode_map_M15_01_sp_f3_os, -1, {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
     }
 };
 
@@ -693,6 +729,59 @@ static qx86_opcode_map                  qx86_opcode_map_M15_01_sp
                                         =
 {
     QX86_OPCODE_MAP_INDEX_SP, 3, qx86_opcode_map_M15_01_sp_items
+};
+
+static qx86_opcode_map_item             qx86_opcode_map_M15_02_sp_f3_os_items[]
+                                        =
+{
+    {
+        /* code */                      QX86_MNEMONIC_WRFSBASE,
+        /* map */                       0,
+
+        /* operandCount */              1,
+        /* operandClasses */
+        {
+            {
+                /* superclass */        QX86_OPERAND_FORM_TYPE_AMODE,
+                /* attributes */        QX86_OPERAND_ATTRIBUTE_RW_CERTAIN | QX86_OPERAND_ATTRIBUTE_READ,
+                /* u */                 {{ &qx86_amode_R, &qx86_stuple_d }}
+            }
+        }
+    },
+    {
+        /* code */                      QX86_MNEMONIC_WRFSBASE,
+        /* map */                       0,
+
+        /* operandCount */              1,
+        /* operandClasses */
+        {
+            {
+                /* superclass */        QX86_OPERAND_FORM_TYPE_AMODE,
+                /* attributes */        QX86_OPERAND_ATTRIBUTE_RW_CERTAIN | QX86_OPERAND_ATTRIBUTE_READ,
+                /* u */                 {{ &qx86_amode_R, &qx86_stuple_d }}
+            }
+        }
+    },
+    {
+        /* code */                      QX86_MNEMONIC_WRFSBASE,
+        /* map */                       0,
+
+        /* operandCount */              1,
+        /* operandClasses */
+        {
+            {
+                /* superclass */        QX86_OPERAND_FORM_TYPE_AMODE,
+                /* attributes */        QX86_OPERAND_ATTRIBUTE_RW_CERTAIN | QX86_OPERAND_ATTRIBUTE_READ,
+                /* u */                 {{ &qx86_amode_R, &qx86_stuple_q }}
+            }
+        }
+    }
+};
+
+static qx86_opcode_map                  qx86_opcode_map_M15_02_sp_f3_os
+                                        =
+{
+    QX86_OPCODE_MAP_INDEX_OS, 2, qx86_opcode_map_M15_02_sp_f3_os_items
 };
 
 static qx86_opcode_map_item             qx86_opcode_map_M15_02_sp_items[]
@@ -722,7 +811,7 @@ static qx86_opcode_map_item             qx86_opcode_map_M15_02_sp_items[]
     },
     /* F3 */
     {
-        QX86_OPCODE_MAP_ITEM_CODE_NONE, 0, -1, {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
+        QX86_OPCODE_MAP_ITEM_CODE_LINK, &qx86_opcode_map_M15_02_sp_f3_os, -1, {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
     }
 };
 
@@ -730,6 +819,59 @@ static qx86_opcode_map                  qx86_opcode_map_M15_02_sp
                                         =
 {
     QX86_OPCODE_MAP_INDEX_SP, 3, qx86_opcode_map_M15_02_sp_items
+};
+
+static qx86_opcode_map_item             qx86_opcode_map_M15_03_sp_f3_os_items[]
+                                        =
+{
+    {
+        /* code */                      QX86_MNEMONIC_WRGSBASE,
+        /* map */                       0,
+
+        /* operandCount */              1,
+        /* operandClasses */
+        {
+            {
+                /* superclass */        QX86_OPERAND_FORM_TYPE_AMODE,
+                /* attributes */        QX86_OPERAND_ATTRIBUTE_RW_CERTAIN | QX86_OPERAND_ATTRIBUTE_READ,
+                /* u */                 {{ &qx86_amode_R, &qx86_stuple_d }}
+            }
+        }
+    },
+    {
+        /* code */                      QX86_MNEMONIC_WRFSBASE,
+        /* map */                       0,
+
+        /* operandCount */              1,
+        /* operandClasses */
+        {
+            {
+                /* superclass */        QX86_OPERAND_FORM_TYPE_AMODE,
+                /* attributes */        QX86_OPERAND_ATTRIBUTE_RW_CERTAIN | QX86_OPERAND_ATTRIBUTE_READ,
+                /* u */                 {{ &qx86_amode_R, &qx86_stuple_d }}
+            }
+        }
+    },
+    {
+        /* code */                      QX86_MNEMONIC_WRFSBASE,
+        /* map */                       0,
+
+        /* operandCount */              1,
+        /* operandClasses */
+        {
+            {
+                /* superclass */        QX86_OPERAND_FORM_TYPE_AMODE,
+                /* attributes */        QX86_OPERAND_ATTRIBUTE_RW_CERTAIN | QX86_OPERAND_ATTRIBUTE_READ,
+                /* u */                 {{ &qx86_amode_R, &qx86_stuple_q }}
+            }
+        }
+    }
+};
+
+static qx86_opcode_map                  qx86_opcode_map_M15_03_sp_f3_os
+                                        =
+{
+    QX86_OPCODE_MAP_INDEX_OS, 2, qx86_opcode_map_M15_03_sp_f3_os_items
 };
 
 static qx86_opcode_map_item             qx86_opcode_map_M15_03_sp_items[]
@@ -759,7 +901,7 @@ static qx86_opcode_map_item             qx86_opcode_map_M15_03_sp_items[]
     },
     /* F3 */
     {
-        QX86_OPCODE_MAP_ITEM_CODE_NONE, 0, -1, {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
+        QX86_OPCODE_MAP_ITEM_CODE_LINK, &qx86_opcode_map_M15_03_sp_f3_os, -1, {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
     }
 };
 
@@ -847,17 +989,26 @@ static qx86_opcode_map                  qx86_opcode_map_M15_05_mod
 static qx86_opcode_map_item             qx86_opcode_map_M15_06_mod_items[]
                                         =
 {
-    /* 00 */
     {
-        QX86_OPCODE_MAP_ITEM_CODE_NONE, 0, -1, {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
+        /* code */                      QX86_MNEMONIC_XSAVEOPT,
+        /* map */                       0,
+
+        /* operandCount */              0,
+        /* placeHolder */               {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
     },
-    /* 01 */
     {
-        QX86_OPCODE_MAP_ITEM_CODE_NONE, 0, -1, {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
+        /* code */                      QX86_MNEMONIC_XSAVEOPT,
+        /* map */                       0,
+
+        /* operandCount */              0,
+        /* placeHolder */               {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
     },
-    /* 02 */
     {
-        QX86_OPCODE_MAP_ITEM_CODE_NONE, 0, -1, {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
+        /* code */                      QX86_MNEMONIC_XSAVEOPT,
+        /* map */                       0,
+
+        /* operandCount */              0,
+        /* placeHolder */               {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
     },
     {
         /* code */                      QX86_MNEMONIC_MFENCE,
@@ -7751,7 +7902,6 @@ static qx86_opcode_map                  qx86_opcode_map_3A_80_sp
     QX86_OPCODE_MAP_INDEX_SP, 3, qx86_opcode_map_3A_80_sp_items
 };
 
-
 static qx86_opcode_map_item             qx86_opcode_map_3A_81_sp_66_cs_items[]
                                         =
 {
@@ -7830,6 +7980,102 @@ static qx86_opcode_map                  qx86_opcode_map_3A_81_sp
                                         =
 {
     QX86_OPCODE_MAP_INDEX_SP, 3, qx86_opcode_map_3A_81_sp_items
+};
+
+
+static qx86_opcode_map_item             qx86_opcode_map_3A_82_sp_66_cs_items[]
+                                        =
+{
+    {
+        /* code */                      QX86_MNEMONIC_INVPCID,
+        /* map */                       0,
+
+        /* operandCount */              2,
+        /* operandClasses */
+        {
+            {
+                /* superclass */        QX86_OPERAND_FORM_TYPE_AMODE,
+                /* attributes */        QX86_OPERAND_ATTRIBUTE_RW_CERTAIN | QX86_OPERAND_ATTRIBUTE_READ,
+                /* u */                 {{ &qx86_amode_G, &qx86_stuple_d }}
+            },
+            {
+                /* superclass */        QX86_OPERAND_FORM_TYPE_AMODE,
+                /* attributes */        QX86_OPERAND_ATTRIBUTE_RW_CERTAIN | QX86_OPERAND_ATTRIBUTE_READ,
+                /* u */                 {{ &qx86_amode_M, &qx86_stuple_dq }}
+            }
+        }
+    },
+    {
+        /* code */                      QX86_MNEMONIC_INVPCID,
+        /* map */                       0,
+
+        /* operandCount */              2,
+        /* operandClasses */
+        {
+            {
+                /* superclass */        QX86_OPERAND_FORM_TYPE_AMODE,
+                /* attributes */        QX86_OPERAND_ATTRIBUTE_RW_CERTAIN | QX86_OPERAND_ATTRIBUTE_READ,
+                /* u */                 {{ &qx86_amode_G, &qx86_stuple_d }}
+            },
+            {
+                /* superclass */        QX86_OPERAND_FORM_TYPE_AMODE,
+                /* attributes */        QX86_OPERAND_ATTRIBUTE_RW_CERTAIN | QX86_OPERAND_ATTRIBUTE_READ,
+                /* u */                 {{ &qx86_amode_M, &qx86_stuple_dq }}
+            }
+        }
+    },
+    {
+        /* code */                      QX86_MNEMONIC_INVPCID,
+        /* map */                       0,
+
+        /* operandCount */              2,
+        /* operandClasses */
+        {
+            {
+                /* superclass */        QX86_OPERAND_FORM_TYPE_AMODE,
+                /* attributes */        QX86_OPERAND_ATTRIBUTE_RW_CERTAIN | QX86_OPERAND_ATTRIBUTE_READ,
+                /* u */                 {{ &qx86_amode_G, &qx86_stuple_q }}
+            },
+            {
+                /* superclass */        QX86_OPERAND_FORM_TYPE_AMODE,
+                /* attributes */        QX86_OPERAND_ATTRIBUTE_RW_CERTAIN | QX86_OPERAND_ATTRIBUTE_READ,
+                /* u */                 {{ &qx86_amode_M, &qx86_stuple_dq }}
+            }
+        }
+    }
+};
+
+static qx86_opcode_map                  qx86_opcode_map_3A_82_sp_66_cs
+                                        =
+{
+    QX86_OPCODE_MAP_INDEX_CS, 2, qx86_opcode_map_3A_82_sp_66_cs_items
+};
+
+static qx86_opcode_map_item             qx86_opcode_map_3A_82_sp_items[]
+                                        =
+{
+    /* 00 */
+    {
+        QX86_OPCODE_MAP_ITEM_CODE_NONE, 0, -1, {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
+    },
+    /* 66 */
+    {
+        QX86_OPCODE_MAP_ITEM_CODE_LINK, &qx86_opcode_map_3A_82_sp_66_cs, -1, {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
+    },
+    /* F2 */
+    {
+        QX86_OPCODE_MAP_ITEM_CODE_NONE, 0, -1, {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
+    },
+    /* F3 */
+    {
+        QX86_OPCODE_MAP_ITEM_CODE_NONE, 0, -1, {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
+    }
+};
+
+static qx86_opcode_map                  qx86_opcode_map_3A_82_sp
+                                        =
+{
+    QX86_OPCODE_MAP_INDEX_SP, 3, qx86_opcode_map_3A_82_sp_items
 };
 
 static qx86_opcode_map_item             qx86_opcode_map_3A_db_sp_items[]
@@ -8788,7 +9034,7 @@ static qx86_opcode_map_item             qx86_opcode_map_3A_items[]
     },
     /* 82 */
     {
-        QX86_OPCODE_MAP_ITEM_CODE_NONE, 0, -1, {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
+        QX86_OPCODE_MAP_ITEM_CODE_LINK, &qx86_opcode_map_3A_82_sp, -1, {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
     },
     /* 83 */
     {
@@ -9955,17 +10201,26 @@ static qx86_opcode_map_item             qx86_opcode_map_M7_02_mod_03_rm_items[]
     {
         QX86_OPCODE_MAP_ITEM_CODE_NONE, 0, -1, {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
     },
-    /* 04 */
     {
-        QX86_OPCODE_MAP_ITEM_CODE_NONE, 0, -1, {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
+        /* code */                      QX86_MNEMONIC_VMFUNC,
+        /* map */                       0,
+
+        /* operandCount */              0,
+        /* placeHolder */               {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
     },
-    /* 05 */
     {
-        QX86_OPCODE_MAP_ITEM_CODE_NONE, 0, -1, {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
+        /* code */                      QX86_MNEMONIC_XEND,
+        /* map */                       0,
+
+        /* operandCount */              0,
+        /* placeHolder */               {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
     },
-    /* 06 */
     {
-        QX86_OPCODE_MAP_ITEM_CODE_NONE, 0, -1, {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
+        /* code */                      QX86_MNEMONIC_XTEST,
+        /* map */                       0,
+
+        /* operandCount */              0,
+        /* placeHolder */               {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
     },
     /* 07 */
     {
@@ -30579,7 +30834,7 @@ static qx86_opcode_map                  qx86_opcode_map_D8
     QX86_OPCODE_MAP_INDEX_REG, 7, qx86_opcode_map_D8_items
 };
 /* End of file qx86-d-opcode-map/qx86-opcode-map-D8.map */
-/* Generated from file qx86-d-opcode-map/qx86-opcode-map-M11.map */
+/* Generated from file qx86-d-opcode-map/qx86-opcode-map-M11_C7.map */
 // +------------------------------------------------------------------------+
 // | quix86                                                                 |
 // +------------------------------------------------------------------------+
@@ -30606,15 +30861,22 @@ static qx86_opcode_map                  qx86_opcode_map_D8
 
 // Reference: AMD Architecture Programmer's Manual 3: Table A-6.
 
-static qx86_opcode_map_item             qx86_opcode_map_M11_items[]
+static qx86_opcode_map_item             qx86_opcode_map_M11_C7_07_rm_items[]
                                         =
 {
     {
-        /* code */                      QX86_MNEMONIC_MOV,
+        /* code */                      QX86_MNEMONIC_XBEGIN,
         /* map */                       0,
 
-        /* operandCount */              -1,
-        /* placeHolder */               {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
+        /* operandCount */              1,
+        /* operandClasses */
+        {
+            {
+                /* superclass */        QX86_OPERAND_FORM_TYPE_AMODE,
+                /* attributes */        QX86_OPERAND_ATTRIBUTE_RW_CERTAIN | QX86_OPERAND_ATTRIBUTE_READ,
+                /* u */                 {{ &qx86_amode_J, &qx86_stuple_z }}
+            }
+        }
     },
     /* 01 */
     {
@@ -30646,12 +30908,208 @@ static qx86_opcode_map_item             qx86_opcode_map_M11_items[]
     }
 };
 
-static qx86_opcode_map                  qx86_opcode_map_M11
+static qx86_opcode_map                  qx86_opcode_map_M11_C7_07_rm
                                         =
 {
-    QX86_OPCODE_MAP_INDEX_REG, 7, qx86_opcode_map_M11_items
+    QX86_OPCODE_MAP_INDEX_RM, 7, qx86_opcode_map_M11_C7_07_rm_items
 };
-/* End of file qx86-d-opcode-map/qx86-opcode-map-M11.map */
+
+static qx86_opcode_map_item             qx86_opcode_map_M11_C7_items[]
+                                        =
+{
+    {
+        /* code */                      QX86_MNEMONIC_MOV,
+        /* map */                       0,
+
+        /* operandCount */              2,
+        /* operandClasses */
+        {
+            {
+                /* superclass */        QX86_OPERAND_FORM_TYPE_AMODE,
+                /* attributes */        QX86_OPERAND_ATTRIBUTE_RW_CERTAIN | QX86_OPERAND_ATTRIBUTE_WRITTEN,
+                /* u */                 {{ &qx86_amode_E, &qx86_stuple_v }}
+            },
+            {
+                /* superclass */        QX86_OPERAND_FORM_TYPE_AMODE,
+                /* attributes */        QX86_OPERAND_ATTRIBUTE_RW_CERTAIN | QX86_OPERAND_ATTRIBUTE_READ,
+                /* u */                 {{ &qx86_amode_I, &qx86_stuple_z }}
+            }
+        }
+    },
+    /* 01 */
+    {
+        QX86_OPCODE_MAP_ITEM_CODE_NONE, 0, -1, {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
+    },
+    /* 02 */
+    {
+        QX86_OPCODE_MAP_ITEM_CODE_NONE, 0, -1, {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
+    },
+    /* 03 */
+    {
+        QX86_OPCODE_MAP_ITEM_CODE_NONE, 0, -1, {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
+    },
+    /* 04 */
+    {
+        QX86_OPCODE_MAP_ITEM_CODE_NONE, 0, -1, {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
+    },
+    /* 05 */
+    {
+        QX86_OPCODE_MAP_ITEM_CODE_NONE, 0, -1, {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
+    },
+    /* 06 */
+    {
+        QX86_OPCODE_MAP_ITEM_CODE_NONE, 0, -1, {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
+    },
+    /* 07 */
+    {
+        QX86_OPCODE_MAP_ITEM_CODE_LINK, &qx86_opcode_map_M11_C7_07_rm, -1, {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
+    }
+};
+
+static qx86_opcode_map                  qx86_opcode_map_M11_C7
+                                        =
+{
+    QX86_OPCODE_MAP_INDEX_REG, 7, qx86_opcode_map_M11_C7_items
+};
+/* End of file qx86-d-opcode-map/qx86-opcode-map-M11_C7.map */
+/* Generated from file qx86-d-opcode-map/qx86-opcode-map-M11_C6.map */
+// +------------------------------------------------------------------------+
+// | quix86                                                                 |
+// +------------------------------------------------------------------------+
+// | This file is part of quix86, an x86-64 instruction decoder.            |
+// |                                                                        |
+// | Copyright (C) 2011 Institute for System Programming of Russian Academy |
+// | of Sciences.                                                           |
+// |                                                                        |
+// | Contact e-mail: <unicluster@ispras.ru>.                                |
+// |                                                                        |
+// | quix86 is free software: you can redistribute it and/or modify it      |
+// | under the terms of the GNU Lesser General Public License as published  |
+// | by the  Free Software Foundation, either version 3 of the License, or  |
+// | (at your option) any later version.                                    |
+// |                                                                        |
+// | quix86 is distributed in the hope that it will be useful, but WITHOUT  |
+// | ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or  |
+// | FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public   |
+// | License for more details.                                              |
+// |                                                                        |
+// | You should have received a copy of the GNU Lesser General Public       |
+// | License along with quix86. If not, see <http://www.gnu.org/licenses/>. |
+// +------------------------------------------------------------------------+
+
+// Reference: AMD Architecture Programmer's Manual 3: Table A-6.
+
+static qx86_opcode_map_item             qx86_opcode_map_M11_C6_07_rm_items[]
+                                        =
+{
+    {
+        /* code */                      QX86_MNEMONIC_XABORT,
+        /* map */                       0,
+
+        /* operandCount */              1,
+        /* operandClasses */
+        {
+            {
+                /* superclass */        QX86_OPERAND_FORM_TYPE_AMODE,
+                /* attributes */        QX86_OPERAND_ATTRIBUTE_RW_CERTAIN | QX86_OPERAND_ATTRIBUTE_READ,
+                /* u */                 {{ &qx86_amode_I, &qx86_stuple_b }}
+            }
+        }
+    },
+    /* 01 */
+    {
+        QX86_OPCODE_MAP_ITEM_CODE_NONE, 0, -1, {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
+    },
+    /* 02 */
+    {
+        QX86_OPCODE_MAP_ITEM_CODE_NONE, 0, -1, {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
+    },
+    /* 03 */
+    {
+        QX86_OPCODE_MAP_ITEM_CODE_NONE, 0, -1, {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
+    },
+    /* 04 */
+    {
+        QX86_OPCODE_MAP_ITEM_CODE_NONE, 0, -1, {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
+    },
+    /* 05 */
+    {
+        QX86_OPCODE_MAP_ITEM_CODE_NONE, 0, -1, {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
+    },
+    /* 06 */
+    {
+        QX86_OPCODE_MAP_ITEM_CODE_NONE, 0, -1, {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
+    },
+    /* 07 */
+    {
+        QX86_OPCODE_MAP_ITEM_CODE_NONE, 0, -1, {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
+    }
+};
+
+static qx86_opcode_map                  qx86_opcode_map_M11_C6_07_rm
+                                        =
+{
+    QX86_OPCODE_MAP_INDEX_RM, 7, qx86_opcode_map_M11_C6_07_rm_items
+};
+
+static qx86_opcode_map_item             qx86_opcode_map_M11_C6_items[]
+                                        =
+{
+    {
+        /* code */                      QX86_MNEMONIC_MOV,
+        /* map */                       0,
+
+        /* operandCount */              2,
+        /* operandClasses */
+        {
+            {
+                /* superclass */        QX86_OPERAND_FORM_TYPE_AMODE,
+                /* attributes */        QX86_OPERAND_ATTRIBUTE_RW_CERTAIN | QX86_OPERAND_ATTRIBUTE_WRITTEN,
+                /* u */                 {{ &qx86_amode_E, &qx86_stuple_b }}
+            },
+            {
+                /* superclass */        QX86_OPERAND_FORM_TYPE_AMODE,
+                /* attributes */        QX86_OPERAND_ATTRIBUTE_RW_CERTAIN | QX86_OPERAND_ATTRIBUTE_READ,
+                /* u */                 {{ &qx86_amode_I, &qx86_stuple_b }}
+            }
+        }
+    },
+    /* 01 */
+    {
+        QX86_OPCODE_MAP_ITEM_CODE_NONE, 0, -1, {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
+    },
+    /* 02 */
+    {
+        QX86_OPCODE_MAP_ITEM_CODE_NONE, 0, -1, {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
+    },
+    /* 03 */
+    {
+        QX86_OPCODE_MAP_ITEM_CODE_NONE, 0, -1, {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
+    },
+    /* 04 */
+    {
+        QX86_OPCODE_MAP_ITEM_CODE_NONE, 0, -1, {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
+    },
+    /* 05 */
+    {
+        QX86_OPCODE_MAP_ITEM_CODE_NONE, 0, -1, {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
+    },
+    /* 06 */
+    {
+        QX86_OPCODE_MAP_ITEM_CODE_NONE, 0, -1, {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
+    },
+    /* 07 */
+    {
+        QX86_OPCODE_MAP_ITEM_CODE_LINK, &qx86_opcode_map_M11_C6_07_rm, -1, {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
+    }
+};
+
+static qx86_opcode_map                  qx86_opcode_map_M11_C6
+                                        =
+{
+    QX86_OPCODE_MAP_INDEX_REG, 7, qx86_opcode_map_M11_C6_items
+};
+/* End of file qx86-d-opcode-map/qx86-opcode-map-M11_C6.map */
 /* Generated from file qx86-d-opcode-map/qx86-opcode-map-M2.map */
 // +------------------------------------------------------------------------+
 // | quix86                                                                 |
@@ -36654,13 +37112,19 @@ static qx86_opcode_map                  qx86_opcode_map_2_b8_sp
 static qx86_opcode_map_item             qx86_opcode_map_2_b9_sp_items[]
                                         =
 {
-    /* 00 */
     {
-        QX86_OPCODE_MAP_ITEM_CODE_LINK, &qx86_opcode_map_M10, -1, {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
+        /* code */                      QX86_MNEMONIC_UD1,
+        /* map */                       0,
+
+        /* operandCount */              0,
+        /* placeHolder */               {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
     },
-    /* 66 */
     {
-        QX86_OPCODE_MAP_ITEM_CODE_LINK, &qx86_opcode_map_M10, -1, {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
+        /* code */                      QX86_MNEMONIC_UD1,
+        /* map */                       0,
+
+        /* operandCount */              0,
+        /* placeHolder */               {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
     },
     /* F2 */
     {
@@ -47714,37 +48178,11 @@ static qx86_opcode_map_item             qx86_opcode_map_1_items[]
     },
     /* C6 */
     {
-        QX86_OPCODE_MAP_ITEM_CODE_LINK, &qx86_opcode_map_M11, 2,
-        /* operandClasses */
-        {
-            {
-                /* superclass */        QX86_OPERAND_FORM_TYPE_AMODE,
-                /* attributes */        QX86_OPERAND_ATTRIBUTE_RW_CERTAIN | QX86_OPERAND_ATTRIBUTE_WRITTEN,
-                /* u */                 {{ &qx86_amode_E, &qx86_stuple_b }}
-            },
-            {
-                /* superclass */        QX86_OPERAND_FORM_TYPE_AMODE,
-                /* attributes */        QX86_OPERAND_ATTRIBUTE_RW_CERTAIN | QX86_OPERAND_ATTRIBUTE_READ,
-                /* u */                 {{ &qx86_amode_I, &qx86_stuple_b }}
-            }
-        }
+        QX86_OPCODE_MAP_ITEM_CODE_LINK, &qx86_opcode_map_M11_C6, -1, {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
     },
     /* C7 */
     {
-        QX86_OPCODE_MAP_ITEM_CODE_LINK, &qx86_opcode_map_M11, 2,
-        /* operandClasses */
-        {
-            {
-                /* superclass */        QX86_OPERAND_FORM_TYPE_AMODE,
-                /* attributes */        QX86_OPERAND_ATTRIBUTE_RW_CERTAIN | QX86_OPERAND_ATTRIBUTE_WRITTEN,
-                /* u */                 {{ &qx86_amode_E, &qx86_stuple_v }}
-            },
-            {
-                /* superclass */        QX86_OPERAND_FORM_TYPE_AMODE,
-                /* attributes */        QX86_OPERAND_ATTRIBUTE_RW_CERTAIN | QX86_OPERAND_ATTRIBUTE_READ,
-                /* u */                 {{ &qx86_amode_I, &qx86_stuple_z }}
-            }
-        }
+        QX86_OPCODE_MAP_ITEM_CODE_LINK, &qx86_opcode_map_M11_C7, -1, {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
     },
     {
         /* code */                      QX86_MNEMONIC_ENTER,

@@ -157,6 +157,10 @@ Map 3A nb
     81: [ sp ]
         66: INVVPID Gd-     Mdq-        [ cs = 01 ]                 # VMX
         66: INVVPID Gq-     Mdq-        [ cs = 02 ]                 # VMX
+    82: [ sp ]
+        66: INVPCID Gd-     Mdq-        [ cs = 00 ]
+        66: INVPCID Gd-     Mdq-        [ cs = 01 ]
+        66: INVPCID Gq-     Mdq-        [ cs = 02 ]
 
     DB: AESIMC      Vdq+    Wdq-        [ sp = 66 ]                 # TODO: AVX
     DC: AESENC      Vdq*    Wdq-        [ sp = 66 ]                 # TODO: AVX

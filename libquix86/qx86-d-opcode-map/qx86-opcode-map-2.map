@@ -358,8 +358,8 @@ Map 2 nb
     B6: MOVZX       Gv+     Eb-
     B7: MOVZX       Gv+     Ew-
     B8: POPCNT      Gv+     Ev-         [ sp = F3 ]
-    B9: -> M10                          [ sp = 00 ]
-    B9: -> M10                          [ sp = 66 ]
+    B9: UD1         .                   [ sp = 00 ]   # Used as UD1, M10 map in docs
+    B9: UD1         .                   [ sp = 66 ]   # Used as UD1, M10 map in docs
     BA: -> M8                           [ sp = 00 ]
     BA: -> M8                           [ sp = 66 ]
     BB: BTC         Ev*     Gv-         [ sp = 00 ]

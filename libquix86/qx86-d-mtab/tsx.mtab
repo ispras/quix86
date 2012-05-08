@@ -22,8 +22,11 @@
 ## | License along with quix86. If not, see <http://www.gnu.org/licenses/>. |
 ## +------------------------------------------------------------------------+
 
-## Reference: AMD Architecture Programmer's Manual 3: Table A-6.
-Map M11 reg
-{
-    00: MOV
-}
+## Default properties for Intel Transactional Synchronization Extensions subset.
+*                   .
+
+## Intel TSX subset instructions.
+XABORT              .
+XBEGIN              .
+XEND                .
+XTEST               .

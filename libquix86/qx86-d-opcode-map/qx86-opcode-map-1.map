@@ -348,8 +348,8 @@ Map 1 nb
         02: LDS     Gz+ Mp-             [ cs = 1 ]
         02: $C5                         [ cs = 2 ]
         03: $C5
-    C6: -> M11      Eb+ Ib-
-    C7: -> M11      Ev+ Iz-
+    C6: -> M11_C6
+    C7: -> M11_C7
 
     C8: ENTER       Iw- Ib-
     C9: LEAVE       .

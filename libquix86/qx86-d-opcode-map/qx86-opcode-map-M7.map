@@ -55,6 +55,9 @@ Map M7 reg
         03: [ rm ]
             00: XGETBV  .
             01: XSETBV  .
+            04: VMFUNC  .                               # VMX
+            05: XEND    .                               # TSX
+            06: XTEST   .                               # TSX
     03: [ mod ]
         00: LIDT    Ms-
         01: LIDT    Ms-

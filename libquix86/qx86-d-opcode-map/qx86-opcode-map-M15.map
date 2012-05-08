@@ -26,10 +26,26 @@
 ## Reference: Intel Architecture Software Developer’s Manual 2B: Table A-6.
 Map M15 reg
 {
-    00: FXSAVE      Mfx+                [ sp = 00 ]
-    01: FXRSTOR     Mfx-                [ sp = 00 ]
-    02: LDMXCSR     Md-                 [ sp = 00 ]
-    03: STMXCSR     Md+                 [ sp = 00 ]
+    00: [ sp ]
+        00: FXSAVE      Mfx+
+        F3: RDFSBASE    Rd+             [ os = 0 ]          # Intel
+        F3: RDFSBASE    Rd+             [ os = 1 ]          # Intel
+        F3: RDFSBASE    Rq+             [ os = 2 ]          # Intel
+    01: [ sp ]
+        00: FXRSTOR     Mfx-
+        F3: RDGSBASE    Rd+             [ os = 0 ]          # Intel
+        F3: RDGSBASE    Rd+             [ os = 1 ]          # Intel
+        F3: RDGSBASE    Rq+             [ os = 2 ]          # Intel
+    02: [ sp ]
+        00: LDMXCSR     Md-
+        F3: WRFSBASE    Rd-             [ os = 0 ]          # Intel
+        F3: WRFSBASE    Rd-             [ os = 1 ]          # Intel
+        F3: WRFSBASE    Rq-             [ os = 2 ]          # Intel
+    03: [ sp ]
+        00: STMXCSR     Md+
+        F3: WRGSBASE    Rd-             [ os = 0 ]          # Intel
+        F3: WRFSBASE    Rd-             [ os = 1 ]          # Intel
+        F3: WRFSBASE    Rq-             [ os = 2 ]          # Intel
     04: XSAVE       .                   [ mod = 00 ]        # Intel
     04: XSAVE       .                   [ mod = 01 ]        # Intel
     04: XSAVE       .                   [ mod = 02 ]        # Intel
@@ -37,6 +53,9 @@ Map M15 reg
     05: XRSTOR      .                   [ mod = 01 ]        # Intel
     05: XRSTOR      .                   [ mod = 02 ]        # Intel
     05: LFENCE      .                   [ mod = 03 ]
+    06: XSAVEOPT    .                   [ mod = 00 ]        # Intel
+    06: XSAVEOPT    .                   [ mod = 01 ]        # Intel
+    06: XSAVEOPT    .                   [ mod = 02 ]        # Intel
     06: MFENCE      .                   [ mod = 03 ]
     07: CLFLUSH     Mb-                 [ mod = 00 ] 
     07: CLFLUSH     Mb-                 [ mod = 01 ]
