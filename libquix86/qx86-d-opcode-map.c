@@ -37271,9 +37271,24 @@ static qx86_opcode_map_item             qx86_opcode_map_2_bc_sp_items[]
     {
         QX86_OPCODE_MAP_ITEM_CODE_NONE, 0, -1, {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
     },
-    /* F3 */
     {
-        QX86_OPCODE_MAP_ITEM_CODE_NONE, 0, -1, {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
+        /* code */                      QX86_MNEMONIC_TZCNT,
+        /* map */                       0,
+
+        /* operandCount */              2,
+        /* operandClasses */
+        {
+            {
+                /* superclass */        QX86_OPERAND_FORM_TYPE_AMODE,
+                /* attributes */        QX86_OPERAND_ATTRIBUTE_RW_CERTAIN | QX86_OPERAND_ATTRIBUTE_WRITTEN,
+                /* u */                 {{ &qx86_amode_G, &qx86_stuple_v }}
+            },
+            {
+                /* superclass */        QX86_OPERAND_FORM_TYPE_AMODE,
+                /* attributes */        QX86_OPERAND_ATTRIBUTE_RW_CERTAIN | QX86_OPERAND_ATTRIBUTE_READ,
+                /* u */                 {{ &qx86_amode_E, &qx86_stuple_v }}
+            }
+        }
     }
 };
 

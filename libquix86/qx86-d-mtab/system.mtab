@@ -52,8 +52,6 @@ LSL                 .
 LTR                 .
 MONITOR             .
 MWAIT               .
-RDFSBASE            .
-RDGSBASE            .
 RDMSR               .
 RDPMC               .
 RDTSC               .
@@ -76,8 +74,6 @@ UD2                 .
 VERR                .
 VERW                .
 WBINVD              .
-WRFSBASE            .
-WRGSBASE            .
 WRMSR               .
 XGETBV              .
 XRSTOR              .

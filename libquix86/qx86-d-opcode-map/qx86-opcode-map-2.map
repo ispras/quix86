@@ -366,6 +366,7 @@ Map 2 nb
     BB: BTC         Ev*     Gv-         [ sp = 66 ]
     BC: BSF         Gv+?    Ev-         [ sp = 00 ]
     BC: BSF         Gv+?    Ev-         [ sp = 66 ]
+    BC: TZCNT       Gv+     Ev-         [ sp = F3 ]
     BD: BSR         Gv+?    Ev-         [ sp = 00 ]
     BD: BSR         Gv+?    Ev-         [ sp = 66 ]
     BD: LZCNT       Gv+     Ev-         [ sp = F3 ]

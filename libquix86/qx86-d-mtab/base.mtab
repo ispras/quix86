@@ -159,6 +159,8 @@ PUSHF               +
     PUSHFQ          DEFAULT_SIZE_64, >PUSHFD
 RCL                 .
 RCR                 .
+RDFSBASE            .
+RDGSBASE            .
 RET                 FIXED_SIZE_64, $TRANSFER, $TRANSFER_LINKED_BACK
 RETF                $TRANSFER, $TRANSFER_LINKED_BACK
 ROL                 .
@@ -186,6 +188,9 @@ STOS                +
     STOSQ           REP, >STOSD
 SUB                 INTERLOCKABLE
 TEST                .
+TZCNT               .
+WRFSBASE            .
+WRGSBASE            .
 XADD                INTERLOCKABLE
 XCHG                INTERLOCKABLE, IMPLICIT_LOCK
 XLAT                .
