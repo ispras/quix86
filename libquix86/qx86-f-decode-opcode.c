@@ -30,8 +30,9 @@ qx86_decode_opcode(qx86_insn *insn)
 
     int                                 result;
 
-    /* Initialize instruction operand count.  */
-    insn->operandCount = -1;
+    /* Initialize instruction operand counts.  */
+    insn->implicitOperandCount          = 0;
+    insn->operandCount                  = -1;
 
     /* Loop around maps.  */
     for (map = qx86_opcode_maps[insn->modifiers.escape]; /* ILB */; map = item->link)

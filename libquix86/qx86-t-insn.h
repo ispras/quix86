@@ -44,9 +44,14 @@ struct qx86_insn
     int                                 processorMode;
 
     int                                 mnemonic;
+
+    qx86_int8                           implicitOperandCount;
     qx86_int8                           operandCount;
 
+    qx86_operand                        implicitOperands[QX86_IMPLICIT_OPERAND_NMAX];
     qx86_operand                        operands[QX86_OPERAND_NMAX];
+
+    qx86_operand_form *                 implicitOperandForms[QX86_IMPLICIT_OPERAND_NMAX];
     qx86_operand_form *                 operandForms[QX86_OPERAND_NMAX];
 
     qx86_insn_attributes                attributes;

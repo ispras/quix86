@@ -419,7 +419,16 @@ typedef union qx86_operand_form_union   qx86_operand_form_union;
 /**
  * Calculate effective address of an <em>x86</em> memory operand.
  *
- * TODO: documentation.
+ * \param                               insn
+ *                                      Instruction pointer.
+ * \param                               operandIndex
+ *                                      Index of operand to decode: 0 and up
+ *                                      for explicit operands, negative values
+ *                                      for implicit operands.
+ * \param[out]                          address
+ *                                      Effective address if successful.
+ *
+ * \return                              Status code.
  *
  * \author                              icee
  * \since                               1.0
@@ -430,7 +439,16 @@ qx86_calculate_effective_address(QX86_CONST qx86_insn *insn, int operandIndex, q
 /**
  * Calculate linear address of an <em>x86</em> memory operand.
  *
- * TODO: documentation.
+ * \param                               insn
+ *                                      Instruction pointer.
+ * \param                               operandIndex
+ *                                      Index of operand to decode: 0 and up
+ *                                      for explicit operands, negative values
+ *                                      for implicit operands.
+ * \param[out]                          address
+ *                                      Linear address if successful.
+ *
+ * \return                              Status code.
  *
  * \author                              icee
  * \since                               1.0

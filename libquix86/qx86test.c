@@ -51,7 +51,7 @@ main(void)
 
     opt.flipCase                        = 0;
 
-    printf("qx86_instruction_decode         : returned %d.\n", qx86_decode(&insn, QX86_SIZE_32, raw, sizeof(raw)));
+    printf("qx86_instruction_decode         : returned %d.\n", qx86_decode(&insn, QX86_SIZE_64, raw, sizeof(raw)));
     printf("qx86_print_intel                : returned %d.\n", qx86_print_intel(&insn, &opt, buffer, &bufferSize));
     printf("                                > %s\n", buffer);
 

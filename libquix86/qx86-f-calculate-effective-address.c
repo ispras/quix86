@@ -35,7 +35,7 @@ qx86_calculate_effective_address(QX86_CONST qx86_insn *insn, int operandIndex, q
     if (!insn || !address) return QX86_E_API;
 
     /* Test operandIndex to be a valid index.  */
-    if (operandIndex < 0) return QX86_E_API;
+    if (operandIndex < -insn->implicitOperandCount) return QX86_E_API;
     if (operandIndex >= insn->operandCount) return QX86_E_API;
 
     /* Get operand pointer.  */
