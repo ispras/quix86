@@ -136,9 +136,25 @@ qx86_calculate_effective_address(QX86_CONST qx86_insn *insn, int operandIndex, q
         offset += *address;
     }
 
-    /* Calculate offset: index.  */
-    if (QX86_REGISTER_NONE != operand->u.m.iri)
+    /* Calculate offset: index.  Special case for AL register used as index in
+       XLAT implicit operand.  */
+    switch (operand->u.m.iri)
     {
+    case QX86_REGISTER_NONE:
+        /* Ignore.  */
+        break;
+
+    case QX86_REGISTER_AL:
+        /* Ask for index value.  */
+        if (!insn->callback(insn->data, operand->u.m.iri, QX86_SUBREG_NONE, value)) return QX86_E_CALLBACK;
+
+        /* Value is one unsigned octet.  Cannot be scaled.  */
+        offset += value[0];
+
+        /* Done.  */
+        break;
+
+    default:
         /* Ask for index value.  */
         if (!insn->callback(insn->data, operand->u.m.iri, QX86_SUBREG_NONE, value)) return QX86_E_CALLBACK;
 
@@ -147,6 +163,9 @@ qx86_calculate_effective_address(QX86_CONST qx86_insn *insn, int operandIndex, q
 
         /* Scale and add to offset.  */
         offset += *address << operand->u.m.scale;
+
+        /* Done.  */
+        break;
     }
 
     /* Truncate to address size.  */

@@ -31,10 +31,14 @@ qx86_extract_address(qx86_uint8 *octets, qx86_uint64 *address)
 #   ifdef QUIX86_BIG_ENDIAN
     {
         /* Big endian.  Compiler will optimize this, I believe.  */
-        ((qx86_octet *) address)[0] = octets[3];
-        ((qx86_octet *) address)[1] = octets[2];
-        ((qx86_octet *) address)[2] = octets[1];
-        ((qx86_octet *) address)[3] = octets[0];
+        ((qx86_octet *) address)[0] = octets[7];
+        ((qx86_octet *) address)[1] = octets[6];
+        ((qx86_octet *) address)[2] = octets[5];
+        ((qx86_octet *) address)[3] = octets[4];
+        ((qx86_octet *) address)[4] = octets[3];
+        ((qx86_octet *) address)[5] = octets[2];
+        ((qx86_octet *) address)[6] = octets[1];
+        ((qx86_octet *) address)[7] = octets[0];
     }
 #   else
     {
