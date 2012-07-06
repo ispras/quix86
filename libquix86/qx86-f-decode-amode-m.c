@@ -88,7 +88,7 @@ qx86_decode_amode_m(qx86_insn *insn, int index)
         if (QX86_REGISTER_SPECIAL == operand->u.m.bri)
         {
             /* Load new base.  */
-            operand->u.m.bri = qx86_sib_base_special[p][QX86_MODRM_MOD(modrm) | bmask];
+            operand->u.m.bri = qx86_sib_base_special[p][QX86_MODRM_MOD(modrm) | (bmask >> 1)];
 
             /* Add displacement for zero mod case.  */
             if (!QX86_MODRM_MOD(modrm)) operand->u.m.dispSize = QX86_DISP_32;

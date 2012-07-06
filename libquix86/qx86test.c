@@ -36,7 +36,8 @@ main(void)
 //                                      = "\x67\x65\x0F\x38\x1C\x40\x42";
 //                                      = "\xf7\x45\x70\x00\x00\x02\x00";
 //                                      = "\xF2\xAE";
-                                        = "\xF3\x0F\xBD\x00";
+//                                      = "\xF3\x0F\xBD\x00";
+                                        = "\x49\x8B\x94\xC5\xF0\x02\x00\x00";
 
     qx86_insn                           insn;
     qx86_print_options_intel            opt;
