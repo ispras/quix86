@@ -33,6 +33,8 @@ qx86_decode_implicit_1(qx86_insn *insn, int index)
     operand->size                       = 1;
     operand->u.i.value[0]               = 1;
     operand->u.i.valueSize              = 1;
+    operand->u.i.extended[0]            = 1;
+    operand->u.i.extendedSize           = 1;
 
     /* Success.  */
     return QX86_SUCCESS;
