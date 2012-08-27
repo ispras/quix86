@@ -73,7 +73,7 @@ qx86_decode_amode_i(qx86_insn *insn, int index)
             else
             {
                 /* No.  Sign-extend previous octet.  */
-                operand->u.i.extended[i] = (operand->u.i.value[i - 1] & 0x80) ? 0xFF : 0x00;
+                operand->u.i.extended[i] = (operand->u.i.extended[i - 1] & 0x80) ? 0xFF : 0x00;
             }
         }
 
