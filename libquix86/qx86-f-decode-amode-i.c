@@ -27,6 +27,9 @@ qx86_decode_amode_i(qx86_insn *insn, int index)
 {
     qx86_operand *                      operand;
 
+    int                                 i;
+    int                                 result;
+
     /* Initialize operand.  */
     operand                             = insn->operands + index;
     operand->ot                         = QX86_OPERAND_TYPE_IMMEDIATE;
@@ -39,8 +42,43 @@ qx86_decode_amode_i(qx86_insn *insn, int index)
     case 2:
     case 4:
     case 8:
-        /* Good operand size.  */
-        return qx86_pump(insn, operand->u.i.value, operand->size);
+        /* Good operand size.  Fetch immediate.  */
+        if (QX86_SUCCESS != (result = qx86_pump(insn, operand->u.i.value, operand->size)))
+        {
+            /* Bail out.  */
+            return result;
+        }
+
+        /* See if sign extension is in effect.  */
+        if (&qx86_amode_F == insn->operandForms[index]->u.a.amode)
+        {
+            /* Extended size is taken from operand size attribute.  */
+            operand->u.i.extendedSize = (qx86_uint8) (2 << insn->attributes.operandSize);
+        }
+        else
+        {
+            /* Extended size is same as normal encoded size.  */
+            operand->u.i.extendedSize = operand->u.i.valueSize;
+        }
+
+        /* Iterate octets.  */
+        for (i = 0; i < operand->u.i.extendedSize; ++i)
+        {
+            /* See if we have that actual octet.  */
+            if (i < operand->u.i.valueSize)
+            {
+                /* Yes.  Copy.  */
+                operand->u.i.extended[i] = operand->u.i.value[i]; 
+            }
+            else
+            {
+                /* No.  Sign-extend previous octet.  */
+                operand->u.i.extended[i] = (operand->u.i.value[i - 1] & 0x80) ? 0xFF : 0x00;
+            }
+        }
+
+        /* Done.  */
+        return QX86_SUCCESS;
 
     default:
         /* Invalid operand size; internal error.  */

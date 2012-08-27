@@ -198,8 +198,8 @@ Map 1 nb
 
     68: PUSH        Iz-
     69: IMUL        Gv+ Ev- Iz-
-    6A: PUSH        Ib-
-    6B: IMUL        Gv+ Ev- Ib-
+    6A: PUSH        Fb-
+    6B: IMUL        Gv+ Ev- Fb-
     6C: INSB        Yb+ DX-
     6D: INSW        Yz+ DX-             [ os = 0 ]
     6D: INSD        Yz+ DX-             [ os = 1 ]
@@ -231,7 +231,7 @@ Map 1 nb
     81: -> M1_Ev_Iz
     82: -> M1_Eb_Ib                     [ cs = 0 ]
     82: -> M1_Eb_Ib                     [ cs = 1 ]
-    83: -> M1_Ev_Ib
+    83: -> M1_Ev_Fb
     84: TEST        Eb- Gb-
     85: TEST        Ev- Gv-
     86: XCHG        Eb* Gb*
@@ -249,7 +249,7 @@ Map 1 nb
     8E: MOV         Sw+ Ew-
     8F: -> M1A      Ev+
 
-    90: XCHG        r0* rAX*                            # TODO: PAUSE, NOP, XCHG
+    90: XCHG        r0* rAX*
     91: XCHG        r1* rAX*
     92: XCHG        r2* rAX*
     93: XCHG        r3* rAX*

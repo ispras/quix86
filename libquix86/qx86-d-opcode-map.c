@@ -31277,7 +31277,7 @@ static qx86_opcode_map                  qx86_opcode_map_M1A
     QX86_OPCODE_MAP_INDEX_REG, 7, qx86_opcode_map_M1A_items
 };
 /* End of file qx86-d-opcode-map/qx86-opcode-map-M1A.map */
-/* Generated from file qx86-d-opcode-map/qx86-opcode-map-M1_Ev_Ib.map */
+/* Generated from file qx86-d-opcode-map/qx86-opcode-map-M1_Ev_Fb.map */
 // +------------------------------------------------------------------------+
 // | quix86                                                                 |
 // +------------------------------------------------------------------------+
@@ -31304,7 +31304,7 @@ static qx86_opcode_map                  qx86_opcode_map_M1A
 
 // Reference: AMD Architecture Programmer's Manual 3: Table A-6.
 
-static qx86_opcode_map_item             qx86_opcode_map_M1_Ev_Ib_items[]
+static qx86_opcode_map_item             qx86_opcode_map_M1_Ev_Fb_items[]
                                         =
 {
     {
@@ -31322,7 +31322,7 @@ static qx86_opcode_map_item             qx86_opcode_map_M1_Ev_Ib_items[]
             {
                 /* superclass */        QX86_OPERAND_FORM_TYPE_AMODE,
                 /* attributes */        QX86_OPERAND_ATTRIBUTE_RW_CERTAIN | QX86_OPERAND_ATTRIBUTE_READ,
-                /* u */                 {{ &qx86_amode_I, &qx86_stuple_b }}
+                /* u */                 {{ &qx86_amode_F, &qx86_stuple_b }}
             }
         }
     },
@@ -31341,7 +31341,7 @@ static qx86_opcode_map_item             qx86_opcode_map_M1_Ev_Ib_items[]
             {
                 /* superclass */        QX86_OPERAND_FORM_TYPE_AMODE,
                 /* attributes */        QX86_OPERAND_ATTRIBUTE_RW_CERTAIN | QX86_OPERAND_ATTRIBUTE_READ,
-                /* u */                 {{ &qx86_amode_I, &qx86_stuple_b }}
+                /* u */                 {{ &qx86_amode_F, &qx86_stuple_b }}
             }
         }
     },
@@ -31360,7 +31360,7 @@ static qx86_opcode_map_item             qx86_opcode_map_M1_Ev_Ib_items[]
             {
                 /* superclass */        QX86_OPERAND_FORM_TYPE_AMODE,
                 /* attributes */        QX86_OPERAND_ATTRIBUTE_RW_CERTAIN | QX86_OPERAND_ATTRIBUTE_READ,
-                /* u */                 {{ &qx86_amode_I, &qx86_stuple_b }}
+                /* u */                 {{ &qx86_amode_F, &qx86_stuple_b }}
             }
         }
     },
@@ -31379,7 +31379,7 @@ static qx86_opcode_map_item             qx86_opcode_map_M1_Ev_Ib_items[]
             {
                 /* superclass */        QX86_OPERAND_FORM_TYPE_AMODE,
                 /* attributes */        QX86_OPERAND_ATTRIBUTE_RW_CERTAIN | QX86_OPERAND_ATTRIBUTE_READ,
-                /* u */                 {{ &qx86_amode_I, &qx86_stuple_b }}
+                /* u */                 {{ &qx86_amode_F, &qx86_stuple_b }}
             }
         }
     },
@@ -31398,7 +31398,7 @@ static qx86_opcode_map_item             qx86_opcode_map_M1_Ev_Ib_items[]
             {
                 /* superclass */        QX86_OPERAND_FORM_TYPE_AMODE,
                 /* attributes */        QX86_OPERAND_ATTRIBUTE_RW_CERTAIN | QX86_OPERAND_ATTRIBUTE_READ,
-                /* u */                 {{ &qx86_amode_I, &qx86_stuple_b }}
+                /* u */                 {{ &qx86_amode_F, &qx86_stuple_b }}
             }
         }
     },
@@ -31417,7 +31417,7 @@ static qx86_opcode_map_item             qx86_opcode_map_M1_Ev_Ib_items[]
             {
                 /* superclass */        QX86_OPERAND_FORM_TYPE_AMODE,
                 /* attributes */        QX86_OPERAND_ATTRIBUTE_RW_CERTAIN | QX86_OPERAND_ATTRIBUTE_READ,
-                /* u */                 {{ &qx86_amode_I, &qx86_stuple_b }}
+                /* u */                 {{ &qx86_amode_F, &qx86_stuple_b }}
             }
         }
     },
@@ -31436,7 +31436,7 @@ static qx86_opcode_map_item             qx86_opcode_map_M1_Ev_Ib_items[]
             {
                 /* superclass */        QX86_OPERAND_FORM_TYPE_AMODE,
                 /* attributes */        QX86_OPERAND_ATTRIBUTE_RW_CERTAIN | QX86_OPERAND_ATTRIBUTE_READ,
-                /* u */                 {{ &qx86_amode_I, &qx86_stuple_b }}
+                /* u */                 {{ &qx86_amode_F, &qx86_stuple_b }}
             }
         }
     },
@@ -31455,18 +31455,18 @@ static qx86_opcode_map_item             qx86_opcode_map_M1_Ev_Ib_items[]
             {
                 /* superclass */        QX86_OPERAND_FORM_TYPE_AMODE,
                 /* attributes */        QX86_OPERAND_ATTRIBUTE_RW_CERTAIN | QX86_OPERAND_ATTRIBUTE_READ,
-                /* u */                 {{ &qx86_amode_I, &qx86_stuple_b }}
+                /* u */                 {{ &qx86_amode_F, &qx86_stuple_b }}
             }
         }
     }
 };
 
-static qx86_opcode_map                  qx86_opcode_map_M1_Ev_Ib
+static qx86_opcode_map                  qx86_opcode_map_M1_Ev_Fb
                                         =
 {
-    QX86_OPCODE_MAP_INDEX_REG, 7, qx86_opcode_map_M1_Ev_Ib_items
+    QX86_OPCODE_MAP_INDEX_REG, 7, qx86_opcode_map_M1_Ev_Fb_items
 };
-/* End of file qx86-d-opcode-map/qx86-opcode-map-M1_Ev_Ib.map */
+/* End of file qx86-d-opcode-map/qx86-opcode-map-M1_Ev_Fb.map */
 /* Generated from file qx86-d-opcode-map/qx86-opcode-map-M1_Ev_Iz.map */
 // +------------------------------------------------------------------------+
 // | quix86                                                                 |
@@ -46882,7 +46882,7 @@ static qx86_opcode_map_item             qx86_opcode_map_1_items[]
             {
                 /* superclass */        QX86_OPERAND_FORM_TYPE_AMODE,
                 /* attributes */        QX86_OPERAND_ATTRIBUTE_RW_CERTAIN | QX86_OPERAND_ATTRIBUTE_READ,
-                /* u */                 {{ &qx86_amode_I, &qx86_stuple_b }}
+                /* u */                 {{ &qx86_amode_F, &qx86_stuple_b }}
             }
         }
     },
@@ -46906,7 +46906,7 @@ static qx86_opcode_map_item             qx86_opcode_map_1_items[]
             {
                 /* superclass */        QX86_OPERAND_FORM_TYPE_AMODE,
                 /* attributes */        QX86_OPERAND_ATTRIBUTE_RW_CERTAIN | QX86_OPERAND_ATTRIBUTE_READ,
-                /* u */                 {{ &qx86_amode_I, &qx86_stuple_b }}
+                /* u */                 {{ &qx86_amode_F, &qx86_stuple_b }}
             }
         }
     },
@@ -47194,7 +47194,7 @@ static qx86_opcode_map_item             qx86_opcode_map_1_items[]
     },
     /* 83 */
     {
-        QX86_OPCODE_MAP_ITEM_CODE_LINK, &qx86_opcode_map_M1_Ev_Ib, -1, {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
+        QX86_OPCODE_MAP_ITEM_CODE_LINK, &qx86_opcode_map_M1_Ev_Fb, -1, {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
     },
     {
         /* code */                      QX86_MNEMONIC_TEST,

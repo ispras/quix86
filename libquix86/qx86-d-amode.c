@@ -58,6 +58,16 @@ static qx86_amode                       qx86_amode_E
     0
 };
 
+/* Reference: none.  This is not the rFLAGS amode!  Instead, we use this amode
+   for sign-extended immediate operands in PUSH, IMUL and group M1.  */
+static qx86_amode                       qx86_amode_F
+                                        =
+{
+    "F",                                "F",
+    QX86_MODRM_FIELD_NONE,              QX86_RCLASS_NONE,
+    qx86_decode_amode_i
+};
+
 /* Reference: none.  */
 static qx86_amode                       qx86_amode_G
                                         =

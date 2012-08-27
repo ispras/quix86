@@ -102,6 +102,7 @@ static qx86_amode                       qx86_amode_A;
 static qx86_amode                       qx86_amode_C;
 static qx86_amode                       qx86_amode_D;
 static qx86_amode                       qx86_amode_E;
+static qx86_amode                       qx86_amode_F;
 static qx86_amode                       qx86_amode_G;
 static qx86_amode                       qx86_amode_I;
 static qx86_amode                       qx86_amode_J;

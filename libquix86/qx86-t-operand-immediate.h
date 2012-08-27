@@ -35,6 +35,9 @@ struct qx86_operand_immediate
 {
     qx86_uint8                          value[QX86_IMMEDIATE_SIZE_MAX];
     qx86_uint8                          valueSize;
+
+    qx86_uint8                          extended[QX86_IMMEDIATE_SIZE_MAX];
+    qx86_uint8                          extendedSize;
 };
 
 #endif /* QX86_T_OPERAND_IMMEDIATE_H */

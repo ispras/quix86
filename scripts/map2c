@@ -155,6 +155,7 @@ addressingModes   = {
     'E' :   'E'    ,#             /**< General purpose register or memory operand in ModRM. */
     'G' :   'G'    ,#             /**< General purpose register in ModRM <em>reg</em>. */
     'I' :   'I'    ,#             /**< Immediate value. */
+    'F' :   'F'    ,#             /**< Immediate sign-extended value.  */
 #   'IX':   'QX86_ADDRESSING_MODE_IX'   ,#             /**< Immediate sign-extended value. */
     'J' :   'J'    ,#             /**< Jump offset. */
     'M' :   'M'    ,#             /**< Memory operand in ModRM. */
