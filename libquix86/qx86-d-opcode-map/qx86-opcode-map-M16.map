@@ -26,10 +26,10 @@
 ## Reference: Intel Architecture Software Developer’s Manual 2B: Table A-6.
 Map M16 reg
 {
-    00: PREFETCHNTA     Mb-
-    01: PREFETCHT0      Mb-
-    02: PREFETCHT1      Mb-
-    03: PREFETCHT2      Mb-
+    00: PREFETCHNTA     Mi-
+    01: PREFETCHT0      Mi-
+    02: PREFETCHT1      Mi-
+    03: PREFETCHT2      Mi-
     # TODO: AMD says NOP, Intel - undefined.. Using AMD version.
     04: NOP             .
     05: NOP             .

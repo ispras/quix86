@@ -30,12 +30,12 @@ Map MP reg
 {
     # TODO: Intel has 0F 0D as NOP Ev, AMD - PREFETCH.
     # Using AMD variant.
-    00: PREFETCH    Mb-
-    01: PREFETCHW   Mb-
-    02: PREFETCH    Mb-                         # Reserved PREFETCH aliased to PREFETCH.
-    03: PREFETCHW   Mb-
-    04: PREFETCH    Mb-                         # Reserved PREFETCH aliased to PREFETCH.
-    05: PREFETCH    Mb-                         # Reserved PREFETCH aliased to PREFETCH.
-    06: PREFETCH    Mb-                         # Reserved PREFETCH aliased to PREFETCH.
-    07: PREFETCH    Mb-                         # Reserved PREFETCH aliased to PREFETCH.
+    00: PREFETCH    Mi-
+    01: PREFETCHW   Mi-
+    02: PREFETCH    Mi-                         # Reserved PREFETCH aliased to PREFETCH.
+    03: PREFETCHW   Mi-
+    04: PREFETCH    Mi-                         # Reserved PREFETCH aliased to PREFETCH.
+    05: PREFETCH    Mi-                         # Reserved PREFETCH aliased to PREFETCH.
+    06: PREFETCH    Mi-                         # Reserved PREFETCH aliased to PREFETCH.
+    07: PREFETCH    Mi-                         # Reserved PREFETCH aliased to PREFETCH.
 }

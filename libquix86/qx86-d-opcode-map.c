@@ -9586,7 +9586,7 @@ static qx86_opcode_map_item             qx86_opcode_map_M16_items[]
             {
                 /* superclass */        QX86_OPERAND_FORM_TYPE_AMODE,
                 /* attributes */        QX86_OPERAND_ATTRIBUTE_RW_CERTAIN | QX86_OPERAND_ATTRIBUTE_READ,
-                /* u */                 {{ &qx86_amode_M, &qx86_stuple_b }}
+                /* u */                 {{ &qx86_amode_M, &qx86_stuple_i }}
             }
         }
     },
@@ -9600,7 +9600,7 @@ static qx86_opcode_map_item             qx86_opcode_map_M16_items[]
             {
                 /* superclass */        QX86_OPERAND_FORM_TYPE_AMODE,
                 /* attributes */        QX86_OPERAND_ATTRIBUTE_RW_CERTAIN | QX86_OPERAND_ATTRIBUTE_READ,
-                /* u */                 {{ &qx86_amode_M, &qx86_stuple_b }}
+                /* u */                 {{ &qx86_amode_M, &qx86_stuple_i }}
             }
         }
     },
@@ -9614,7 +9614,7 @@ static qx86_opcode_map_item             qx86_opcode_map_M16_items[]
             {
                 /* superclass */        QX86_OPERAND_FORM_TYPE_AMODE,
                 /* attributes */        QX86_OPERAND_ATTRIBUTE_RW_CERTAIN | QX86_OPERAND_ATTRIBUTE_READ,
-                /* u */                 {{ &qx86_amode_M, &qx86_stuple_b }}
+                /* u */                 {{ &qx86_amode_M, &qx86_stuple_i }}
             }
         }
     },
@@ -9628,7 +9628,7 @@ static qx86_opcode_map_item             qx86_opcode_map_M16_items[]
             {
                 /* superclass */        QX86_OPERAND_FORM_TYPE_AMODE,
                 /* attributes */        QX86_OPERAND_ATTRIBUTE_RW_CERTAIN | QX86_OPERAND_ATTRIBUTE_READ,
-                /* u */                 {{ &qx86_amode_M, &qx86_stuple_b }}
+                /* u */                 {{ &qx86_amode_M, &qx86_stuple_i }}
             }
         }
     },
@@ -9713,7 +9713,7 @@ static qx86_opcode_map_item             qx86_opcode_map_MP_items[]
             {
                 /* superclass */        QX86_OPERAND_FORM_TYPE_AMODE,
                 /* attributes */        QX86_OPERAND_ATTRIBUTE_RW_CERTAIN | QX86_OPERAND_ATTRIBUTE_READ,
-                /* u */                 {{ &qx86_amode_M, &qx86_stuple_b }}
+                /* u */                 {{ &qx86_amode_M, &qx86_stuple_i }}
             }
         }
     },
@@ -9727,7 +9727,7 @@ static qx86_opcode_map_item             qx86_opcode_map_MP_items[]
             {
                 /* superclass */        QX86_OPERAND_FORM_TYPE_AMODE,
                 /* attributes */        QX86_OPERAND_ATTRIBUTE_RW_CERTAIN | QX86_OPERAND_ATTRIBUTE_READ,
-                /* u */                 {{ &qx86_amode_M, &qx86_stuple_b }}
+                /* u */                 {{ &qx86_amode_M, &qx86_stuple_i }}
             }
         }
     },
@@ -9741,7 +9741,7 @@ static qx86_opcode_map_item             qx86_opcode_map_MP_items[]
             {
                 /* superclass */        QX86_OPERAND_FORM_TYPE_AMODE,
                 /* attributes */        QX86_OPERAND_ATTRIBUTE_RW_CERTAIN | QX86_OPERAND_ATTRIBUTE_READ,
-                /* u */                 {{ &qx86_amode_M, &qx86_stuple_b }}
+                /* u */                 {{ &qx86_amode_M, &qx86_stuple_i }}
             }
         }
     },
@@ -9755,7 +9755,7 @@ static qx86_opcode_map_item             qx86_opcode_map_MP_items[]
             {
                 /* superclass */        QX86_OPERAND_FORM_TYPE_AMODE,
                 /* attributes */        QX86_OPERAND_ATTRIBUTE_RW_CERTAIN | QX86_OPERAND_ATTRIBUTE_READ,
-                /* u */                 {{ &qx86_amode_M, &qx86_stuple_b }}
+                /* u */                 {{ &qx86_amode_M, &qx86_stuple_i }}
             }
         }
     },
@@ -9769,7 +9769,7 @@ static qx86_opcode_map_item             qx86_opcode_map_MP_items[]
             {
                 /* superclass */        QX86_OPERAND_FORM_TYPE_AMODE,
                 /* attributes */        QX86_OPERAND_ATTRIBUTE_RW_CERTAIN | QX86_OPERAND_ATTRIBUTE_READ,
-                /* u */                 {{ &qx86_amode_M, &qx86_stuple_b }}
+                /* u */                 {{ &qx86_amode_M, &qx86_stuple_i }}
             }
         }
     },
@@ -9783,7 +9783,7 @@ static qx86_opcode_map_item             qx86_opcode_map_MP_items[]
             {
                 /* superclass */        QX86_OPERAND_FORM_TYPE_AMODE,
                 /* attributes */        QX86_OPERAND_ATTRIBUTE_RW_CERTAIN | QX86_OPERAND_ATTRIBUTE_READ,
-                /* u */                 {{ &qx86_amode_M, &qx86_stuple_b }}
+                /* u */                 {{ &qx86_amode_M, &qx86_stuple_i }}
             }
         }
     },
@@ -9797,7 +9797,7 @@ static qx86_opcode_map_item             qx86_opcode_map_MP_items[]
             {
                 /* superclass */        QX86_OPERAND_FORM_TYPE_AMODE,
                 /* attributes */        QX86_OPERAND_ATTRIBUTE_RW_CERTAIN | QX86_OPERAND_ATTRIBUTE_READ,
-                /* u */                 {{ &qx86_amode_M, &qx86_stuple_b }}
+                /* u */                 {{ &qx86_amode_M, &qx86_stuple_i }}
             }
         }
     },
@@ -9811,7 +9811,7 @@ static qx86_opcode_map_item             qx86_opcode_map_MP_items[]
             {
                 /* superclass */        QX86_OPERAND_FORM_TYPE_AMODE,
                 /* attributes */        QX86_OPERAND_ATTRIBUTE_RW_CERTAIN | QX86_OPERAND_ATTRIBUTE_READ,
-                /* u */                 {{ &qx86_amode_M, &qx86_stuple_b }}
+                /* u */                 {{ &qx86_amode_M, &qx86_stuple_i }}
             }
         }
     }
