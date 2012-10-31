@@ -46,7 +46,7 @@ enum
     QX86_RCLASS_CREG                    = 8,
     QX86_RCLASS_DREG                    = 9,
     QX86_RCLASS_SREG                    = 10,
-    QX86_RCLASS_RESERVED_11             = 11,
+    QX86_RCLASS_TREG                    = 11,
 
     QX86_RCLASS_X87                     = 12,
     QX86_RCLASS_MMX                     = 13,

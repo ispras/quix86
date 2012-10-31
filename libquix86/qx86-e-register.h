@@ -225,7 +225,12 @@ enum
     QX86_REGISTER_YMM14                 = 174,
     QX86_REGISTER_YMM15                 = 175,
 
-    QX86_REGISTER_COUNT                 = 176
+    QX86_REGISTER_GDTR                  = 176,
+    QX86_REGISTER_IDTR                  = 177,
+    QX86_REGISTER_LDTR                  = 178,
+    QX86_REGISTER_TR                    = 179,
+
+    QX86_REGISTER_COUNT                 = 180
 };
 
 #endif /* QX86_E_REGISTER_H */

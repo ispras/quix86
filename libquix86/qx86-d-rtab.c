@@ -745,5 +745,22 @@ static qx86_rtab_item                   qx86_rtab[QX86_REGISTER_COUNT]
     {
         "YMM15",                        "YMM15",
         QX86_RCLASS_YMM,                32
+    },
+
+    {
+        "GDTR",                         "GDTR",
+        QX86_RCLASS_TREG,               0
+    },
+    {
+        "IDTR",                         "IDTR",
+        QX86_RCLASS_TREG,               0
+    },
+    {
+        "LDTR",                         "LDTR",
+        QX86_RCLASS_TREG,               2
+    },
+    {
+        "TR",                           "TR",
+        QX86_RCLASS_TREG,               2
     }
 };
