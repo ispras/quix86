@@ -36,7 +36,7 @@ enum
     QX86_IMMEDIATE_SIZE_MAX             = 8,
     QX86_INSN_SIZE_MAX                  = 15,
     QX86_OPERAND_NMAX                   = 4,
-    QX86_IMPLICIT_OPERAND_NMAX          = 4
+    QX86_IMPLICIT_OPERAND_NMAX          = 8
 };
 
 #endif /* QX86_E_LIMIT_H */
