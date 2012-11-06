@@ -230,7 +230,12 @@ enum
     QX86_REGISTER_LDTR                  = 178,
     QX86_REGISTER_TR                    = 179,
 
-    QX86_REGISTER_COUNT                 = 180
+    QX86_REGISTER_FCW                   = 180,
+    QX86_REGISTER_FSW                   = 181,
+    QX86_REGISTER_FTW                   = 182,
+    QX86_REGISTER_MXCSR                 = 183,
+
+    QX86_REGISTER_COUNT                 = 184
 };
 
 #endif /* QX86_E_REGISTER_H */

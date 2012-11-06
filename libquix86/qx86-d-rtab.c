@@ -762,5 +762,21 @@ static qx86_rtab_item                   qx86_rtab[QX86_REGISTER_COUNT]
     {
         "TR",                           "TR",
         QX86_RCLASS_TREG,               2
+    },
+    {
+        "FCW",                          "FCW",
+        QX86_RCLASS_CREG,               2
+    },
+    {
+        "FSW",                          "FSW",
+        QX86_RCLASS_CREG,               2
+    },
+    {
+        "FTW",                          "FTW",
+        QX86_RCLASS_CREG,               2
+    },
+    {
+        "MXCSR",                        "MXCSR",
+        QX86_RCLASS_CREG,               4
     }
 };
