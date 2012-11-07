@@ -35,14 +35,14 @@ FBLD                .
 FBSTP               .
 FCHS                .
 FNCLEX              .
-FCMOVB              ?B
-FCMOVBE             ?BE
-FCMOVE              ?Z
-FCMOVNB             ?AE
-FCMOVNBE            ?A
-FCMOVNE             ?NZ
-FCMOVNU             ?NP
-FCMOVU              ?P
+FCMOVB              $CONDITIONAL_EXECUTION, ?B
+FCMOVBE             $CONDITIONAL_EXECUTION, ?BE
+FCMOVE              $CONDITIONAL_EXECUTION, ?Z
+FCMOVNB             $CONDITIONAL_EXECUTION, ?AE
+FCMOVNBE            $CONDITIONAL_EXECUTION, ?A
+FCMOVNE             $CONDITIONAL_EXECUTION, ?NZ
+FCMOVNU             $CONDITIONAL_EXECUTION, ?NP
+FCMOVU              $CONDITIONAL_EXECUTION, ?P
 FCOM                .
 FCOMP               .
 FCOMPP              .
