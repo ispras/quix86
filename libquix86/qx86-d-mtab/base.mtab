@@ -91,7 +91,6 @@ JMPF                $TRANSFER
 LAHF                .
 LsS                 +
     LES             .
-    LCS             .
     LSS             .
     LDS             .
     LFS             .
