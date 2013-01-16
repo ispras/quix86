@@ -39,7 +39,8 @@ main(void)
 //                                      = "\xF3\x0F\xBD\x00";
 //                                      = "\x49\x8B\x94\xC5\xF0\x02\x00\x00";
 //                                      = "\x83\xCA\xFF";
-                                        = "\x6A\xFF";
+//                                      = "\x6A\xFF";
+                                        = "\xf0\x0f\x20\xc0";
 
     qx86_insn                           insn;
     qx86_print_options_intel            opt;
@@ -55,7 +56,7 @@ main(void)
 
     opt.flipCase                        = 0;
 
-    printf("qx86_instruction_decode         : returned %d.\n", qx86_decode(&insn, QX86_SIZE_64, raw, sizeof(raw)));
+    printf("qx86_instruction_decode         : returned %d.\n", qx86_decode(&insn, QX86_SIZE_32, raw, sizeof(raw)));
     printf("qx86_print_intel                : returned %d.\n", qx86_print_intel(&insn, &opt, buffer, &bufferSize));
     printf("                                > %s\n", buffer);
 

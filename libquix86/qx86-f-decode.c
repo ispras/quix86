@@ -112,7 +112,7 @@ qx86_decode(qx86_insn *insn, int processorMode, QX86_CONST void *ptr, int ptrSiz
         }
     }
 
-    /* Step 7.  Process idioms.  */
+    /* Step 5.  Process idioms.  */
     switch (insn->mnemonic)
     {
     case QX86_MNEMONIC_XCHG:
@@ -147,6 +147,20 @@ qx86_decode(qx86_insn *insn, int processorMode, QX86_CONST void *ptr, int ptrSiz
             {
                 /* Update to CR8.  TODO: should LOCK be reclassified instead?  */
                 insn->operands[0].u.r.rindex
+                                        = QX86_REGISTER_CR8;
+                insn->attributes.interlocked
+                                        = 0;
+            }
+        }
+        /* Moves from CR0 have additional possibilities.  */
+        if ((QX86_OPERAND_TYPE_REGISTER == insn->operands[1].ot) && (QX86_REGISTER_CR0 == insn->operands[1].u.r.rindex))
+        {
+            /* Move from CR0 is interpreted as move from CR8 when LOCK prefix is
+               present.  */
+            if (insn->attributes.interlocked)
+            {
+                /* Read from CR8.  TODO: should LOCK be reclassified instead?  */
+                insn->operands[1].u.r.rindex
                                         = QX86_REGISTER_CR8;
                 insn->attributes.interlocked
                                         = 0;
