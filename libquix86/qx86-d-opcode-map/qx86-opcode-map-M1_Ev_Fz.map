@@ -23,14 +23,14 @@
 ## +------------------------------------------------------------------------+
 
 ## Reference: AMD Architecture Programmer's Manual 3: Table A-6.
-Map M1_Ev_Iz reg
+Map M1_Ev_Fz reg
 {
-    00: ADD         Ev* Iz-
-    01: OR          Ev* Iz-
-    02: ADC         Ev* Iz-
-    03: SBB         Ev* Iz-
-    04: AND         Ev* Iz-
-    05: SUB         Ev* Iz-
-    06: XOR         Ev* Iz-
-    07: CMP         Ev- Iz-
+    00: ADD         Ev* Fz-
+    01: OR          Ev* Fz-
+    02: ADC         Ev* Fz-
+    03: SBB         Ev* Fz-
+    04: AND         Ev* Fz-
+    05: SUB         Ev* Fz-
+    06: XOR         Ev* Fz-
+    07: CMP         Ev- Fz-
 }

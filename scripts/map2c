@@ -801,6 +801,6 @@ if __name__ == '__main__':
     
     # Output it
     for line in out:
-        print line
+        print(line)
     
 

@@ -49,6 +49,11 @@ qx86_decode_amode(qx86_insn *insn, int index)
         /* Test for special value.  */
         if (QX86_E_API != (result = amode->decodeFunc(insn, index))) return result;
     }
+    else
+    {
+        /* Must initialize result for the QX86_E_API code to work.  */
+        result = QX86_SUCCESS;
+    }
 
     /* Otherwise, default ModRM-based decode process.  */
     if (QX86_MODRM_FIELD_NONE == amode->modrmField) return QX86_E_INTERNAL;
@@ -88,8 +93,20 @@ qx86_decode_amode(qx86_insn *insn, int index)
             break;
 
         default:
-            /* Invalid size; internal error.  */
-            return QX86_E_INTERNAL;
+            /* Invalid size.  This happens either because of an internal error
+               or because we tolerated a bad ModRM.  */
+            if (QX86_E_API == result)
+            {
+                /* Fake an rclass.  This is used for printing purposes, no
+                   analysis can be done on such instructions.  */
+                rclass = QX86_RCLASS_REG32;
+                break;
+            }
+            else
+            {
+                /* Internal error.  */
+                return QX86_E_INTERNAL;
+            }
         }
 
         /* Could have returned an invalid class.  */

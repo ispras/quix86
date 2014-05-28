@@ -132,8 +132,8 @@ qx86_print_intel(QX86_CONST qx86_insn *insn, QX86_CONST qx86_print_options_intel
 
         case QX86_OPERAND_TYPE_IMMEDIATE:
             /* Print immediate value.  */
-            item->number                = operand->u.i.value;
-            item->numberSize            = operand->u.i.valueSize;
+            item->number                = operand->u.i.extended;
+            item->numberSize            = operand->u.i.extendedSize;
             item                        = item + 1;
 
             /* Done.  */

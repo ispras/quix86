@@ -123,7 +123,7 @@ qx86_opcode_map_choose(qx86_insn *insn, qx86_opcode_map *map, qx86_opcode_map_it
     }
 
     /* Validate chosen index.  */
-    if (index > map->limit) return QX86_E_INSN_UNDEFINED;
+    if (index > map->limit) return QX86_E_INTERNAL;
 
     /* Pick item.  */
     *item = map->items + index;

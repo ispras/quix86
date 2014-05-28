@@ -26,9 +26,9 @@
 Map M3 reg
 {
     00: TEST        Eb- Ib-             [ pb = F6 ]
-    00: TEST        Ev- Iz-             [ pb = F7 ]
+    00: TEST        Ev- Fz-             [ pb = F7 ]
     01: TEST        Eb- Ib-             [ pb = F6 ]
-    01: TEST        Ev- Iz-             [ pb = F7 ]
+    01: TEST        Ev- Fz-             [ pb = F7 ]
     02: NOT         Eb*                 [ pb = F6 ]
     02: NOT         Ev*                 [ pb = F7 ]
     03: NEG         Eb*                 [ pb = F6 ]

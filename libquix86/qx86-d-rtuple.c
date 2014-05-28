@@ -233,7 +233,7 @@ static qx86_rtuple                      qx86_rtuple_eCX
         QX86_REGISTER_ECX,              QX86_REGISTER_INVALID,
         QX86_REGISTER_ECX,              QX86_REGISTER_ECX,
 
-        QX86_REGISTER_ECX,              QX86_REGISTER_ECX,
+        QX86_REGISTER_ECX,              QX86_REGISTER_INVALID,
         QX86_REGISTER_ECX,              QX86_REGISTER_ECX
     }
 };
@@ -251,7 +251,7 @@ static qx86_rtuple                      qx86_rtuple_eDX
         QX86_REGISTER_EDX,              QX86_REGISTER_INVALID,
         QX86_REGISTER_EDX,              QX86_REGISTER_EDX,
 
-        QX86_REGISTER_EDX,              QX86_REGISTER_EDX,
+        QX86_REGISTER_EDX,              QX86_REGISTER_INVALID,
         QX86_REGISTER_EDX,              QX86_REGISTER_EDX
     }
 };

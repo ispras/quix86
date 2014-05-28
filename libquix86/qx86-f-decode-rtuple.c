@@ -32,7 +32,7 @@ qx86_decode_rtuple(qx86_insn *insn, int index)
 
     /* Get rtuple and extract rindex.  */
     rtuple                              = insn->operandForms[index]->u.r.rtuple;
-    rindex                              = (insn->attributes.operandSize << 2) | insn->modifiers.extendedR;
+    rindex                              = (insn->attributes.operandSize << 2) | insn->modifiers.extendedB;
     rindex                              = rtuple->rindexes[rindex];
 
     /* Validate rindex.  */

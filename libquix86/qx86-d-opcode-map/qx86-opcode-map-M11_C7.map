@@ -25,6 +25,6 @@
 ## Reference: AMD Architecture Programmer's Manual 3: Table A-6.
 Map M11_C7 reg
 {
-    00: MOV         Ev+ Iz-
+    00: MOV         Ev+ Fz-
     07: XBEGIN      Jz-                 [ rm = 00 ]         # TSX
 }

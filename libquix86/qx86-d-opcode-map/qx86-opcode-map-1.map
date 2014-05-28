@@ -30,7 +30,7 @@ Map 1 nb
     02: ADD         Gb*     Eb-
     03: ADD         Gv*     Ev-
     04: ADD         AL*     Ib-
-    05: ADD         rAX*    Iz-
+    05: ADD         rAX*    Fz-
     06: PUSH        ES-                 [ cs = 0 ]
     06: PUSH        ES-                 [ cs = 1 ]
     07: POP         ES+                 [ cs = 0 ]
@@ -41,7 +41,7 @@ Map 1 nb
     0A: OR          Gb*     Eb-
     0B: OR          Gv*     Ev-
     0C: OR          AL*     Ib-
-    0D: OR          rAX*    Iz-
+    0D: OR          rAX*    Fz-
     0E: PUSH        CS-                 [ cs = 0 ]
     0E: PUSH        CS-                 [ cs = 1 ]
     0F: -> 2
@@ -51,7 +51,7 @@ Map 1 nb
     12: ADC         Gb*     Eb-
     13: ADC         Gv*     Ev-
     14: ADC         AL*     Ib-
-    15: ADC         rAX*    Iz-
+    15: ADC         rAX*    Fz-
     16: PUSH        SS-                 [ cs = 0 ]
     16: PUSH        SS-                 [ cs = 1 ]
     17: POP         SS+                 [ cs = 0 ]
@@ -62,7 +62,7 @@ Map 1 nb
     1A: SBB         Gb*     Eb-
     1B: SBB         Gv*     Ev-
     1C: SBB         AL*     Ib-
-    1D: SBB         rAX*    Iz-
+    1D: SBB         rAX*    Fz-
     1E: PUSH        DS-                 [ cs = 0 ]
     1E: PUSH        DS-                 [ cs = 1 ]
     1F: POP         DS+                 [ cs = 0 ]
@@ -73,7 +73,7 @@ Map 1 nb
     22: AND         Gb*     Eb-
     23: AND         Gv*     Ev-
     24: AND         AL*     Ib-
-    25: AND         rAX*    Iz-
+    25: AND         rAX*    Fz-
     26: $26
     27: DAA         .                   [ cs = 0 ]
     27: DAA         .                   [ cs = 1 ]
@@ -83,7 +83,7 @@ Map 1 nb
     2A: SUB         Gb*     Eb-
     2B: SUB         Gv*     Ev-
     2C: SUB         AL*     Ib-
-    2D: SUB         rAX*    Iz-
+    2D: SUB         rAX*    Fz-
     2E: $2E
     2F: DAS         .                   [ cs = 0 ]
     2F: DAS         .                   [ cs = 1 ]
@@ -93,7 +93,7 @@ Map 1 nb
     32: XOR         Gb*     Eb-
     33: XOR         Gv*     Ev-
     34: XOR         AL*     Ib-
-    35: XOR         rAX*    Iz-
+    35: XOR         rAX*    Fz-
     36: $36
     37: AAA         .                   [ cs = 0 ]
     37: AAA         .                   [ cs = 1 ]
@@ -103,7 +103,7 @@ Map 1 nb
     3A: CMP         Gb-     Eb-
     3B: CMP         Gv-     Ev-
     3C: CMP         AL-     Ib-
-    3D: CMP         rAX-    Iz-
+    3D: CMP         rAX-    Fz-
     3E: $3E
     3F: AAS         .                   [ cs = 0 ]
     3F: AAS         .                   [ cs = 1 ]
@@ -196,8 +196,8 @@ Map 1 nb
     66: $66
     67: $67
 
-    68: PUSH        Iz-
-    69: IMUL        Gv+ Ev- Iz-
+    68: PUSH        Fz-
+    69: IMUL        Gv+ Ev- Fz-
     6A: PUSH        Fb-
     6B: IMUL        Gv+ Ev- Fb-
     6C: INSB        Yb+ DX-
@@ -228,7 +228,7 @@ Map 1 nb
     7F: JG          Jb-
 
     80: -> M1_Eb_Ib
-    81: -> M1_Ev_Iz
+    81: -> M1_Ev_Fz
     82: -> M1_Eb_Ib                     [ cs = 0 ]
     82: -> M1_Eb_Ib                     [ cs = 1 ]
     83: -> M1_Ev_Fb
@@ -290,7 +290,7 @@ Map 1 nb
     A7: CMPSQ       Xv- Yv-             [ os = 2 ]
 
     A8: TEST        AL-     Ib-
-    A9: TEST        rAX-    Iz-
+    A9: TEST        rAX-    Fz-
     AA: STOSB       Yb+     AL-
     AB: STOSW       Yv+     rAX-        [ os = 0 ]
     AB: STOSD       Yv+     rAX-        [ os = 1 ]
