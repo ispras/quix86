@@ -43,8 +43,9 @@ main(void)
 //                                      = "\x8D\x74\x26\x00";
 //                                      = "\x41\x57";
 //                                      = "\x41\xB0\x20";
-                                        = "\x48\xC7\xC7\xF9\x79\x33\x80";
+//                                      = "\x48\xC7\xC7\xF9\x79\x33\x80";
 //                                      = "\x48\x05\x12\x34\x56\x87";
+                                        = "\xF3\x0F\x10\x8B\xBC\xC0\x00\x00\x00";
 
     qx86_insn                           insn;
     qx86_print_options_intel            opt;
@@ -53,8 +54,6 @@ main(void)
     int                                 bufferSize = sizeof(buffer);
 
     int                                 i;
-
-    qx86_uint64                         address = 0ULL;
 
     memset(&insn, 0, sizeof(insn)); insn.callback = &callback;
 
@@ -66,8 +65,7 @@ main(void)
 
     for (i = 0; i < insn.operandCount; ++i)
     {
-        printf("qx86_calculate_linear_address(%d): returned %d.\n", i + 1, qx86_calculate_linear_address(&insn, i, &address));
-        printf("                                > %llX\n", address);
+        printf("operand %d size                  > %d\n", i + 1, insn.operands[i].size);
     }
 
     return 0;

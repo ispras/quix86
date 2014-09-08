@@ -171,6 +171,7 @@ qx86_decode_amode(qx86_insn *insn, int index)
 
     /* Initialize operand.  */
     operand->ot                         = QX86_OPERAND_TYPE_REGISTER;
+    operand->size                       = qx86_rtab[rindex].size;
     operand->u.r.rindex                 = rindex;
 
     /* Success.  */
