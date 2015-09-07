@@ -85,7 +85,7 @@ qx86_calculate_effective_address(QX86_CONST qx86_insn *insn, int operandIndex, q
     {
     case QX86_DISP_64:
         /* Move bits 32..63.  */
-        offset                          |= ((qx86_uint64) operand->u.m.disp[7]) << 54;
+        offset                          |= ((qx86_uint64) operand->u.m.disp[7]) << 56;
         offset                          |= ((qx86_uint64) operand->u.m.disp[6]) << 48;
         offset                          |= ((qx86_uint64) operand->u.m.disp[5]) << 40;
         offset                          |= ((qx86_uint64) operand->u.m.disp[4]) << 32;
