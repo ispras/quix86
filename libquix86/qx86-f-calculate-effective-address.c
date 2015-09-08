@@ -123,6 +123,10 @@ qx86_calculate_effective_address(QX86_CONST qx86_insn *insn, int operandIndex, q
     /* Calculate offset: base.  */
     if (QX86_REGISTER_NONE != operand->u.m.bri)
     {
+        /* Clear value before callback.  */
+        value[0] = value[1] = value[2] = value[3] = 0;
+        value[4] = value[5] = value[6] = value[7] = 0;
+
         /* Ask for base value.  */
         if (!insn->callback(insn->data, operand->u.m.bri, QX86_SUBREG_NONE, value)) return QX86_E_CALLBACK;
 
@@ -145,7 +149,8 @@ qx86_calculate_effective_address(QX86_CONST qx86_insn *insn, int operandIndex, q
         break;
 
     case QX86_REGISTER_AL:
-        /* Ask for index value.  */
+        /* Ask for index value.  Don't clear value here because only the LSB
+           is used.  */
         if (!insn->callback(insn->data, operand->u.m.iri, QX86_SUBREG_NONE, value)) return QX86_E_CALLBACK;
 
         /* Value is one unsigned octet.  Cannot be scaled.  */
@@ -155,6 +160,10 @@ qx86_calculate_effective_address(QX86_CONST qx86_insn *insn, int operandIndex, q
         break;
 
     default:
+        /* Clear value before callback.  */
+        value[0] = value[1] = value[2] = value[3] = 0;
+        value[4] = value[5] = value[6] = value[7] = 0;
+
         /* Ask for index value.  */
         if (!insn->callback(insn->data, operand->u.m.iri, QX86_SUBREG_NONE, value)) return QX86_E_CALLBACK;
 

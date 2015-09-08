@@ -59,6 +59,10 @@ qx86_calculate_linear_address(QX86_CONST qx86_insn *insn, int operandIndex, qx86
 
     case QX86_REGISTER_FS:
     case QX86_REGISTER_GS:
+        /* Clear value before callback.  */
+        value[0] = value[1] = value[2] = value[3] = 0;
+        value[4] = value[5] = value[6] = value[7] = 0;
+
         /* Ask for base value.  */
         if (!insn->callback(insn->data, operand->u.m.sri, QX86_SUBREG_BASE, value)) return QX86_E_CALLBACK;
 
