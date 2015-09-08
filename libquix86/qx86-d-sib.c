@@ -111,7 +111,7 @@ static int                              qx86_sib_index_64[16]
 {
     QX86_REGISTER_RAX,                  QX86_REGISTER_RCX,
     QX86_REGISTER_RDX,                  QX86_REGISTER_RBX,
-    QX86_REGISTER_NONE,                 QX86_REGISTER_EBP,
+    QX86_REGISTER_NONE,                 QX86_REGISTER_RBP,
     QX86_REGISTER_RSI,                  QX86_REGISTER_RDI,
 
     QX86_REGISTER_R8,                   QX86_REGISTER_R9,
