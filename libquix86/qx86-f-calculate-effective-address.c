@@ -30,6 +30,7 @@ qx86_calculate_effective_address(QX86_CONST qx86_insn *insn, int operandIndex, q
     qx86_uint8                          value[32];
 
     qx86_uint64                         offset;
+    int                                 addressSize;
 
     /* Test insn and address to be non-NULL.  */
     if (!insn || !address) return QX86_E_API;
@@ -177,8 +178,22 @@ qx86_calculate_effective_address(QX86_CONST qx86_insn *insn, int operandIndex, q
         break;
     }
 
+    /* Fetch address size, either from the instruction attributes or an override
+       for implicit stack operands.  */
+    if (operand->u.m.addressSizeOverride == QX86_SIZE_INVALID)
+    {
+        /* No override, use instruction attributes.  */
+        addressSize = insn->attributes.addressSize;
+    }
+    else
+    {
+        /* Use provided override.  This path is only followed when constructing
+           implicit (negative offset) operands from outside of quix86.  */
+        addressSize = operand->u.m.addressSizeOverride;
+    }
+
     /* Truncate to address size.  */
-    switch (insn->attributes.addressSize)
+    switch (addressSize)
     {
     case QX86_SIZE_16:
         /* Truncate to 16 bits.  */

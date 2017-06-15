@@ -34,6 +34,7 @@ qx86_decode_amode_x(qx86_insn *insn, int index)
     operand->u.m.bri                    = 0;
     operand->u.m.iri                    = qx86_rtuple_rSI.rindexes[insn->attributes.addressSize << 2];
     operand->u.m.scale                  = 0;
+    operand->u.m.addressSizeOverride    = QX86_SIZE_INVALID;
     operand->u.m.dispSize               = 0;
 
     /* Handle DS override.  */

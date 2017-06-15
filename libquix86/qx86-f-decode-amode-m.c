@@ -74,6 +74,7 @@ qx86_decode_amode_m(qx86_insn *insn, int index)
     /* Initialize operand.  */
     operand                             = insn->operands + index;
     operand->ot                         = QX86_OPERAND_TYPE_MEMORY;
+    operand->u.m.addressSizeOverride    = QX86_SIZE_INVALID;
     operand->u.m.dispSize               = (qx86_uint8) qx86_modrm_disp[p][q | bmask];
 
     /* All other attributes can come from either ModRM or SIB.  */

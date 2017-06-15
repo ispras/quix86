@@ -38,6 +38,7 @@ struct qx86_operand_memory
     int                                 iri;
 
     int                                 scale;
+    int                                 addressSizeOverride;
 
     qx86_uint8                          disp[QX86_IMMEDIATE_SIZE_MAX];
     qx86_uint8                          dispSize;
