@@ -146,7 +146,7 @@ qx86_decode_amode(qx86_insn *insn, int index)
             insn->defects |= QX86_DEFECT_MODRM_MOD_NOT_3;
         }
 
-        /* No break intended.  */
+        /* Fallthrough.  */
 
     case QX86_MODRM_FIELD_MOD:
         /* Use r/m and extendedB.  */

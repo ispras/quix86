@@ -26039,13 +26039,19 @@ static qx86_opcode_map                  qx86_opcode_map_DB_03_mod
 static qx86_opcode_map_item             qx86_opcode_map_DB_04_mod_03_rm_items[]
                                         =
 {
-    /* 00 */
     {
-        QX86_OPCODE_MAP_ITEM_CODE_NONE, 0, -1, {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
+        /* code */                      QX86_MNEMONIC_FENI,
+        /* map */                       0,
+
+        /* operandCount */              0,
+        /* placeHolder */               {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
     },
-    /* 01 */
     {
-        QX86_OPCODE_MAP_ITEM_CODE_NONE, 0, -1, {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
+        /* code */                      QX86_MNEMONIC_FDISI,
+        /* map */                       0,
+
+        /* operandCount */              0,
+        /* placeHolder */               {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
     },
     {
         /* code */                      QX86_MNEMONIC_FNCLEX,
@@ -26061,9 +26067,12 @@ static qx86_opcode_map_item             qx86_opcode_map_DB_04_mod_03_rm_items[]
         /* operandCount */              0,
         /* placeHolder */               {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
     },
-    /* 04 */
     {
-        QX86_OPCODE_MAP_ITEM_CODE_NONE, 0, -1, {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
+        /* code */                      QX86_MNEMONIC_FSETPM,
+        /* map */                       0,
+
+        /* operandCount */              0,
+        /* placeHolder */               {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
     },
     /* 05 */
     {

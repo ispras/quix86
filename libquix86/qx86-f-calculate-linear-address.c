@@ -55,7 +55,7 @@ qx86_calculate_linear_address(QX86_CONST qx86_insn *insn, int operandIndex, qx86
             break;
         }
 
-        /* FTI.  */
+        /* Fallthrough.  */
 
     case QX86_REGISTER_FS:
     case QX86_REGISTER_GS:

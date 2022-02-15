@@ -91,26 +91,26 @@ qx86_calculate_effective_address(QX86_CONST qx86_insn *insn, int operandIndex, q
         offset                          |= ((qx86_uint64) operand->u.m.disp[5]) << 40;
         offset                          |= ((qx86_uint64) operand->u.m.disp[4]) << 32;
 
-        /* FTI.  */
+        /* Fallthrough.  */
 
     case QX86_DISP_32:
         /* Move bits 16..31.  */
         offset                          |= ((qx86_uint64) operand->u.m.disp[3]) << 24;
         offset                          |= ((qx86_uint64) operand->u.m.disp[2]) << 16;
 
-        /* FTI.  */
+        /* Fallthrough.  */
 
     case QX86_DISP_16:
         /* Move bits 8..15.  */
         offset                          |= ((qx86_uint64) operand->u.m.disp[1]) << 8;
 
-        /* FTI.  */
+        /* Fallthrough.  */
 
     case QX86_DISP_8:
         /* Move bits 0..7.  */
         offset                          |= (qx86_uint64) operand->u.m.disp[0];
 
-        /* FTI.  */
+        /* Fallthrough.  */
 
     case QX86_DISP_NONE:
         /* Done.  */

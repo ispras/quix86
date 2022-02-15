@@ -86,8 +86,11 @@ Map DB reg
         03: FCMOVNU     ST0+? ST6-?         [ rm = 06 ]
         03: FCMOVNU     ST0+? ST7-?         [ rm = 07 ]
     04: [ mod ]
+        03: FENI        .                   [ rm = 00 ]
+        03: FDISI       .                   [ rm = 01 ]
         03: FNCLEX      .                   [ rm = 02 ]
         03: FNINIT      .                   [ rm = 03 ]
+        03: FSETPM      .                   [ rm = 04 ]
     05: [ mod ]
         00: FLD         Mse-
         01: FLD         Mse-

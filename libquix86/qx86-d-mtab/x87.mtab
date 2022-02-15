@@ -50,12 +50,14 @@ FCOMI               .
 FCOMIP              .
 FCOS                .
 FDECSTP             .
+FDISI               .
 FDIV                .
 FDIVP               .
 FIDIV               .
 FDIVR               .
 FDIVRP              .
 FIDIVR              .
+FENI                .
 FFREE               .
 FFREEP              .
 FICOM               .
@@ -86,6 +88,7 @@ FPREM1              .
 FPTAN               .
 FRNDINT             .
 FSCALE              .
+FSETPM              .
 FSIN                .
 FSINCOS             .
 FSQRT               .
