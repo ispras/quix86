@@ -10664,6 +10664,136 @@ static qx86_opcode_map                  qx86_opcode_map_M7_04_mod
     QX86_OPCODE_MAP_INDEX_MOD, 3, qx86_opcode_map_M7_04_mod_items
 };
 
+static qx86_opcode_map_item             qx86_opcode_map_M7_05_mod_03_rm_06_sp_items[]
+                                        =
+{
+    {
+        /* code */                      QX86_MNEMONIC_RDPKRU,
+        /* map */                       0,
+
+        /* operandCount */              0,
+        /* placeHolder */               {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
+    },
+    /* 66 */
+    {
+        QX86_OPCODE_MAP_ITEM_CODE_NONE, 0, -1, {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
+    },
+    /* F2 */
+    {
+        QX86_OPCODE_MAP_ITEM_CODE_NONE, 0, -1, {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
+    },
+    /* F3 */
+    {
+        QX86_OPCODE_MAP_ITEM_CODE_NONE, 0, -1, {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
+    }
+};
+
+static qx86_opcode_map                  qx86_opcode_map_M7_05_mod_03_rm_06_sp
+                                        =
+{
+    QX86_OPCODE_MAP_INDEX_SP, 3, qx86_opcode_map_M7_05_mod_03_rm_06_sp_items
+};
+
+static qx86_opcode_map_item             qx86_opcode_map_M7_05_mod_03_rm_07_sp_items[]
+                                        =
+{
+    {
+        /* code */                      QX86_MNEMONIC_WRPKRU,
+        /* map */                       0,
+
+        /* operandCount */              0,
+        /* placeHolder */               {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
+    },
+    /* 66 */
+    {
+        QX86_OPCODE_MAP_ITEM_CODE_NONE, 0, -1, {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
+    },
+    /* F2 */
+    {
+        QX86_OPCODE_MAP_ITEM_CODE_NONE, 0, -1, {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
+    },
+    /* F3 */
+    {
+        QX86_OPCODE_MAP_ITEM_CODE_NONE, 0, -1, {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
+    }
+};
+
+static qx86_opcode_map                  qx86_opcode_map_M7_05_mod_03_rm_07_sp
+                                        =
+{
+    QX86_OPCODE_MAP_INDEX_SP, 3, qx86_opcode_map_M7_05_mod_03_rm_07_sp_items
+};
+
+static qx86_opcode_map_item             qx86_opcode_map_M7_05_mod_03_rm_items[]
+                                        =
+{
+    /* 00 */
+    {
+        QX86_OPCODE_MAP_ITEM_CODE_NONE, 0, -1, {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
+    },
+    /* 01 */
+    {
+        QX86_OPCODE_MAP_ITEM_CODE_NONE, 0, -1, {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
+    },
+    /* 02 */
+    {
+        QX86_OPCODE_MAP_ITEM_CODE_NONE, 0, -1, {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
+    },
+    /* 03 */
+    {
+        QX86_OPCODE_MAP_ITEM_CODE_NONE, 0, -1, {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
+    },
+    /* 04 */
+    {
+        QX86_OPCODE_MAP_ITEM_CODE_NONE, 0, -1, {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
+    },
+    /* 05 */
+    {
+        QX86_OPCODE_MAP_ITEM_CODE_NONE, 0, -1, {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
+    },
+    /* 06 */
+    {
+        QX86_OPCODE_MAP_ITEM_CODE_LINK, &qx86_opcode_map_M7_05_mod_03_rm_06_sp, -1, {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
+    },
+    /* 07 */
+    {
+        QX86_OPCODE_MAP_ITEM_CODE_LINK, &qx86_opcode_map_M7_05_mod_03_rm_07_sp, -1, {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
+    }
+};
+
+static qx86_opcode_map                  qx86_opcode_map_M7_05_mod_03_rm
+                                        =
+{
+    QX86_OPCODE_MAP_INDEX_RM, 7, qx86_opcode_map_M7_05_mod_03_rm_items
+};
+
+static qx86_opcode_map_item             qx86_opcode_map_M7_05_mod_items[]
+                                        =
+{
+    /* 00 */
+    {
+        QX86_OPCODE_MAP_ITEM_CODE_NONE, 0, -1, {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
+    },
+    /* 01 */
+    {
+        QX86_OPCODE_MAP_ITEM_CODE_NONE, 0, -1, {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
+    },
+    /* 02 */
+    {
+        QX86_OPCODE_MAP_ITEM_CODE_NONE, 0, -1, {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
+    },
+    /* 03 */
+    {
+        QX86_OPCODE_MAP_ITEM_CODE_LINK, &qx86_opcode_map_M7_05_mod_03_rm, -1, {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
+    }
+};
+
+static qx86_opcode_map                  qx86_opcode_map_M7_05_mod
+                                        =
+{
+    QX86_OPCODE_MAP_INDEX_MOD, 3, qx86_opcode_map_M7_05_mod_items
+};
+
 static qx86_opcode_map_item             qx86_opcode_map_M7_07_mod_03_rm_00_cs_items[]
                                         =
 {
@@ -10818,7 +10948,7 @@ static qx86_opcode_map_item             qx86_opcode_map_M7_items[]
     },
     /* 05 */
     {
-        QX86_OPCODE_MAP_ITEM_CODE_NONE, 0, -1, {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
+        QX86_OPCODE_MAP_ITEM_CODE_LINK, &qx86_opcode_map_M7_05_mod, -1, {{QX86_OPERAND_FORM_TYPE_NONE, 0, {{0,0}}}}
     },
     {
         /* code */                      QX86_MNEMONIC_LMSW,

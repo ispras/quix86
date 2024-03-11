@@ -83,6 +83,10 @@ Map M7 reg
     04: SMSW        Mw+                 [ mod = 2 ]
     04: SMSW        Rv+                 [ mod = 3 ]
     06: LMSW        Ew-
+    05: [ mod ]
+        03: [ rm ]
+            06: RDPKRU  .               [ sp = 00 ]
+            07: WRPKRU  .               [ sp = 00 ]
     07: [ mod ]
         00: INVLPG  Mb-
         01: INVLPG  Mb-

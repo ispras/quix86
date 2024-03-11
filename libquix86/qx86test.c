@@ -47,7 +47,8 @@ main(void)
 //                                      = "\x48\x05\x12\x34\x56\x87";
 //                                      = "\xF3\x0F\x10\x8B\xBC\xC0\x00\x00\x00";
 //                                      = "\x8D\xCC";
-                                        = "\xDB\xE4";
+//                                      = "\xDB\xE4";
+                                        = "\x0F\x01\xEE";
 
     qx86_insn                           insn;
     qx86_print_options_intel            opt;
